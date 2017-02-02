@@ -1,18 +1,31 @@
 {
-  "name": "lets-do-it-app",
-  "version": "1.0.0",
-  "description": "Lets do It App\u001b[D\u001b[D\u001b[D\u001b[D\u001b[i",
-  "main": "home.html",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "\u0016https://github.com/coop-code/lets-do-it-app"
-  },
-  "author": "Breno Schneider & Ygor Kiefer",
-  "license": "ISC",
-  "dependencies": {
-    "semantic-ui": "^2.2.7"
-  }
+	"name": "lets-do-it-app",
+	"version": "1.0.0",
+	"description": "APP for the to-do list manager 'Lets Do It!'",
+	"main": "home.html",
+	"scripts": {
+        "start": "echo \"Nothing defined for start\""
+    },
+	"dependencies": {
+		"angular": "1.6.1",
+	    "angular-route": "1.6.1",
+	    "semantic-ui": "^2.2.7"
+	},
+	"repository": {
+	    "type": "git",
+	    "url": "git+https://github.com/coop-code/lets-do-it-app.git"
+	},
+	"keywords": [
+	             "to-do",
+	             "list",
+	             "lets",
+	             "management"
+	],
+	"author": "Breno Wruck Schneider & Ygor Kiefer",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/coop-code/lets-do-it-app/issues"
+	},
+	"homepage": "https://github.com/coop-code/lets-do-it-app#readme",
+	"devDependencies": {}
 }
