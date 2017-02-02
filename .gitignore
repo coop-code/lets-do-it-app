@@ -1,6 +1,9 @@
+.settings/
 node_modules/
 semantic/
 /.project
 .settings/
 *.log
 *.log*
+.jshintrc
+semantic.json
