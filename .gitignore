@@ -7,3 +7,4 @@ semantic/
 *.log*
 .jshintrc
 semantic.json
+/.tern-project
