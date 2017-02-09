@@ -1,0 +1,29 @@
+<div class="ui left vertical inverted labeled visible sidebar menu">
+	<a ui-sref=main class="item">
+		<span>
+			<i class="home layout icon"></i>
+			{{ vm.option1 }}
+		</span>
+		</a>
+
+		<a ui-sref="main.unfinished" class="item">
+		<span>
+			<i class="calendar outline layout icon"></i>
+			{{ vm.option2 }}
+		</span>
+			<i class="ui teal left pointing label"> {{ vm.unfinished }} </i>
+		
+		</a>
+
+		<a ui-sref="main.finished" class="item">
+		<span>
+			<i class="check layout icon"></i>
+			{{ vm.option3 }}
+		</span>
+			<div class="ui teal left pointing label"> {{ vm.finished }} </div>
+		
+	</a>
+</div>
+<div class="container pusher" ui-view>
+	<div ui-view="home"></div>
+</div>

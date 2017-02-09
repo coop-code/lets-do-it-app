@@ -5,21 +5,31 @@
     app.config(["$stateProvider",
             "$urlRouterProvider",
             function ($stateProvider, $urlRouterProvider) {
-                $urlRouterProvider.otherwise("/");
+                $urlRouterProvider.otherwise("/main");
                 $stateProvider
                     .state("main", {
-                        url: "/",
+                        url: "/main",
                         views: {
-                        	'nav': {
-                        		templateUrl: "app/home/view/navView.html",
-                                controller: "NavCtrl as vm"
+                        	'@': {
+                        		templateUrl: "app/layout/view/layoutView.html",
+                        		controller: "LayoutCtrl as vm"
                         	},
-                        	'content': {
-                        		templateUrl: "app/home/view/homeView.html",
+                        	'home@main': {
+                        		templateUrl: "app/components/home/view/homeView.html",
                                 controller: "HomeCtrl as vm"
                         	}
                         }
                         
+                    })
+                    .state("main.finished", {
+                    	url: "/tasks/finished",
+                    	templateUrl: "app/components/tasks/finished/view/finishedTasksView.html",
+                        controller: "FinishedTasksCtrl as vm"
+                    })
+                    .state("main.unfinished", {
+                    	url: "/tasks/unfinished",
+                    	templateUrl: "app/components/tasks/unfinished/view/unfinishedTasksView.html",
+                        controller: "UnfinishedTasksCtrl as vm"
                     })
             }]
     );
