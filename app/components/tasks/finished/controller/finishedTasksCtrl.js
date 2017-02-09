@@ -3,30 +3,30 @@
     angular
         .module("letsDoIt")
         .controller("FinishedTasksCtrl",
-        		FinishedTasksCtrl);
+            FinishedTasksCtrl);
 
     function FinishedTasksCtrl() {
         var vm = this;
         vm.title = "FINISHED TASKS";
-        vm.tasks = [
-                    {	"id": 4,
-                        "title": "Task nº 4",
-                        "description": "Example of finished task",
-                        "startDate": "04/01/2017",
-                        "dueDate": "10/01/2017",
-                        "endDate": "",
-                        "done": true,
-                        "tags": [ "api", "work", "finished" ]
-                    },
-                    {	"id": 5,
-                        "title": "Task nº 5",
-                        "description": "Another example of finished task",
-                        "startDate": "07/01/2017",
-                        "dueDate": "10/01/2017",
-                        "endDate": "",
-                        "done": true,
-                        "tags": [ "api", "work", "finished" ]
-                    }];
-        
+
+        //Date needs to be set in mm/dd/yyyy format
+        vm.tasks = [{
+                "id": 4,
+                "title": "Code the menu",
+                "description": "Set the menu options and references",
+                "registrationDate": new Date("02/09/2017"),
+                "deadline": new Date("02/11/2017"),
+                "done": true,
+            },
+            {
+                "id": 5,
+                "title": "Finish the tasks list layout",
+                "description": "The task list needs to be revised",
+                "registrationDate": new Date("02/09/2017"),
+                "deadline": new Date("02/15/2017"),
+                "done": true,
+            }
+        ];
+
     }
 }());

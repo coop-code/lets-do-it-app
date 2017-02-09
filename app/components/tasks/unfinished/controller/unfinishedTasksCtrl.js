@@ -3,30 +3,35 @@
     angular
         .module("letsDoIt")
         .controller("UnfinishedTasksCtrl",
-        		UnfinishedTasksCtrl);
+            UnfinishedTasksCtrl);
 
     function UnfinishedTasksCtrl() {
         var vm = this;
         vm.title = "UNFINISHED TASKS";
-        vm.tasks = [
-                    {	"id": 8,
-                        "title": "Task nº 8",
-                        "description": "Example of unfinished task",
-                        "startDate": "04/01/2017",
-                        "dueDate": "10/01/2017",
-                        "endDate": "",
-                        "done": false,
-                        "tags": [ "api", "work", "unfinished" ]
-                    },
-                    {	"id": 10,
-                        "title": "Task nº 10",
-                        "description": "Another example of unfinished task",
-                        "startDate": "04/01/2017",
-                        "dueDate": "09/01/2017",
-                        "endDate": "",
-                        "done": false,
-                        "tags": [ "api", "work", "unfinished" ]
-                    }];
-        
+        vm.tasks = [{
+                "id": 4,
+                "title": "Code the menu",
+                "description": "Set the menu options and references",
+                "registrationDate": new Date("02/09/2017"),
+                "deadline": new Date("02/11/2017"),
+                "done": false,
+            },
+            {
+                "id": 5,
+                "title": "Finish the tasks list layout",
+                "description": "The task list needs to be revised",
+                "registrationDate": new Date("02/09/2017"),
+                "deadline": new Date("02/15/2017"),
+                "done": false,
+            },
+            {
+                "id": 5,
+                "title": "Finish the tasks list layout",
+                "description": "The task list needs to be revised",
+                "registrationDate": new Date("02/09/2017"),
+                "done": false,
+            }
+        ];
+
     }
 }());

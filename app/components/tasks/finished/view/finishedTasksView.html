@@ -1,25 +1,21 @@
-<div class="ui two column centered grid">
-	<div class="column">
+<div class="ui two column grid">
+	<div class="thirteen wide column">
 		<div class="ui segment ">
 			<table class="ui selectable table">
 				<thead>
 					<tr>
-		            	<th>ID</th>
-		            	<th>Title</th>
-		            	<th>Description</th>
-		            	<th>Start</th>
-		            	<th>Deadline</th>
-		            </tr>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Deadline</th>
+					</tr>
 				</thead>
-		        <tbody>
-		        	<tr ng-repeat = "task in vm.tasks">
-		        		<td>{{task.id}}</td>
-		        		<td>{{task.title}}</td>
-		        		<td>{{task.description}}</td>
-		        		<td>{{task.startDate}}</td>
-		        		<td>{{task.dueDate}}</td>
-		        	</tr>
-		        </tbody>
+				<tbody>
+					<tr ng-repeat="task in vm.tasks">
+						<td>{{task.title}}</td>
+						<td>{{task.description}}</td>
+						<td>{{task.deadline? (task.deadline | date:'dd/MM/yyyy') : ""}}</td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 	</div>
