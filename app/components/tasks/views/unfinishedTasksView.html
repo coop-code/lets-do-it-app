@@ -11,7 +11,7 @@
 		            </tr>
 				</thead>
 		        <tbody>
-		        	<tr ng-repeat = "task in vm.tasks">
+		        	<tr ng-repeat = "task in vm.unfinishedTasks">
 		        		<td>{{task.title}}</td>
 		        		<td>{{task.description}}</td>
 						<td>{{task.deadline? (task.deadline | date:'dd/MM/yyyy') : ""}}</td>
