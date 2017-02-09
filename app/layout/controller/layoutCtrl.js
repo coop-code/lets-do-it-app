@@ -5,7 +5,7 @@
         .controller("LayoutCtrl",
                     LayoutCtrl);
 
-    function LayoutCtrl() {
+    function LayoutCtrl(TaskService) {
         var vm = this;
         vm.variable = "Layout variable";
         
@@ -13,7 +13,8 @@
         vm.option2 = "Tasks";
         vm.option3 = "Finished";
         
-        vm.unfinished = 2; //This should be provided from a service
-        vm.finished = 2;  //This should be provided from a service
+        vm.unfinished = TaskService.unfinishedTasksCount(); //This should be provided from a service
+        vm.finished = TaskService.finishedTasksCount(); //This should be provided from a service
+       
     }
 }());
