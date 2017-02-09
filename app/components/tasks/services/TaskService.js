@@ -2,18 +2,18 @@
     "use strict";
     angular
         .module("letsDoIt")
-        .service("TaskService",
+        .factory("TaskService",
             TaskService);
 
     function TaskService() {
-        var vm = this;
+        var taskService = {};
 
-        vm.unfinishedTasks = unfinishedTasks;
-        vm.unfinishedTasksCount = unfinishedTasksCount;
-        vm.finishedTasks = finishedTasks;
-        vm.finishedTasksCount = finishedTasksCount;
+        taskService.unfinishedTasks = unfinishedTasks;
+        taskService.unfinishedTasksCount = unfinishedTasksCount;
+        taskService.finishedTasks = finishedTasks;
+        taskService.finishedTasksCount = finishedTasksCount;
 
-        vm.unfinishedTasksList = [{
+        taskService.unfinishedTasksList = [{
                 "id": 4,
                 "title": "Code the menu",
                 "description": "Set the menu options and references",
@@ -55,7 +55,7 @@
             
         ];
 
-        vm.finishedTasksList = [{
+        taskService.finishedTasksList = [{
                 "id": 1,
                 "title": "Code the menu",
                 "description": "Set the menu options and references",
@@ -81,22 +81,22 @@
         ];
 
         function unfinishedTasks() {
-            return vm.unfinishedTasksList;
+            return taskService.unfinishedTasksList;
         }
 
         function finishedTasks() {
-            return vm.finishedTasksList;
+            return taskService.finishedTasksList;
         }
 
         function unfinishedTasksCount() {
-            return vm.unfinishedTasksList.length;
+            return taskService.unfinishedTasksList.length;
         }
 
         function finishedTasksCount() {
-            return vm.finishedTasksList.length;
+            return taskService.finishedTasksList.length;
         }
 
-
+        return taskService;
 
     }
 }());
