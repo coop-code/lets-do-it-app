@@ -1,22 +1,16 @@
-<div class="ui two column grid">
-	<div class="thirteen wide column">
-		<div class="ui segment ">
-			<table class="ui selectable table">
-				<thead>
-					<tr>
-						<th>Title</th>
-						<th>Description</th>
-						<th>Deadline</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="task in vm.finishedTasks">
-						<td>{{task.title}}</td>
-						<td>{{task.description}}</td>
-						<td>{{task.deadline? (task.deadline | date:'dd/MM/yyyy') : ""}}</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+<div class="ui four stackable cards">
+  <div ng-repeat = "task in vm.finishedTasks" style="background-color: #f5f5de;"class="black card">
+  	<div class="content">
+   		<a class="ui right corner label"><i class="pencil cancel icon"></i></a>
+		<div class="header">{{task.title}}</div>
+		<div class="description">
+	      <p>{{task.description}}</p>
+	    </div>
 	</div>
+	<div class="ui bottom attached basic buttons">
+	    <button class="ui button"><i class="trash icon"></i></button>
+	    <button class="ui button"><i class="check icon"></i></button>
+  </div>
+  </div>
 </div>
+
