@@ -18,7 +18,7 @@
                 "title": "Code the menu",
                 "description": "Set the menu options and references",
                 "registrationDate": new Date("02/09/2017"),
-                "deadline": new Date("02/11/2018"),
+                "deadline": new Date("02/11/2010"),
                 "done": false,
             },
             {
@@ -26,7 +26,7 @@
                 "title": "Finish the tasks list layout",
                 "description": "The task list needs to be revised",
                 "registrationDate": new Date("02/09/2017"),
-                "deadline": new Date("02/15/2017"),
+                "deadline": new Date("02/10/2017"),
                 "done": false,
             },
             {
@@ -108,7 +108,7 @@
 
             if (task.deadline) {
                 
-                var timeDiff = Math.abs(task.deadline.getTime() - Date.now());
+                var timeDiff = task.deadline.getTime() - Date.now();
                 var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
                 task.deadlineInDays = diffDays;
