@@ -6,19 +6,19 @@
             TaskService);
 
     function TaskService() {
-        var taskService = {};
+        var ts = {};
 
-        taskService.unfinishedTasks = unfinishedTasks;
-        taskService.unfinishedTasksCount = unfinishedTasksCount;
-        taskService.finishedTasks = finishedTasks;
-        taskService.finishedTasksCount = finishedTasksCount;
+        ts.unfinishedTasks = unfinishedTasks;
+        ts.unfinishedTasksCount = unfinishedTasksCount;
+        ts.finishedTasks = finishedTasks;
+        ts.finishedTasksCount = finishedTasksCount;
 
-        taskService.unfinishedTasksList = [{
+        ts.unfinishedTasksList = [{
                 "id": 4,
                 "title": "Code the menu",
                 "description": "Set the menu options and references",
                 "registrationDate": new Date("02/09/2017"),
-                "deadline": new Date("02/11/2017"),
+                "deadline": new Date("02/11/2018"),
                 "done": false,
             },
             {
@@ -52,10 +52,10 @@
                 "deadline": new Date("02/25/2017"),
                 "done": false,
             },
-            
+
         ];
 
-        taskService.finishedTasksList = [{
+        ts.finishedTasksList = [{
                 "id": 1,
                 "title": "Code the menu",
                 "description": "Set the menu options and references",
@@ -81,22 +81,42 @@
         ];
 
         function unfinishedTasks() {
-            return taskService.unfinishedTasksList;
+            var tasks = ts.unfinishedTasksList;
+
+            tasks.forEach(function (task) {
+                calculateDeadlineInDays(task);
+            });
+
+            return tasks;
         }
 
         function finishedTasks() {
-            return taskService.finishedTasksList;
+            return ts.finishedTasksList;
         }
 
         function unfinishedTasksCount() {
-            return taskService.unfinishedTasksList.length;
+            return ts.unfinishedTasksList.length;
         }
 
         function finishedTasksCount() {
-            return taskService.finishedTasksList.length;
+            return ts.finishedTasksList.length;
         }
 
-        return taskService;
+        function calculateDeadlineInDays(task) {
+
+            var days;
+
+            if (task.deadline) {
+                
+                var timeDiff = Math.abs(task.deadline.getTime() - Date.now());
+                var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+                task.deadlineInDays = diffDays;
+
+            }
+        }
+
+        return ts;
 
     }
 }());

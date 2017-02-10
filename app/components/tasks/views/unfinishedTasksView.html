@@ -7,6 +7,7 @@
 	      <p>{{task.description}}</p>
 	    </div>
 	</div>
+	<div ng-if="task.deadline" class="center aligned extra content">{{task.deadlineInDays}} days</div>
 	<div class="ui bottom attached basic buttons">
 	    <button class="ui button"><i class="trash icon"></i></button>
 	    <button class="ui button"><i class="check icon"></i></button>
