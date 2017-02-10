@@ -7,14 +7,13 @@
 
     function LayoutCtrl(TaskService) {
         var vm = this;
-        vm.variable = "Layout variable";
         
-        vm.option1 = "Home";
-        vm.option2 = "Tasks";
-        vm.option3 = "Finished";
+        vm.homeOption = "Home";
         
-        vm.unfinished = TaskService.unfinishedTasksCount(); //This should be provided from a service
-        vm.finished = TaskService.finishedTasksCount(); //This should be provided from a service
-       
+        vm.finishedTasksOption = "Finished";
+        vm.finishedTasksLabel = TaskService.finishedTasksCount(); //This should be provided from a service
+        
+        vm.unfinishedTasksOption = "Tasks";
+        vm.unfinishedTasksLabel = TaskService.unfinishedTasksCount(); //This should be provided from a service
     }
 }());

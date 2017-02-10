@@ -1,16 +1,41 @@
-<div class="ui four stackable cards">
-  <div ng-repeat = "task in vm.unfinishedTasks" class="black card">
-  	<div class="content">
-   		<a class="ui right corner label"><i class="pencil cancel icon"></i></a>
-		<div class="header">{{task.title}}</div>
-		<div class="description">
-	      <p>{{task.description}}</p>
-	    </div>
-	</div>
-	<div ng-if="task.deadline" class="center aligned extra content">{{task.deadlineInDays}} days</div>
-	<div class="ui bottom attached basic buttons">
-	    <button class="ui button"><i class="trash icon"></i></button>
-	    <button class="ui button"><i class="check icon"></i></button>
-  </div>
-  </div>
+<div class="ui cards">
+	<div ng-repeat="task in vm.unfinishedTasks" class="ui card">
+		<div class="content">
+			<div class="ui dimmer">
+				<div class="content">
+					<div class="center">
+				    	<div class="ui button view">VIEW</div>
+				    </div>
+				</div>
+			</div>			
+			<div ng-if="task.deadline" ng-class="task.deadlineInDaysClass">{{task.deadlineInDays}}</div>
+			<div class="header">{{task.title}}</div>
+			<div class="blurring description">
+				
+				<p>{{task.description}}</p>
+			</div>
+		</div>
+		<div class="ui bottom attached basic buttons">
+			<button class="ui button"><i class="trash icon"></i></button>
+			<button class="ui button"><i class="check icon"></i></button>
+		</div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".ui.cards > .card > .content > .description").dotdotdot({ 
+    	watch: "window"
+    });
+    $(".ui.cards > .card > .content > .header").dotdotdot({ 
+    	watch: "window"
+    });
+    $('.ui.cards > .card > .content').dimmer({
+  	  	on: 'hover',
+  	  	opacity: 0.75,
+  	  	duration: {
+  			show: 100,
+  		  	hide: 100
+  	  	}
+  	})
+});
+</script>

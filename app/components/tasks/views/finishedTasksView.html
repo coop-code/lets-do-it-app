@@ -1,16 +1,14 @@
-<div class="ui four stackable cards">
-  <div ng-repeat = "task in vm.finishedTasks" style="background-color: #f5f5de;"class="black card">
-  	<div class="content">
-   		<a class="ui right corner label"><i class="pencil cancel icon"></i></a>
-		<div class="header">{{task.title}}</div>
-		<div class="description">
-	      <p>{{task.description}}</p>
-	    </div>
+<div class="ui six stackable cards">
+	<div ng-repeat="task in vm.finishedTasks" style="background-color: #f5f5de;" class="black card">
+		<div class="content">
+			<a class="ui right corner label"><i class="info circle icon"></i></a>
+			<div class="header">{{task.title}}</div>
+			<div class="description">
+				<p>{{task.description}}</p>
+			</div>
+		</div>
+		<div class="ui bottom attached basic buttons">
+			<button class="ui button"><i class="trash icon"></i></button>
+		</div>
 	</div>
-	<div class="ui bottom attached basic buttons">
-	    <button class="ui button"><i class="trash icon"></i></button>
-	    <button class="ui button"><i class="check icon"></i></button>
-  </div>
-  </div>
 </div>
-
