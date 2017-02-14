@@ -24,12 +24,12 @@
                     .state("main.finished", {
                     	url: "/tasks/finished",
                     	templateUrl: "app/components/tasks/views/finishedTasksView.html",
-                        controller: "TasksCtrl as vm"
+                        controller: "TasksListCtrl as vm"
                     })
                     .state("main.unfinished", {
                     	url: "/tasks/unfinished",
                     	templateUrl: "app/components/tasks/views/unfinishedTasksView.html",
-                        controller: "TasksCtrl as vm"
+                        controller: "TasksListCtrl as vm"
                     })
             }]
     );

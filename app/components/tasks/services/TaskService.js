@@ -19,6 +19,7 @@
                 "description": "Set the menu options and references",
                 "registrationDate": new Date("02/09/2017"),
                 "deadline": new Date("02/11/2010"),
+                "highlighted" : true,
                 "done": false,
             },
             {
@@ -27,6 +28,7 @@
                 "description": "The task list needs to be revised",
                 "registrationDate": new Date("02/09/2017"),
                 "deadline": new Date("02/10/2017"),
+                "highlighted" : true,
                 "done": false,
             },
             {
@@ -34,6 +36,7 @@
                 "title": "Finish the tasks list layout",
                 "description": "The task list needs to be revised",
                 "registrationDate": new Date("02/09/2017"),
+                "highlighted" : false,
                 "done": false,
             },
             {
@@ -42,6 +45,7 @@
                 "description": "Create the http requests to the api",
                 "registrationDate": new Date("02/10/2017"),
                 "deadline": new Date("02/19/2017"),
+                "highlighted" : false,
                 "done": false,
             },
             {

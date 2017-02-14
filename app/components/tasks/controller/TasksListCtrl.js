@@ -2,9 +2,9 @@
     "use strict";
     angular
         .module("letsDoIt")
-        .controller("TasksCtrl", ["TaskService", TasksCtrl]);
+        .controller("TasksListCtrl", ["TaskService", TasksListCtrl]);
 
-    function TasksCtrl(TaskService) {
+    function TasksListCtrl(TaskService) {
 
         var vm = this;
         vm.unfinishedTasks = TaskService.unfinishedTasks();
@@ -21,6 +21,9 @@
 
                 task.deadlineInDays = deadlineName(task.deadlineInDays);
             };
+
+            task.highlightClass = highlightClass(task.highlighted);
+
         });
     }
 
@@ -29,7 +32,7 @@
         if (deadlineInDays == 0) {
             return "Today";
         }
-        
+
         if (deadlineInDays == 1) {
             return deadlineInDays + " day";
         }
@@ -55,4 +58,14 @@
             return "ui green label";
         }
     }
+
+    function highlightClass(highlighted) {
+        if (highlighted) {
+            return "yellow full star icon";
+        }
+
+        return "yellow empty star icon";
+
+    }
+
 }());

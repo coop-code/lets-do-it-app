@@ -10,6 +10,7 @@
 		<div ng-if="task.deadline" class="center aligned extra content" ng-class="task.deadlineInDaysClass">{{task.deadlineInDays}}</div>
 		<div class="ui bottom attached basic buttons">
 			<button class="ui button"><i class="trash icon"></i></button>
+			<button class="ui button"><i ng-class="task.highlightClass"></i></button>
 			<button class="ui button"><i class="check icon"></i></button>
 		</div>
 	</div>
