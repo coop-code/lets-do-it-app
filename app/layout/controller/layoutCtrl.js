@@ -13,8 +13,15 @@
         vm.option2 = "Tasks";
         vm.option3 = "Finished";
         
-        vm.unfinished = TaskService.unfinishedTasksCount(); //This should be provided from a service
-        vm.finished = TaskService.finishedTasksCount(); //This should be provided from a service
+        //Unfinished tasks count displayed on the side menu
+        TaskService.unfinishedTasks.query(function(tasks){
+            vm.unfinished = tasks.length;
+        });
+
+       //Finished tasks count displayed on the side menu
+       TaskService.finishedTasks.query(function(tasks){
+            vm.finished = tasks.length;
+        });
        
     }
 }());

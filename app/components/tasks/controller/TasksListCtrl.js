@@ -7,24 +7,52 @@
     function TasksListCtrl(TaskService) {
 
         var vm = this;
-        vm.unfinishedTasks = TaskService.unfinishedTasks();
-        CustomizeTasks(vm.unfinishedTasks);
 
-        vm.finishedTasks = TaskService.finishedTasks();
+
+        TaskService.unfinishedTasks.query(function (tasks) {
+            vm.unfinishedTasks = tasks;
+            tasks.forEach(function (task) {
+                CalculateDeadlineInDays(task);
+                CustomizeTask(task);
+            });
+        });
+
+        TaskService.finishedTasks.query(function (tasks) {
+            vm.finishedTasks = tasks;
+            tasks.forEach(function (task) {
+                CalculateDeadlineInDays(task);
+                CustomizeTask(task);
+            });
+        });
 
     }
 
-    function CustomizeTasks(tasks) {
-        tasks.forEach(function (task) {
-            if (task.deadline) {
-                task.deadlineInDaysClass = deadlineClass(task.deadlineInDays);
+    function CalculateDeadlineInDays(task) {
 
-                task.deadlineInDays = deadlineName(task.deadlineInDays);
-            };
+        var days;
 
-            task.highlightClass = highlightClass(task.highlighted);
+        if (task.deadline) {
 
-        });
+            task.deadline = new Date(task.deadline);
+            var timeDiff = task.deadline.getTime() - Date.now();
+            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+            task.deadlineInDays = diffDays;
+
+        }
+    }
+
+    function CustomizeTask(task) {
+
+        if (task.deadline) {
+            task.deadlineInDaysClass = deadlineClass(task.deadlineInDays);
+
+            task.deadlineInDays = deadlineName(task.deadlineInDays);
+        };
+
+        task.priorityClass = priorityClass(task.priority);
+
+
     }
 
     function deadlineName(deadlineInDays) {
@@ -59,8 +87,8 @@
         }
     }
 
-    function highlightClass(highlighted) {
-        if (highlighted) {
+    function priorityClass(priority) {
+        if (priority) {
             return "yellow full star icon";
         }
 
