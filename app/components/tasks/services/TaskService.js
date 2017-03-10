@@ -17,13 +17,10 @@
                query : {method: 'GET', params: {}, isArray : true}
            })
        } 
-
-       
-    
     }
 
-    /*
-        angular.module('myApp.services', ['ngResource']).
+/*
+  angular.module('myApp.services', ['ngResource']).
   factory("geoProvider", function($resource) {
     return {
       states: $resource('../data/states.json', {}, {
@@ -34,8 +31,7 @@
       })
     };
   });
-
-     */
+*/
 
 
 }());

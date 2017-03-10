@@ -3,25 +3,25 @@
 		<a ui-sref=main class="item">
 			<span>
 				<i class="home layout icon"></i>
-				{{ vm.option1 }}
+				{{ vm.homeOption }}
 			</span>
 			</a>
 	
 			<a ui-sref="main.unfinished" class="item">
 			<span>
 				<i class="calendar outline layout icon"></i>
-				{{ vm.option2 }}
+				{{ vm.unfinishedTasksOption }}
 			</span>
-				<i class="ui left pointing label"> {{ vm.unfinished }} </i>
+				<i class="ui left pointing label"> {{ vm.unfinishedTasksLabel }} </i>
 			
 			</a>
 	
 			<a ui-sref="main.finished" class="item">
 			<span>
 				<i class="check layout icon"></i>
-				{{ vm.option3 }}
+				{{ vm.finishedTasksOption }}
 			</span>
-				<div class="ui  left pointing label"> {{ vm.finished }} </div>
+				<div class="ui  left pointing label"> {{ vm.finishedTasksLabel }} </div>
 		</a>
 	</div>
 	<div class="pusher" id="content"> 

@@ -72,18 +72,18 @@
 
     function deadlineClass(deadlineInDays) {
         if (deadlineInDays <= -1) {
-            return "ui red label";
+            return "ui ribbon red label";
         }
 
         if (deadlineInDays == 0) {
-            return "ui orange label";
+            return "ui ribbon orange label";
         }
 
         if (deadlineInDays <= 5) {
-            return "ui yellow label";
+            return "ui ribbon yellow label";
         }
         if (deadlineInDays > 5) {
-            return "ui green label";
+            return "ui ribbon green label";
         }
     }
 
