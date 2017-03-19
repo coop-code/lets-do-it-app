@@ -1,25 +1,22 @@
 (function () {
     "use strict";
-    var app = angular.module("letsDoIt", ["ui.router", "ngResource"]);
+    var app = angular.module("letsDoIt", ["ui.router", "ngResource", "ngMaterial"]);
     
     app.config(["$stateProvider",
             "$urlRouterProvider",
             function ($stateProvider, $urlRouterProvider) {
-                $urlRouterProvider.otherwise("/main");
+                $urlRouterProvider.otherwise("/main/home");
                 $stateProvider
                     .state("main", {
+                    	abstract: true,
                         url: "/main",
-                        views: {
-                        	'@': {
-                        		templateUrl: "app/layout/view/layoutView.html",
-                        		controller: "LayoutCtrl as vm"
-                        	},
-                        	'home@main': {
-                        		templateUrl: "app/components/home/view/homeView.html",
-                                controller: "HomeCtrl as vm"
-                        	}
-                        }
-                        
+                        templateUrl: "app/layout/view/layoutView.html",
+                        controller: "LayoutCtrl as vm"
+                    })
+                    .state("main.home", {
+                    	url: "/home",
+                    	templateUrl: "app/components/home/view/homeView.html",
+                        controller: "HomeCtrl as vm"
                     })
                     .state("main.finished", {
                     	url: "/tasks/finished",

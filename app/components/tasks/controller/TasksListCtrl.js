@@ -89,10 +89,10 @@
 
     function priorityClass(priority) {
         if (priority) {
-            return "yellow full star icon";
+            return "star";
         }
 
-        return "yellow empty star icon";
+        return "star_border";
 
     }
 

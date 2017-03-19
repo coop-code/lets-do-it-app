@@ -7,18 +7,30 @@
 	  	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     	<title>Let's Do It</title>
 
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 	    <!-- Style sheets -->
 		<link rel="stylesheet" type="text/css" href="node_modules/semantic-ui/dist/semantic.css">
-		<link rel="stylesheet" type="text/css" href="app/common/css/sidebar-overlap-trim-fix.css">
+		<link rel="stylesheet" type="text/css" href="node_modules/angular-material/angular-material.css">
 		<link rel="stylesheet" type="text/css" href="app/common/css/common.css">
 
     	<!-- Library Scripts -->
     	<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
     	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
-    	<script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
-    	<script type="text/javascript" src="node_modules/angular-resource/angular-resource.min.js"></script>
+    	
+		    	  <!-- Angular Material requires Angular.js Libraries -->
+		  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.min.js"></script>
+		  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-aria.min.js"></script>
+		  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-messages.min.js"></script>
+		
+		  <!-- Angular Material Library -->
+		  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.js"></script>
+    	
+		<script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+    	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-resource.js"></script>
     	<script type="text/javascript" src="node_modules/dotdotdot/src/js/jquery.dotdotdot.js"></script>
     	<script type="text/javascript" src="node_modules/semantic-ui/dist/semantic.min.js"></script>
+    	
 	
 	    <!-- Application Script -->
 	    <script type="text/javascript" src="app/app.js"></script>
@@ -35,7 +47,7 @@
 </head>
 
 <body ng-app="letsDoIt">
-   	<div ui-view></div>
+   	<div style="height: 100%" ui-view></div>
 </body>
 
 </html>

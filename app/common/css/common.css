@@ -1,32 +1,23 @@
-.ui.cards {
-	margin-left: 1em;
-    margin-right: 1em;
-}
-
-.ui.cards > .card {
+md-card {
 	background-color: #f5f5de;
-	margin-left: 1em;
-	margin-right: 1em;
 	height: 25em;
     width: 25em;
-    overflow: hidden;
 }
-
-.ui.cards > .card > .content > .header {
-	height: 4em;
-}
-
-.ui.cards > .card > .content > .description {
-	height: 13em;
-}
-
- div.cards > div.card:hover,div.cards > div.card:focus{
-  -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
-  -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
-  box-shadow:10px 10px 7px rgba(0,0,0,.7);
-  -webkit-transform: scale(1.05);
-  -moz-transform: scale(1.05);
-  -o-transform: scale(1.05);
+ md-card:hover{
+ 	cursor: pointer;
+ }
+ md-card:hover,
+ md-card:focus{
+  -moz-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+  -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.3);
+  box-shadow:10px 10px 7px rgba(0,0,0,.3);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -o-transform: scale(1.1);
   position:relative;
   z-index:5;
+}
+
+.active-sidenav-link{
+	background-color: rgba(158,158,158,0.2);
 }

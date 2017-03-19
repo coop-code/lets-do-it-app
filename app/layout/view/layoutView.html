@@ -1,33 +1,31 @@
-<div>
-	<div class="ui left vertical inverted labeled visible sidebar menu" id="sidebar">
-		<a ui-sref=main class="item">
-			<span>
-				<i class="home layout icon"></i>
-				{{ vm.homeOption }}
-			</span>
-			</a>
-	
-			<a ui-sref="main.unfinished" class="item">
-			<span>
-				<i class="calendar outline layout icon"></i>
-				{{ vm.unfinishedTasksOption }}
-			</span>
-				<i class="ui left pointing label"> {{ vm.unfinishedTasksLabel }} </i>
-			
-			</a>
-	
-			<a ui-sref="main.finished" class="item">
-			<span>
-				<i class="check layout icon"></i>
-				{{ vm.finishedTasksOption }}
-			</span>
-				<div class="ui  left pointing label"> {{ vm.finishedTasksLabel }} </div>
-		</a>
-	</div>
-	<div class="pusher" id="content"> 
-		<div ui-view>
-			<div ui-view="home"></div>
-		</div>	
-	</div>
+<div layout="row" style="height:100%" flex>
+    <md-sidenav 
+    	class="md-sidenav-left" 
+    	md-component-id="sidenav" 
+    	md-is-locked-open="$mdMedia('gt-sm')" 
+    	md-whiteframe="24">
+      	<md-toolbar class="md-theme-indigo">
+        	<h1 class="md-toolbar-tools" >Let's do it!</h1>
+      	</md-toolbar>
+      	<md-content layout="column" layout-padding>
+        	<md-button 
+        		ng-repeat="option in vm.menuOptions" 
+        		style="text-align:left" 
+        		ui-sref="{{ option.link }}" 
+        		ui-sref-active="active-sidenav-link"
+        		class="{{ option.class }}">
+        		<md-icon>
+        			{{ option.icon }}
+        		</md-icon> 
+        		{{option.name}}
+        	</md-button>
+      	</md-content>
+    </md-sidenav>
+    <md-content flex layout-padding>
+      <div>
+        <div ui-view>
+			<div ui-view="main.home"></div>
+		</div>
+      </div>
+    </md-content>
 </div>
-

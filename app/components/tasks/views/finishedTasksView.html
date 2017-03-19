@@ -1,14 +1,13 @@
-<div class="ui six stackable cards">
-	<div ng-repeat="task in vm.finishedTasks" style="background-color: #f5f5de;" class="black card">
-		<div class="content">
-			<a class="ui right corner label"><i class="info circle icon"></i></a>
-			<div class="header">{{task.title}}</div>
-			<div class="description">
-				<p>{{task.description}}</p>
-			</div>
-		</div>
-		<div class="ui bottom attached basic buttons">
-			<button class="ui button"><i class="trash icon"></i></button>
-		</div>
-	</div>
+<div class='md-padding' layout="row" layout-wrap>
+	<md-card ng-repeat="task in vm.finishedTasks">
+		<md-card-title class="md-headline">
+	    	{{ task.title }}
+		</md-card-title>
+	    <md-card-content>
+	    	{{ task.description }}
+	    </md-card-content>
+	    <md-card-actions layout="row" layout-align="center">
+	    	<md-button><md-icon>delete</md-icon></md-button>
+	    </md-card-actions>
+	</md-card>
 </div>

@@ -1,42 +1,15 @@
-<div class="ui cards">
-	<div ng-repeat="task in vm.unfinishedTasks" class="ui card">
-		<div class="content">
-			<div class="ui dimmer">
-				<div class="content">
-					<div class="center">
-				    	<div class="ui button view">VIEW</div>
-				    </div>
-				</div>
-			</div>			
-			<div ng-if="task.deadline" ng-class="task.deadlineInDaysClass">{{task.deadlineInDays}}</div>
-			<div class="header">{{task.title}}</div>
-			<div class="blurring description">
-				
-				<p>{{task.description}}</p>
-			</div>
-		</div>
-		<div class="ui bottom attached basic buttons">
-			<button class="ui button"><i class="trash icon"></i></button>
-			<button class="ui button"><i ng-class="task.priorityClass"></i></button>
-			<button class="ui button"><i class="check icon"></i></button>
-		</div>
+<div class='md-padding' layout="row" layout-wrap>
+	<md-card ng-repeat="task in vm.unfinishedTasks" ui-sref="main.home">
+		<md-card-title class="md-headline">
+	    	{{ task.title }}
+		</md-card-title>
+	    <md-card-content>
+	    	{{ task.description }}
+	    </md-card-content>
+	    <md-card-actions layout="row" layout-align="center">
+	    	<md-button><md-icon>close</md-icon></md-button>
+	    	<md-button><md-icon>{{task.priorityClass}}</md-icon></md-button>
+	    	<md-button><md-icon>done</md-icon></md-button>
+	    </md-card-actions>
+	</md-card>
 </div>
-
-<script type="text/javascript">
-$(document).ready(function() {
-    $(".ui.cards > .card > .content > .description").dotdotdot({ 
-    	watch: "window"
-    });
-    $(".ui.cards > .card > .content > .header").dotdotdot({ 
-    	watch: "window"
-    });
-    $('.ui.cards > .card > .content').dimmer({
-  	  	on: 'hover',
-  	  	opacity: 0.75,
-  	  	duration: {
-  			show: 100,
-  		  	hide: 100
-  	  	}
-  	})
-});
-</script>
