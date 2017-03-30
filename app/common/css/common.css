@@ -1,23 +1,25 @@
 md-card {
-	background-color: #f5f5de;
-	height: 25em;
+    background-color: #f5f5de;
+    height: 25em;
     width: 25em;
 }
- md-card:hover{
- 	cursor: pointer;
- }
- md-card:hover,
- md-card:focus{
-  -moz-box-shadow:10px 10px 7px rgba(0,0,0,.3);
-  -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.3);
-  box-shadow:10px 10px 7px rgba(0,0,0,.3);
-  -webkit-transform: scale(1.1);
-  -moz-transform: scale(1.1);
-  -o-transform: scale(1.1);
-  position:relative;
-  z-index:5;
+
+md-card:hover {
+    cursor: pointer;
 }
 
-.active-sidenav-link{
-	background-color: rgba(158,158,158,0.2);
+md-card:hover,
+md-card:focus {
+    -moz-box-shadow: 10px 10px 7px rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 10px 10px 7px rgba(0, 0, 0, .3);
+    box-shadow: 10px 10px 7px rgba(0, 0, 0, .3);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    position: relative;
+    z-index: 5;
+}
+
+.active-sidenav-link {
+    background-color: rgba(158, 158, 158, 0.2);
 }
