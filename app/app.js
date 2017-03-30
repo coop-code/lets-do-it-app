@@ -1,10 +1,24 @@
 (function () {
     "use strict";
-    var app = angular.module("letsDoIt", ["ui.router", "ngResource", "ngMaterial"]);
+    var app = angular.module("letsDoIt", ["ui.router", "ngResource", "ngMaterial", "ngMessages"]);
     
     app.config(["$stateProvider",
             "$urlRouterProvider",
-            function ($stateProvider, $urlRouterProvider) {
+            "$compileProvider",
+            "$mdDateLocaleProvider",
+            function ($stateProvider, $urlRouterProvider, $compileProvider, $mdDateLocaleProvider) {
+                
+                $compileProvider.preAssignBindingsEnabled(true);
+                
+                $mdDateLocaleProvider.formatDate = function(date) {
+                    return date ? moment(date).format('LL') : '' ;
+                }
+
+                $mdDateLocaleProvider.parseDate = function(dateString) {
+                    var m = moment(dateString, 'LL', true);
+                    return m.isValid ? m.toDate() : new Date(NaN);
+                }
+
                 $urlRouterProvider.otherwise("/main/home");
                 $stateProvider
                     .state("main", {
@@ -37,3 +51,4 @@
             }]
     );
 }());
+
