@@ -1,7 +1,7 @@
 md-card {
     background-color: #f5f5de;
-    height: 25em;
-    width: 25em;
+    height: 15em;
+    width: 20em;
 }
 
 md-card:hover {

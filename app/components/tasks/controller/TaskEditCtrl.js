@@ -2,9 +2,9 @@
     "use strict";
     angular
         .module("letsDoIt")
-        .controller("TaskEditCtrl", ["TaskService", TaskEditCtrl]);
+        .controller("TaskEditCtrl", ['TaskService', 'toastr','$http','$state', TaskEditCtrl]);
 
-    function TaskEditCtrl(TaskService) {
+    function TaskEditCtrl(TaskService, toastr, $http, $state, $promise ) {
         var vm = this;
         
         //Page title
@@ -13,21 +13,29 @@
         //Task model
         vm.task = {
             title: '',
-            detailedDescription: '',
+            description: '',
             deadline: undefined,
             comments :'',
             priority: false
         }
 
         vm.submit = function() {
-           //TODO
-           //submit to the Task API for creation
+           TaskService.save(vm.task)
+                .$promise.then(
+                    function(response) {
+                        toastr.success('Task created successfully!');
+                        $state.go("main.unfinished");
+                    },
+                    function (err){
+                        toastr.error('Error on task creation. Please check if the fields were filled correctly.')
+                    }
+                )
         }
 
         //Triggered by the clear button
         vm.clear = function() {
             vm.task.title = '';
-            vm.task.detailedDescription = '';
+            vm.task.description = '';
             vm.task.deadline = null;
             vm.task.comments = '';
             vm.task.priority = false;

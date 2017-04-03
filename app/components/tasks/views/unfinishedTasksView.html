@@ -3,12 +3,12 @@
 </div>
 <div class='md-padding' layout="row" layout-wrap>
 	<md-card ng-repeat="task in vm.unfinishedTasks" ui-sref="main.home">
-		<md-card-title class="md-headline">
+		<md-card-header class="md-title">
 	    	{{ task.title }}
-		</md-card-title>
-	    <md-card-content>
+		</md-card-header>
+	    <md-card-title>
 	    	{{ task.description }}
-	    </md-card-content>
+	    </md-card-title>
 	    <md-card-actions layout="row" layout-align="center">
 	    	<md-button><md-icon>close</md-icon></md-button>
 	    	<md-button><md-icon>{{task.priorityClass}}</md-icon></md-button>
