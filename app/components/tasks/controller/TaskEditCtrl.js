@@ -31,7 +31,6 @@
                     }
                 )
         }
-
         //Triggered by the clear button
         vm.clear = function() {
             vm.task.title = '';
@@ -42,5 +41,4 @@
 
         }
     }
-    //https://www.tutorialspoint.com/mongodb/mongodb_autoincrement_sequence.htm
 }());

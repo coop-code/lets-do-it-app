@@ -2,15 +2,15 @@
 	<md-button ui-sref='main.edit({id: 0})' class='md-fab md-primary'><md-icon>add</md-icon></md-button>
 </div>
 <div class='md-padding' layout="row" layout-wrap>
-	<md-card ng-repeat="task in vm.unfinishedTasks" ui-sref="main.home">
-		<md-card-header class="md-title">
+	<md-card ng-repeat="task in vm.unfinishedTasks">
+		<md-card-header ui-sref="main.edit({id: task.id})" class="md-title">
 	    	{{ task.title }}
 		</md-card-header>
 	    <md-card-title>
 	    	{{ task.description }}
 	    </md-card-title>
 	    <md-card-actions layout="row" layout-align="center">
-	    	<md-button><md-icon>close</md-icon></md-button>
+	    	<md-button ng-click="vm.delete(task.id)"><md-icon>close</md-icon></md-button>
 	    	<md-button><md-icon>{{task.priorityClass}}</md-icon></md-button>
 	    	<md-button><md-icon>done</md-icon></md-button>
 	    </md-card-actions>

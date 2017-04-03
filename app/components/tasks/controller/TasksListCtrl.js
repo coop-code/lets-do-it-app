@@ -2,12 +2,11 @@
     "use strict";
     angular
         .module("letsDoIt")
-        .controller("TasksListCtrl", ["TaskService", TasksListCtrl]);
+        .controller("TasksListCtrl", ['TaskService', 'toastr', '$http', '$state', TasksListCtrl]);
 
-    function TasksListCtrl(TaskService) {
+    function TasksListCtrl(TaskService, toastr, $http, $state, $promise) {
 
         var vm = this;
-
 
         TaskService.unfinishedTasks.query(function (tasks) {
             vm.unfinishedTasks = tasks;
@@ -20,10 +19,22 @@
         TaskService.finishedTasks.query(function (tasks) {
             vm.finishedTasks = tasks;
             tasks.forEach(function (task) {
-                CalculateDeadlineInDays(task);
                 CustomizeTask(task);
             });
         });
+
+        vm.delete = function (id) {
+            TaskService.delete(id)
+                .$promise.then(
+                    function (response) {
+                        toastr.success('Task succesfully deleted.');
+                        $state.reload();
+                    },
+                    function (err) {
+                        toastr.error('There was a problem in the deletion. Please refresh the page before trying again.')
+                    }
+                )
+        }
 
     }
 
@@ -43,57 +54,14 @@
     }
 
     function CustomizeTask(task) {
-
-        if (task.deadline) {
-            task.deadlineInDaysClass = deadlineClass(task.deadlineInDays);
-
-            task.deadlineInDays = deadlineName(task.deadlineInDays);
-        };
-
         task.priorityClass = priorityClass(task.priority);
-
-
-    }
-
-    function deadlineName(deadlineInDays) {
-
-        if (deadlineInDays == 0) {
-            return "Today";
-        }
-
-        if (deadlineInDays == 1) {
-            return deadlineInDays + " day";
-        }
-
-        return deadlineInDays + " days";
-
-
-    }
-
-    function deadlineClass(deadlineInDays) {
-        if (deadlineInDays <= -1) {
-            return "ui ribbon red label";
-        }
-
-        if (deadlineInDays == 0) {
-            return "ui ribbon orange label";
-        }
-
-        if (deadlineInDays <= 5) {
-            return "ui ribbon yellow label";
-        }
-        if (deadlineInDays > 5) {
-            return "ui ribbon green label";
-        }
     }
 
     function priorityClass(priority) {
         if (priority) {
             return "star";
         }
-
         return "star_border";
-
     }
 
 }());

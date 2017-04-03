@@ -31,6 +31,10 @@
             }),
             save: function (taskDto) {
                 return resource.save(taskDto);
+            },
+            delete: function(id) {
+                var deleteResource = $resource(apiUrl + "/" + id);
+                return deleteResource.delete();
             }
         }
     }
