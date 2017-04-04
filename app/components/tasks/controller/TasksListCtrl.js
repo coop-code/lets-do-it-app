@@ -36,6 +36,20 @@
                 )
         }
 
+        vm.finish = function (id) {
+            console.log("Calling the service to finish the task...");
+            TaskService.finish(id)
+                .$promise.then(
+                    function (response) {
+                        toastr.success('Task finished.');
+                        $state.reload();
+                    },
+                    function (err) {
+                        toastr.error('There was a problem when trying to finish the task. Please refresh the page before trying again.')
+                    }
+                )
+        }
+
     }
 
     function CalculateDeadlineInDays(task) {

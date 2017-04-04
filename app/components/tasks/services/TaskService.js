@@ -9,7 +9,7 @@
 
         //The API runs locally for now. 
         var apiUrl = 'http://localhost:4000/tasks';
-        var resource = $resource(apiUrl);
+        var resource = $resource(apiUrl);;
         return {
             unfinishedTasks: $resource(apiUrl, {}, {
                 query: {
@@ -32,9 +32,21 @@
             save: function (taskDto) {
                 return resource.save(taskDto);
             },
-            delete: function(id) {
-                var deleteResource = $resource(apiUrl + "/" + id);
-                return deleteResource.delete();
+            finish: function (id) {
+                console.log('Finishing the task...')
+                return $resource(apiUrl + '/:id/finish', {
+                    id: '@id'
+                }, {
+                    'finish': {
+                        method: 'PUT',
+                        params: {
+                            id: "@id"
+                        }
+                    }
+                });
+            },
+            delete: function (id) {
+                return particularResource.delete();
             }
         }
     }
