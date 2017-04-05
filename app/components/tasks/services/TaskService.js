@@ -5,11 +5,10 @@
         .factory("TaskService",
             TaskService);
 
-    function TaskService($http, $resource) {
+    function TaskService($http) {
 
         //The API runs locally for now. 
         var apiUrl = 'http://localhost:4000/tasks';
-        var resource = $resource(apiUrl);;
         return {
             unfinishedTasks: function () {
                 return $http.get(apiUrl, {
