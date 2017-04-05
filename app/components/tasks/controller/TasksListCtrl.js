@@ -37,9 +37,8 @@
         }
 
         vm.finish = function (id) {
-            console.log("Calling the service to finish the task...");
-            TaskService.finish(id)
-                .$promise.then(
+            var finishPromise = TaskService.finish(id);
+            finishPromise.then(
                     function (response) {
                         toastr.success('Task finished.');
                         $state.reload();

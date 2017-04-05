@@ -5,7 +5,7 @@
         .factory("TaskService",
             TaskService);
 
-    function TaskService($resource) {
+    function TaskService($http, $resource) {
 
         //The API runs locally for now. 
         var apiUrl = 'http://localhost:4000/tasks';
@@ -33,17 +33,7 @@
                 return resource.save(taskDto);
             },
             finish: function (id) {
-                console.log('Finishing the task...')
-                return $resource(apiUrl + '/:id/finish', {
-                    id: '@id'
-                }, {
-                    'finish': {
-                        method: 'PUT',
-                        params: {
-                            id: "@id"
-                        }
-                    }
-                });
+                return $http.put(apiUrl + '/' + id + '/finish', null);
             },
             delete: function (id) {
                 return particularResource.delete();

@@ -20,6 +20,7 @@
         }
 
         vm.submit = function() {
+           
            TaskService.save(vm.task)
                 .$promise.then(
                     function(response) {
