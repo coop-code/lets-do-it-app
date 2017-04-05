@@ -8,24 +8,35 @@
 
         var vm = this;
 
-        TaskService.unfinishedTasks.query(function (tasks) {
-            vm.unfinishedTasks = tasks;
-            tasks.forEach(function (task) {
-                CalculateDeadlineInDays(task);
-                CustomizeTask(task);
-            });
-        });
+        TaskService.unfinishedTasks()
+            .then(function (response) {
+                var tasks = response.data;
+                tasks.forEach(function (task) {
+                    CalculateDeadlineInDays(task);
+                    CustomizeTask(task);
+                });
 
-        TaskService.finishedTasks.query(function (tasks) {
-            vm.finishedTasks = tasks;
-            tasks.forEach(function (task) {
-                CustomizeTask(task);
+                vm.unfinishedTasks = tasks
+            }, function (err) {
+                console.log(err);
             });
-        });
+
+        TaskService.finishedTasks()
+            .then(function (response) {
+                var tasks = response.data;
+                tasks.forEach(function (task) {
+                    CalculateDeadlineInDays(task);
+                    CustomizeTask(task);
+                });
+
+                vm.finishedTasks = tasks
+            }, function (err) {
+                console.log(err);
+            });
 
         vm.delete = function (id) {
             TaskService.delete(id)
-                .$promise.then(
+                .then(
                     function (response) {
                         toastr.success('Task succesfully deleted.');
                         $state.reload();
@@ -39,14 +50,14 @@
         vm.finish = function (id) {
             var finishPromise = TaskService.finish(id);
             finishPromise.then(
-                    function (response) {
-                        toastr.success('Task finished.');
-                        $state.reload();
-                    },
-                    function (err) {
-                        toastr.error('There was a problem when trying to finish the task. Please refresh the page before trying again.')
-                    }
-                )
+                function (response) {
+                    toastr.success('Task finished.');
+                    $state.reload();
+                },
+                function (err) {
+                    toastr.error('There was a problem when trying to finish the task. Please refresh the page before trying again.')
+                }
+            )
         }
 
     }

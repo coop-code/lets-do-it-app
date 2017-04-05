@@ -22,7 +22,7 @@
         vm.submit = function() {
            
            TaskService.save(vm.task)
-                .$promise.then(
+                .then(
                     function(response) {
                         toastr.success('Task created successfully!');
                         $state.go("main.unfinished");

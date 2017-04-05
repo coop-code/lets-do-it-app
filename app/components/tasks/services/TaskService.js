@@ -11,32 +11,29 @@
         var apiUrl = 'http://localhost:4000/tasks';
         var resource = $resource(apiUrl);;
         return {
-            unfinishedTasks: $resource(apiUrl, {}, {
-                query: {
-                    method: 'GET',
+            unfinishedTasks: function () {
+                return $http.get(apiUrl, {
                     params: {
-                        finished: false
-                    },
-                    isArray: true
-                }
-            }),
-            finishedTasks: $resource(apiUrl, {}, {
-                query: {
-                    method: 'GET',
+                        "finished": false
+                    }
+                });
+
+            },
+            finishedTasks: function () {
+                return $http.get(apiUrl, {
                     params: {
-                        finished: true
-                    },
-                    isArray: true
-                }
-            }),
+                        "finished": true
+                    }
+                });
+            },
             save: function (taskDto) {
-                return resource.save(taskDto);
+                return $http.post(apiUrl,taskDto);
             },
             finish: function (id) {
                 return $http.put(apiUrl + '/' + id + '/finish', null);
             },
             delete: function (id) {
-                return particularResource.delete();
+                return $http.delete(apiUrl + '/' + id);
             }
         }
     }
