@@ -10,15 +10,18 @@
         
         vm.openDialog = openDialog;
         
+        //Dialog
+        //Triggered by the FAB button
         function openDialog(event) {
         	var dialogConfig = {
-        			templateUrl: 'app/components/tasks/views/taskEditView.html',
-					controller: 'TaskEditCtrl',
+        			templateUrl: 'app/components/tasks/views/taskEditDialogView.html',
+					controller: 'TaskEditDialogCtrl',
 					controllerAs: 'vm',
         	}
         	DialogService(event, dialogConfig);
         };
         
+        //Sidenav menu entries
         var menuData = [
                         {	icon:	'home',
                         	class:	'md-primary',

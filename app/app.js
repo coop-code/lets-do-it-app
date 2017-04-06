@@ -42,12 +42,12 @@
                     	templateUrl: "app/components/tasks/views/unfinishedTasksView.html",
                         controller: "TasksListCtrl as vm"
                     })
-                    .state("main.edit", {
-                    	url: "/tasks/edit/:id",
-                    	templateUrl: "app/components/tasks/views/taskEditView.html",
-                        controller: "TaskEditCtrl as vm"
-                        
-                    })
+//                    .state("main.edit", {
+//                    	url: "/tasks/edit/:id",
+//                    	templateUrl: "app/components/tasks/views/taskEditDialogView.html",
+//                        controller: "TaskEditDialogCtrl as vm"
+//                        
+//                    })
             }]
     );
 }());

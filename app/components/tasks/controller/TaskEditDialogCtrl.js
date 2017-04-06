@@ -2,10 +2,10 @@
     "use strict";
     angular
         .module("letsDoIt")
-        .controller("TaskEditCtrl", ['TaskService', 'ToastrService','$http','$state', '$mdDialog',TaskEditCtrl]);
+        .controller("TaskEditDialogCtrl", ['TaskService', 'ToastrService','$http','$state', '$mdDialog',TaskEditDialogCtrl]);
 
-    function TaskEditCtrl(TaskService, ToastrService, $http, $state, $mdDialog, $promise ) {
-        var vm = this;
+    function TaskEditDialogCtrl(TaskService, ToastrService, $http, $state, $mdDialog, $promise ) {
+    	var vm = this;
         
         //Page title
         vm.title = "New Task";
@@ -19,12 +19,14 @@
             priority: false
         }
 
+        //Triggered by the create button
         vm.submit = function() {
         	$mdDialog.hide();
         	ToastrService.clear();
         	ToastrService.processing("Creating", "Please wait while the task is created...");
-           TaskService.save(vm.task)
+        	TaskService.save(vm.task)
                 .then(
+                	//Success callback
                     function(response) {
                     	ToastrService.clear();
                     	ToastrService.success("Task created successfully!");
@@ -32,12 +34,18 @@
                     		$state.reload();
                     	};
                     },
+                    //Error callback
                     function (err){
                     	ToastrService.clear();
                     	ToastrService.error("Error", "Please check if the fields were filled correctly.")
                     }
                 )
         }
+        
+        vm.close = function() {
+        	$mdDialog.hide();
+        }
+        
         //Triggered by the clear button
         vm.clear = function() {
             vm.task.title = '';
