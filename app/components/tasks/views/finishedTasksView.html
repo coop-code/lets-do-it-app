@@ -7,7 +7,7 @@
 	    	{{ task.description }}
 	    </md-card-content>
 	    <md-card-actions layout="row" layout-align="center">
-	    	<md-button><md-icon>delete</md-icon></md-button>
+	    	<md-button ng-click="vm.delete(task.id)"><md-icon>delete</md-icon></md-button>
 	    </md-card-actions>
 	</md-card>
 </div>
