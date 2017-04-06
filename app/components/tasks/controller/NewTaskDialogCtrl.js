@@ -2,13 +2,13 @@
     "use strict";
     angular
         .module("letsDoIt")
-        .controller("TaskEditCtrl", ['TaskService', 'ToastrService','$http','$state', '$mdDialog',TaskEditCtrl]);
+        .controller("NewTaskDialogCtrl", ['TaskService', 'toastr','$http','$state', '$mdDialog',NewTaskDialogCtrl]);
 
-    function TaskEditCtrl(TaskService, ToastrService, $http, $state, $mdDialog, $promise ) {
+    function NewTaskDialogCtrl(TaskService, toastr, $http, $state, $mdDialog, $promise ) {
         var vm = this;
         
         //Page title
-        vm.title = "New Task";
+        vm.title = "Creating a new task";
         
         //Task model
         vm.task = {
@@ -20,21 +20,17 @@
         }
 
         vm.submit = function() {
-        	$mdDialog.hide();
-        	ToastrService.clear();
-        	ToastrService.processing("Creating", "Please wait while the task is created...");
+           
            TaskService.save(vm.task)
                 .then(
                     function(response) {
-                    	ToastrService.clear();
-                    	ToastrService.success("Task created successfully!");
-                    	if($state.current.name == 'main.unfinished') {
-                    		$state.reload();
-                    	};
+                        toastr.success('Task created successfully!');
+                        $mdDialog.hide();
+                        console.log($state.current.name);
+                        $state.refresh();
                     },
                     function (err){
-                    	ToastrService.clear();
-                    	ToastrService.error("Error", "Please check if the fields were filled correctly.")
+                        toastr.error('Error on task creation. Please check if the fields were filled correctly.')
                     }
                 )
         }
@@ -45,6 +41,7 @@
             vm.task.deadline = null;
             vm.task.comments = '';
             vm.task.priority = false;
+
         }
     }
 }());
