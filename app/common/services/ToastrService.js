@@ -6,21 +6,20 @@
 			var successConfig = {
 				allowHtml: true,
 				tapToDismiss: true,
-				timeOut: 5000
+				timeOut: 2000
 			};
 			
 			var errorConfig =  {
 				allowHtml: true,
 				tapToDismiss: true,
-				timeOut: 10000,
-				progressBar: true,
-				extendedTimeOut: 5000
+				timeOut: 0,
+				progressBar: true
 	        };
 			
 			var infoConfig = {
 				allowHtml: true,
 				tapToDismiss: true,
-				timeOut: 10000,
+				timeOut: 5000,
 				progressBar: true,
 				extendedTimeOut: 2000
 			};
@@ -29,7 +28,7 @@
 				allowHtml: true,
 				tapToDismiss: true,
 				timeOut: 0,
-				progressBar: false,
+				progressBar: false
 			};
 			
 		    return {

@@ -6,11 +6,11 @@
 			  angular.extend(toastrConfig, {
 			    autoDismiss: false,
 			    containerId: 'toast-container',
-			    maxOpened: 3,    
+			    maxOpened: 1,    
 			    newestOnTop: true,
 			    positionClass: 'toast-top-center',
-			    preventDuplicates: false,
-			    preventOpenDuplicates: false,
+			    preventDuplicates: true,
+			    preventOpenDuplicates: true,
 			    target: 'body'
 			  });
 			});

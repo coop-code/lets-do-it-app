@@ -21,13 +21,13 @@
 
         //Triggered by the create button
         vm.submit = function() {
-        	$mdDialog.hide();
         	ToastrService.clear();
         	ToastrService.processing("Creating", "Please wait while the task is created...");
         	TaskService.save(vm.task)
                 .then(
                 	//Success callback
                     function(response) {
+                    	$mdDialog.hide();
                     	ToastrService.clear();
                     	ToastrService.success("Task created successfully!");
                     	if($state.current.name == 'main.unfinished') {
