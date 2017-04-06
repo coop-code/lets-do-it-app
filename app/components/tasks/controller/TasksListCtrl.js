@@ -2,9 +2,9 @@
     "use strict";
     angular
         .module("letsDoIt")
-        .controller("TasksListCtrl", ['TaskService', 'toastr', '$http', '$state', TasksListCtrl]);
+        .controller("TasksListCtrl", ['TaskService', 'ToastrService', '$http', '$state', TasksListCtrl]);
 
-    function TasksListCtrl(TaskService, toastr, $http, $state, $promise) {
+    function TasksListCtrl(TaskService, ToastrService, $http, $state, $promise) {
 
         var vm = this;
 
@@ -35,27 +35,35 @@
             });
 
         vm.delete = function (id) {
+        	ToastrService.clear();
+        	ToastrService.processing("Deleting", "Please wait while the task is deleted...");
             TaskService.delete(id)
                 .then(
                     function (response) {
-                        toastr.success('Task succesfully deleted.');
+                    	ToastrService.clear();
+                    	ToastrService.success("Task succesfully deleted.");
                         $state.reload();
                     },
                     function (err) {
-                        toastr.error('There was a problem in the deletion. Please refresh the page before trying again.')
+                    	ToastrService.clear();
+                    	ToastrService.error("Error", "There was a problem in the deletion. Please refresh the page before trying again.")
                     }
                 )
         }
 
         vm.finish = function (id) {
             var finishPromise = TaskService.finish(id);
+            ToastrService.clear();
+        	ToastrService.processing("Finishing", "Please wait while the task is marked as finished...");
             finishPromise.then(
                 function (response) {
-                    toastr.success('Task finished.');
+                	ToastrService.clear();
+                	ToastrService.success("Task successfully marked as finished.");
                     $state.reload();
                 },
                 function (err) {
-                    toastr.error('There was a problem when trying to finish the task. Please refresh the page before trying again.')
+                	ToastrService.clear();
+                	ToastrService.error("Error", "There was a problem when trying to mark the task as finished. Please refresh the page before trying again.")
                 }
             )
         }

@@ -5,8 +5,19 @@
         .controller("LayoutCtrl",
                     LayoutCtrl);
 
-    function LayoutCtrl(TaskService, $mdSidenav) {
+    function LayoutCtrl(TaskService, DialogService, $mdSidenav) {
         var vm = this;
+        
+        vm.openDialog = openDialog;
+        
+        function openDialog(event) {
+        	var dialogConfig = {
+        			templateUrl: 'app/components/tasks/views/taskEditView.html',
+					controller: 'TaskEditCtrl',
+					controllerAs: 'vm',
+        	}
+        	DialogService(event, dialogConfig);
+        };
         
         var menuData = [
                         {	icon:	'home',
