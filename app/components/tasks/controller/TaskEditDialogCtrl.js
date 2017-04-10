@@ -2,11 +2,11 @@
     "use strict";
     angular
         .module("letsDoIt")
-        .controller("TaskEditDialogCtrl", ['TaskService', 'ToastrService','$http','$state', '$mdDialog',TaskEditDialogCtrl]);
+        .controller("TaskEditDialogCtrl", ['TaskService', 'ToastrService','$http','$state', '$mdDialog', 'taskId', TaskEditDialogCtrl]);
 
-    function TaskEditDialogCtrl(TaskService, ToastrService, $http, $state, $mdDialog, $promise, locals) {
+    function TaskEditDialogCtrl(TaskService, ToastrService, $http, $state, $mdDialog, taskId) {
     	var vm = this;
-        console.log($mdDialog.locals.id);
+        console.log(taskId);
                
         //Page title
         vm.title = "New Task";

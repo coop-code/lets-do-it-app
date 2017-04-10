@@ -8,15 +8,18 @@
     function LayoutCtrl(TaskService, DialogService, $mdSidenav) {
         var vm = this;
 
-        vm.openDialog = openDialog;
+        vm.openNewTaskDialog = openNewTaskDialog;
 
         //Dialog
         //Triggered by the FAB button
-        function openDialog(event) {
+        function openNewTaskDialog(event, taskId) {
             var dialogConfig = {
                 templateUrl: 'app/components/tasks/views/taskEditDialogView.html',
                 controller: 'TaskEditDialogCtrl',
                 controllerAs: 'vm',
+                locals: {
+                	taskId: taskId
+                }
             }
             DialogService(event, dialogConfig);
         };
