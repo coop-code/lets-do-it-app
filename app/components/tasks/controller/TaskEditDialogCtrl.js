@@ -4,9 +4,10 @@
         .module("letsDoIt")
         .controller("TaskEditDialogCtrl", ['TaskService', 'ToastrService','$http','$state', '$mdDialog',TaskEditDialogCtrl]);
 
-    function TaskEditDialogCtrl(TaskService, ToastrService, $http, $state, $mdDialog, $promise ) {
+    function TaskEditDialogCtrl(TaskService, ToastrService, $http, $state, $mdDialog, $promise, locals) {
     	var vm = this;
-        
+        console.log($mdDialog.locals.id);
+               
         //Page title
         vm.title = "New Task";
         

@@ -8,11 +8,11 @@
     function TaskService($http) {
 
         //The API runs locally for now. 
-        var apiHealthCheckUri = 'http://localhost:4000/ping'; 
+        var apiHealthCheckUri = 'http://localhost:4000/ping';
         var apiUrl = 'http://localhost:4000/tasks';
         return {
-            
-            ping: function(){
+
+            ping: function () {
                 return $http.get(apiHealthCheckUri);
             },
             unfinishedTasks: function () {
@@ -30,8 +30,13 @@
                     }
                 });
             },
+
+            get: function (id) {
+                return $http.get(apiUrl + '/' + id);
+            },
+
             save: function (taskDto) {
-                return $http.post(apiUrl,taskDto);
+                return $http.post(apiUrl, taskDto);
             },
             finish: function (id) {
                 return $http.put(apiUrl + '/' + id + '/finish', null);

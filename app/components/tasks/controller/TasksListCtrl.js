@@ -2,9 +2,9 @@
     "use strict";
     angular
         .module("letsDoIt")
-        .controller("TasksListCtrl", ['TaskService', 'ToastrService', '$http', '$state', TasksListCtrl]);
+        .controller("TasksListCtrl", ['TaskService', 'ToastrService', 'DialogService', '$http', '$state', TasksListCtrl]);
 
-    function TasksListCtrl(TaskService, ToastrService, $http, $state, $promise) {
+    function TasksListCtrl(TaskService, ToastrService, DialogService , $http, $state, $promise) {
 
         var vm = this;
 
@@ -74,6 +74,21 @@
                 }
             )
         }
+        vm.openDialog = openDialog;
+
+        //Dialog
+        function openDialog(event, options, taskId) {
+            var dialogConfig = {
+                templateUrl: 'app/components/tasks/views/taskEditDialogView.html',
+                controller: 'TaskEditDialogCtrl',
+                controllerAs: 'vm',
+                locals: {
+                    id: taskId
+                }
+            }
+          
+            DialogService(event, dialogConfig);
+        };
 
     }
 
