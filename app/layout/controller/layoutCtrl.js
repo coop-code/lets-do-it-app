@@ -49,6 +49,27 @@
         	$mdSidenav('sidenav').toggle();
         }
         
+        vm.FABIcon = 'menu';
+        vm.FABMorphingOptions = {
+        		duration: 500, 
+        		easing: 'sine-out'
+        }
+        vm.mouseEnterMorph = function() {
+            if (vm.FABIcon === 'menu') {
+            	vm.FABIcon = 'edit';
+            }
+            else {
+            	vm.FABIcon = 'menu';
+            }
+        };
+        vm.mouseLeaveMorph = function() {
+            if (vm.FABIcon === 'edit') {
+            	vm.FABIcon = 'menu';
+            }
+            else {
+            	vm.FABIcon = 'edit';
+            }
+        };
         /*
 		TaskService.finishedTasks.query(function(tasks){
 		    vm.finishedTasksLabel = tasks.length; //Finished tasks count displayed on the side menu

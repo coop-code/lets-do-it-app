@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    var app = angular.module("letsDoIt", ["ui.router", "ngResource", "ngMaterial", "ngMessages", "toastr"]);
+    var app = angular.module("letsDoIt", ["ui.router", "ngResource", "ngMaterial", "ngMessages", "toastr", "ngMdIcons"]);
     
     app.config(["$stateProvider",
             "$urlRouterProvider",
