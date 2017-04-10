@@ -30,7 +30,8 @@
                     	$mdDialog.hide();
                     	ToastrService.clear();
                     	ToastrService.success("Task created successfully!");
-                    	if($state.current.name == 'main.unfinished') {
+                    	$mdDialog.hide();
+                        if($state.current.name == 'main.unfinished') {
                     		$state.reload();
                     	};
                     },

@@ -8,6 +8,13 @@
 
         var vm = this;
 
+        //Backend Server Health Check (Lets Do It API)
+        TaskService.ping().then(function (response) {
+            //API is online and doing well!
+        }, function (error) {
+            $state.go('main.connectionProblem');
+        });
+
         TaskService.unfinishedTasks()
             .then(function (response) {
                 var tasks = response.data;
@@ -35,18 +42,18 @@
             });
 
         vm.delete = function (id) {
-        	ToastrService.clear();
-        	ToastrService.processing("Deleting", "Please wait while the task is deleted...");
+            ToastrService.clear();
+            ToastrService.processing("Deleting", "Please wait while the task is deleted...");
             TaskService.delete(id)
                 .then(
                     function (response) {
-                    	ToastrService.clear();
-                    	ToastrService.success("Task succesfully deleted.");
+                        ToastrService.clear();
+                        ToastrService.success("Task succesfully deleted.");
                         $state.reload();
                     },
                     function (err) {
-                    	ToastrService.clear();
-                    	ToastrService.error("Error", "There was a problem in the deletion. Please refresh the page before trying again.")
+                        ToastrService.clear();
+                        ToastrService.error("Error", "There was a problem in the deletion. Please refresh the page before trying again.")
                     }
                 )
         }
@@ -54,16 +61,16 @@
         vm.finish = function (id) {
             var finishPromise = TaskService.finish(id);
             ToastrService.clear();
-        	ToastrService.processing("Finishing", "Please wait while the task is marked as finished...");
+            ToastrService.processing("Finishing", "Please wait while the task is marked as finished...");
             finishPromise.then(
                 function (response) {
-                	ToastrService.clear();
-                	ToastrService.success("Task successfully marked as finished.");
+                    ToastrService.clear();
+                    ToastrService.success("Task successfully marked as finished.");
                     $state.reload();
                 },
                 function (err) {
-                	ToastrService.clear();
-                	ToastrService.error("Error", "There was a problem when trying to mark the task as finished. Please refresh the page before trying again.")
+                    ToastrService.clear();
+                    ToastrService.error("Error", "There was a problem when trying to mark the task as finished. Please refresh the page before trying again.")
                 }
             )
         }

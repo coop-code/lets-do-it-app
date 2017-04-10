@@ -8,8 +8,13 @@
     function TaskService($http) {
 
         //The API runs locally for now. 
+        var apiHealthCheckUri = 'http://localhost:4000/ping'; 
         var apiUrl = 'http://localhost:4000/tasks';
         return {
+            
+            ping: function(){
+                return $http.get(apiHealthCheckUri);
+            },
             unfinishedTasks: function () {
                 return $http.get(apiUrl, {
                     params: {
