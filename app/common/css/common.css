@@ -14,6 +14,10 @@ md-sidenav md-content {
 	background-color: rgba(90, 90, 90, 1);
 }
 
+.active-sidenav-link {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
 .md-button.md-default-theme.md-primary, 
 .md-button.md-primary {
     color: rgb(255, 255, 255);
@@ -32,12 +36,6 @@ md-sidenav md-content {
     background-color: rgba(0, 0, 0, 0.33);
 }
 
-.md-button.md-default-theme.md-primary.md-fab:not([disabled]).md-focused, 
-.md-button.md-primary.md-fab:not([disabled]).md-focused, 
-.md-button.md-default-theme.md-primary.md-fab:not([disabled]):hover, 
-.md-button.md-primary.md-fab:not([disabled]):hover, .md-button.md-default-theme.md-primary.md-raised:not([disabled]).md-focused, .md-button.md-primary.md-raised:not([disabled]).md-focused, .md-button.md-default-theme.md-primary.md-raised:not([disabled]):hover, .md-button.md-primary.md-raised:not([disabled]):hover {
-    background-color: rgba(27, 43, 141, 1);
-}
 md-card {
     background-color: rgba(250, 250, 175, 1);
     height: 15em;
@@ -58,8 +56,4 @@ md-card:focus {
     -o-transform: scale(1.1);
     position: relative;
     z-index: 5;
-}
-
-.active-sidenav-link {
-    background-color: rgba(158, 158, 158, 0.2);
 }

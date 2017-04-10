@@ -25,17 +25,20 @@
         var menuData = [
                         {	icon:	'home',
                         	class:	'md-primary',
+                        	ripple: 'rgba(0, 0, 0, 0.3)',
                         	name:	'Home',
                         	link:	'main.home'
                         },
                         {
                         	icon: 	'assignment',
                         	class:	'md-primary',
+                        	ripple: 'rgba(0, 0, 0, 0.3)',
                         	name:	'Tasks',
                         	link:	'main.unfinished'
                         },
                         {	icon: 	'assignment_turned_in',	
                         	class:	'md-primary',
+                        	ripple: 'rgba(0, 0, 0, 0.3)',
                         	name:	'Finished',
                         	link:	'main.finished'
                         }
