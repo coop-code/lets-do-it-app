@@ -8,7 +8,7 @@
     function DialogService($mdDialog) {
     	return DialogServiceElement;
         
-    	function DialogServiceElement(event, config) {
+    	function DialogServiceElement(event, config, task) {
         	var defaults = {
         		clickOutsideToClose: true,
         		targetEvent: event

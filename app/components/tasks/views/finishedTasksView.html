@@ -1,6 +1,6 @@
 <div class='md-padding' layout="row" layout-wrap>
 	<md-card class="md-task-card" ng-repeat="task in vm.finishedTasks">
-		<md-card-title class="md-headline">
+		<md-card-title class="md-headline" ng-click="vm.openDialog($event, {}, task)">
 	    	{{ task.title }}
 		</md-card-title>
 	    <md-card-content>

@@ -77,13 +77,13 @@
         vm.openDialog = openDialog;
 
         //Dialog
-        function openDialog(event, options, taskId) {
+        function openDialog(event, options, task) {
             var dialogConfig = {
                 templateUrl: 'app/components/tasks/views/taskEditDialogView.html',
                 controller: 'TaskEditDialogCtrl',
                 controllerAs: 'vm',
                 locals: {
-                    id: taskId
+                    task: task
                 }
             }
           

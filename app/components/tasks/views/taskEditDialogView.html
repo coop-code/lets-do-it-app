@@ -13,40 +13,43 @@
 			<div layout="row">
 	        	<md-input-container class="md-block" flex-gt-xs>
 	            	<label for='task-title'>Title</label>
-	                <input name='title' ng-model="vm.task.title" required md-autofocus>
+	                <input name='title' ng-model="vm.task.title" ng-readonly="vm.titleReadOnly" required md-autofocus>
 	                <ng-messages for="taskForm.title.$error" role="alert">
 	                	<ng-message when="required">The title is a required field.</ng-message>
 					</ng-messages>
 				</md-input-container>
 	            <md-input-container>
 	            	<label>Deadline</label>
-	                <md-datepicker ng-model="vm.task.deadline"></md-datepicker>
+	                <md-datepicker ng-model="vm.task.deadline" ng-disabled="vm.deadlineDisabled"></md-datepicker>
 				</md-input-container>
 			</div>
 	        <div layout="row">
 	        	<md-input-container class="md-block" flex-gt-xs>
 	            	<label>Description</label>
-	                <textarea ng-model="vm.task.description" md-maxlength="500" md-select-on-focus></textarea>
+	                <textarea ng-model="vm.task.description" md-maxlength="500" ng-readonly="vm.descriptionReadOnly" md-select-on-focus></textarea>
 				</md-input-container>
 			</div>
 	        <div layout="row">
 	        	<md-input-container class="md-block" flex-gt-xs>
 	            	<label>Comments</label>
-	                <textarea ng-model="vm.task.comments" md-maxlength="1000" rows="3" md-select-on-focus></textarea>
+	                <textarea ng-model="vm.task.comments" md-maxlength="1000" rows="3" ng-readonly="vm.commentsReadOnly" md-select-on-focus></textarea>
 				</md-input-container>
 			</div>
 			<div layout="row">
 	        	<md-input-container>
-	        		<md-checkbox ng-model="vm.task.priority" class="md-warn">{{vm.task.priority ? "Priority" : "Not Priority"}}</md-checkbox>
+	        		<md-checkbox ng-model="vm.task.priority" class="md-warn" ng-readonly="vm.priorityReadOnly">{{vm.task.priority ? "Priority" : "Not Priority"}}</md-checkbox>
 				</md-input-container>
 	        </div>
 		</md-dialog-content>
 		<md-dialog-actions>
-			<md-button class="md-primary" ng-click="vm.clear()">
+			<md-button ng-show="vm.saveOrCreateButtonVisible" type="submit" class="md-primary">
+				<md-icon>{{vm.operationIcon}}</md-icon> {{vm.operation}}
+			</md-button>
+			<md-button ng-show="vm.clearButtonVisible" class="md-primary" ng-click="vm.clear()">
 				<md-icon>clear</md-icon> Clear
 			</md-button>
-			<md-button type="submit" class="md-primary">
-				<md-icon>add</md-icon> Create
+			<md-button ng-show="vm.deleteButtonVisible" class="md-primary" ng-click="vm.delete(vm.task.id)">
+				<md-icon>delete</md-icon> Delete
 			</md-button>
 		</md-dialog-actions>
 	</form>

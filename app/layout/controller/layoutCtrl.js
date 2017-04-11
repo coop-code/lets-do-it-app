@@ -12,13 +12,13 @@
 
         //Dialog
         //Triggered by the FAB button
-        function openNewTaskDialog(event, taskId) {
+        function openNewTaskDialog(event, option, task) {
             var dialogConfig = {
                 templateUrl: 'app/components/tasks/views/taskEditDialogView.html',
                 controller: 'TaskEditDialogCtrl',
                 controllerAs: 'vm',
                 locals: {
-                	taskId: taskId
+                	task: task
                 }
             }
             DialogService(event, dialogConfig);
