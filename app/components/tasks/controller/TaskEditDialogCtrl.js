@@ -6,9 +6,8 @@
 
     function TaskEditDialogCtrl(TaskService, ToastrService, $http, $state, $mdDialog, task) {
         var vm = this;
-        console.log(task);
 
-        //This view is a task edit if the tasks passes as parameter is not null
+        //This view is a task edit if the tasks passed as parameter is not null
         //Otherwise, it's a task creation view.
         if (task && task.id > 0) {
 

@@ -60,7 +60,7 @@
             updateTaskDto.description = task.description;
             updateTaskDto.comments = task.comments;
             updateTaskDto.priority = task.priority;
-            updateTaskDto.done = task.priority;
+            updateTaskDto.done = task.done;
 
             return updateTaskDto;
 
