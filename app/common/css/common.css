@@ -3,7 +3,15 @@ body{
 }
 
 md-icon.md-darkTheme-theme {
-	color: rgba(255,255,255,1);
+	color: rgba(255,255,255,1) !important;
+}
+
+md-input-container.md-input-invalid > md-icon {
+	color: red !important;
+}
+
+md-input-container:not(md-input-invalid).md-input-has-value > md-icon {
+	color: green  !important;
 }
 md-card.md-darkTheme-theme {
 	color: rgba(0, 0, 0, 1);
@@ -45,5 +53,6 @@ md-card:hover {
 .active-sidenav-link {
     background-color: rgba(0, 0, 0, 0.3);
 }
+
 
 

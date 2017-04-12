@@ -49,7 +49,7 @@
         	$mdSidenav('sidenav').toggle();
         }
         
-        vm.FABIcon = 'edit';
+        vm.FABIcon = 'assignment';
         /*
 		TaskService.finishedTasks.query(function(tasks){
 		    vm.finishedTasksLabel = tasks.length; //Finished tasks count displayed on the side menu
