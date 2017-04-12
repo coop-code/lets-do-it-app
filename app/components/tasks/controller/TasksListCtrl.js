@@ -87,6 +87,7 @@
 
     function CustomizeTask(task) {
         task.priorityClass = priorityClass(task.priority);
+        task["showOptions"] = false;
     }
 
     function priorityClass(priority) {

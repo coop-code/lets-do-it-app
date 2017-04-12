@@ -1,15 +1,26 @@
 <div class='md-padding' layout="row" layout-wrap>
-	<md-card ng-repeat="task in vm.unfinishedTasks">
-		<md-card-header ui-sref="main.edit({id: task.id})" class="md-title">
-	    	{{ task.title }}
-		</md-card-header>
-	    <md-card-title>
-	    	{{ task.description }}
-	    </md-card-title>
-	    <md-card-actions layout="row" layout-align="center">
-	    	<md-button ng-click="vm.delete(task.id)"><md-icon>close</md-icon></md-button>
-	    	<md-button><md-icon>{{task.priorityClass}}</md-icon></md-button>
-	    	<md-button ng-click="vm.finish(task.id)"><md-icon>done</md-icon></md-button>
-	    </md-card-actions>
-	</md-card>
+	<md-fab-speed-dial 	ng-repeat="task in vm.unfinishedTasks" 
+											class="md-scale" 
+											md-open="task.showOptions" 
+											md-direction="down" 
+											ng-mouseleave="task.showOptions=false"
+											ng-class="{optionsOfHoveredCard: task.showOptions}">
+		<md-fab-trigger>
+			<md-card ng-class="{cardWithOptionsShown: task.showOptions}">
+				<md-card-header class="md-title">
+			    	{{ task.title }}
+				</md-card-header>
+			    <md-card-title>
+			    	{{ task.description }}
+			    </md-card-title>
+			</md-card>
+		</md-fab-trigger>
+	 	<md-fab-actions>
+	 		<div >
+	  		<md-button class="md-fab md-primary md-raised" ng-click="vm.delete(task.id)"><md-icon>close</md-icon></md-button>
+	    	<md-button class="md-fab md-primary md-raised"><md-icon>{{task.priorityClass}}</md-icon></md-button>
+	    	<md-button class="md-fab md-primary md-raised" ng-click="vm.finish(task.id)"><md-icon>done</md-icon></md-button>
+	    	</div>
+	  	</md-fab-actions>
+	</md-fab-speed-dial>
 </div>
