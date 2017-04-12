@@ -41,8 +41,8 @@
             },
 
             save: function (task) {
-                var taskForUpdate = prepareTaskForUpdate(task);
-                return $http.put(apiUrl + '/' + taskForUpdate.id, taskForUpdate);
+                var updateTaskDto = prepareTaskForUpdate(task);
+                return $http.put(apiUrl + '/' + updateTaskDto.id, updateTaskDto);
             },
             finish: function (id) {
                 return $http.put(apiUrl + '/' + id + '/finish', null);
@@ -53,15 +53,16 @@
         }
 
         function prepareTaskForUpdate(task) {
-            var taskForUpdate = {}
-            taskForUpdate.id = task.id;
-            taskForUpdate.title = task.title;
-            taskForUpdate.deadline = task.deadline;
-            taskForUpdate.description = task.description;
-            taskForUpdate.comments = task.comments;
-            taskForUpdate.priority = task.priority;
+            var updateTaskDto = {}
+            updateTaskDto.id = task.id;
+            updateTaskDto.title = task.title;
+            updateTaskDto.deadline = task.deadline;
+            updateTaskDto.description = task.description;
+            updateTaskDto.comments = task.comments;
+            updateTaskDto.priority = task.priority;
+            updateTaskDto.done = task.priority;
 
-            return taskForUpdate;
+            return updateTaskDto;
 
         }
     }

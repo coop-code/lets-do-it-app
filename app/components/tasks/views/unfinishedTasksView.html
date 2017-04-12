@@ -8,8 +8,8 @@
 	    </md-card-title>
 	    <md-card-actions layout="row" layout-align="center">
 	    	<md-button ng-click="vm.delete(task.id)"><md-icon>close</md-icon></md-button>
-	    	<md-button><md-icon>{{task.priorityClass}}</md-icon></md-button>
-	    	<md-button ng-click="vm.finish(task.id)"><md-icon>done</md-icon></md-button>
+	    	<md-button ng-click="vm.prioritize(task)"><md-icon>{{task.priorityIcon}}</md-icon></md-button>
+	    	<md-button ng-click="vm.finish(task)"><md-icon>done</md-icon></md-button>
 	    </md-card-actions>
 	</md-card>
 </div>

@@ -4,7 +4,7 @@
         .module("letsDoIt")
         .controller("TasksListCtrl", ['TaskService', 'ToastrService', 'DialogService', '$http', '$state', TasksListCtrl]);
 
-    function TasksListCtrl(TaskService, ToastrService, DialogService , $http, $state, $promise) {
+    function TasksListCtrl(TaskService, ToastrService, DialogService, $http, $state, $promise) {
 
         var vm = this;
 
@@ -58,11 +58,12 @@
                 )
         }
 
-        vm.finish = function (id) {
-            var finishPromise = TaskService.finish(id);
+        vm.finish = function (task) {
             ToastrService.clear();
             ToastrService.processing("Finishing", "Please wait while the task is marked as finished...");
-            finishPromise.then(
+            //Mark task as finished
+            task.done = true;
+            TaskService.save(task).then(
                 function (response) {
                     ToastrService.clear();
                     ToastrService.success("Task successfully marked as finished.");
@@ -74,8 +75,30 @@
                 }
             )
         }
-        vm.openDialog = openDialog;
 
+        vm.prioritize = function (task) {
+            ToastrService.clear();
+            if (task.priority == false) {
+                ToastrService.processing("Priorizing", "Please wait while the task is marked as priority...");
+            } else {
+                ToastrService.processing("Unpriorizing", "Please wait while the task is marked as not priority...");
+            }
+            //Mark task as priority
+            task.priority = !task.priority;
+            TaskService.save(task).then(
+                function (response) {
+                    ToastrService.clear();
+                    ToastrService.success("Task priority successfully updated.");
+                    $state.reload();
+                },
+                function (err) {
+                    ToastrService.clear();
+                    ToastrService.error("Error", "There was a problem when trying to change the task priority. Please refresh the page before trying again.")
+                }
+            )
+        }
+
+        vm.openDialog = openDialog;
         //Dialog
         function openDialog(event, options, task) {
             var dialogConfig = {
@@ -86,7 +109,7 @@
                     task: task
                 }
             }
-          
+
             DialogService(event, dialogConfig);
         };
 
@@ -108,10 +131,10 @@
     }
 
     function CustomizeTask(task) {
-        task.priorityClass = priorityClass(task.priority);
+        task.priorityIcon = CustomizePriorityIcon(task.priority);
     }
 
-    function priorityClass(priority) {
+    function CustomizePriorityIcon(priority) {
         if (priority) {
             return "star";
         }
