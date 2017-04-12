@@ -1,15 +1,31 @@
+<div class='md-padding' layout="row" ng-show="vm.noUnfinishedTasks">
+	<md-list ng-cloak>
+		<md-list-item>
+			<p class="md-header">There are no unfinished tasks. Wow, you're very good (or maybe you did not registered your tasks).</p>
+		</md-list-item>
+		<md-list-item>
+			<p class="md-header">To create tasks, just click on the <b>add</b> button on the bottom right corner.</p>
+		</md-list-item>
+	</md-list>
+</div>
 <div class='md-padding' layout="row" layout-wrap>
 	<md-card class="md-task-card" ng-repeat="task in vm.unfinishedTasks">
 		<md-card-header class="md-title" ng-click="vm.openDialog($event, {}, task)">
-	    	{{ task.title }}
+			{{ task.title }}
 		</md-card-header>
-	    <md-card-title>
-	    	{{ task.description }}
-	    </md-card-title>
-	    <md-card-actions layout="row" layout-align="center">
-	    	<md-button ng-click="vm.delete(task.id)"><md-icon>close</md-icon></md-button>
-	    	<md-button ng-click="vm.prioritize(task)"><md-icon>{{task.priorityIcon}}</md-icon></md-button>
-	    	<md-button ng-click="vm.finish(task)"><md-icon>done</md-icon></md-button>
-	    </md-card-actions>
+		<md-card-title>
+			{{ task.description }}
+		</md-card-title>
+		<md-card-actions layout="row" layout-align="center">
+			<md-button ng-click="vm.delete(task.id)">
+				<md-icon>close</md-icon>
+			</md-button>
+			<md-button ng-click="vm.prioritize(task)">
+				<md-icon>{{task.priorityIcon}}</md-icon>
+			</md-button>
+			<md-button ng-click="vm.finish(task)">
+				<md-icon>done</md-icon>
+			</md-button>
+		</md-card-actions>
 	</md-card>
 </div>

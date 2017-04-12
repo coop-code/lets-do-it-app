@@ -18,12 +18,20 @@
         TaskService.unfinishedTasks()
             .then(function (response) {
                 var tasks = response.data;
-                tasks.forEach(function (task) {
-                    CalculateDeadlineInDays(task);
-                    CustomizeTask(task);
-                });
 
-                vm.unfinishedTasks = tasks
+                //If there's no task to show, show a default message...
+                if (!tasks || tasks.length == 0) {
+                    vm.noUnfinishedTasks = true;
+                } else {
+                    //There are unfinished tasks registered
+                    tasks.forEach(function (task) {
+                        CalculateDeadlineInDays(task);
+                        CustomizeTask(task);
+                    });
+
+                    vm.unfinishedTasks = tasks
+                }
+
             }, function (err) {
                 console.log(err);
             });
@@ -31,12 +39,17 @@
         TaskService.finishedTasks()
             .then(function (response) {
                 var tasks = response.data;
-                tasks.forEach(function (task) {
-                    CalculateDeadlineInDays(task);
-                    CustomizeTask(task);
-                });
 
-                vm.finishedTasks = tasks
+                if (!tasks || tasks.length == 0) {
+                    vm.noFinishedTasks = true;
+                } else {
+                    tasks.forEach(function (task) {
+                        CalculateDeadlineInDays(task);
+                        CustomizeTask(task);
+                    });
+
+                    vm.finishedTasks = tasks
+                }
             }, function (err) {
                 console.log(err);
             });
