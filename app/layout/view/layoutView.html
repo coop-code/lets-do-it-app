@@ -27,7 +27,7 @@
 			<div ui-view="main.home"></div>
 		</div>
     </md-content>
-    <md-button style="position: fixed;" class="md-fab md-primary md-raised md-fab-bottom-right" aria-label="Add" ng-click="vm.openDialog($event)"ng-mouseenter="vm.mouseEnterMorph()" ng-mouseleave="vm.mouseLeaveMorph()">
-		<ng-md-icon icon={{vm.FABIcon}} options={{vm.FABMorphingOptions}} size=40 style="fill:white"></ng-md-icon>
+    <md-button style="position: fixed;" class="md-fab md-primary md-raised md-fab-bottom-right" aria-label="Add" ng-click="vm.openDialog($event)">
+		<md-icon >{{vm.FABIcon}}</md-icon>
 	</md-button>
 </div>

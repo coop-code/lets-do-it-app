@@ -2,70 +2,89 @@ body{
 	font-family: 'Gloria Hallelujah', cursive;
 }
 
-md-content.md-default-theme, md-content {
-    color: rgb(255, 255, 255);
-    background-color: rgba(90, 90, 90, 1);
-}
+/* md-content.md-default-theme, md-content { */
+/*     color: rgb(255, 255, 255); */
+/*     background-color: rgba(90, 90, 90, 1); */
+/* } */
 
-md-sidenav.md-default-theme, 
-md-sidenav, 
-md-sidenav.md-default-theme md-content, 
-md-sidenav md-content {
-	background-color: rgba(90, 90, 90, 1);
-}
+/* md-sidenav.md-default-theme,  */
+/* md-sidenav,  */
+/* md-sidenav.md-default-theme md-content,  */
+/* md-sidenav md-content { */
+/* 	background-color: rgba(90, 90, 90, 1); */
+/* } */
 
 .active-sidenav-link {
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-.md-button.md-default-theme.md-primary, 
-.md-button.md-primary {
-    color: rgb(255, 255, 255);
+/* .md-button.md-default-theme.md-primary,  */
+/* .md-button.md-primary { */
+/*     color: rgb(255, 255, 255); */
+/* } */
+
+/* .md-button.md-default-theme.md-primary:not([disabled]) md-icon,  */
+/* .md-button.md-primary:not([disabled]) md-icon { */
+/*     color: rgb(255, 255, 255); */
+/* } */
+
+
+/* .md-button.md-default-theme:not([disabled]).md-focused,  */
+/* .md-button:not([disabled]).md-focused,  */
+/* .md-button.md-default-theme:not([disabled]):hover,  */
+/* .md-button:not([disabled]):hover { */
+/*     background-color: rgba(0, 0, 0, 0.33); */
+/* } */
+
+/* .md-button.md-default-theme.md-primary.md-fab:not([disabled]).md-focused,  */
+/* .md-button.md-primary.md-fab:not([disabled]).md-focused, */
+
+/* .md-button.md-default-theme.md-primary.md-raised:not([disabled]).md-focused,  */
+/* .md-button.md-primary.md-raised:not([disabled]).md-focused { */
+/*     background-color: rgba(0, 0, 0, 0.66); */
+/* } */
+
+/* .md-button.md-default-theme.md-primary.md-fab:not([disabled]):hover,  */
+/* .md-button.md-primary.md-fab:not([disabled]):hover,  */
+/* .md-button.md-default-theme.md-primary.md-raised:not([disabled]):hover,  */
+/* .md-button.md-primary.md-raised:not([disabled]):hover { */
+/*     background-color: rgba(0, 0, 0, 0.33); */
+/* } */
+
+/* .md-button.md-default-theme.md-primary.md-fab,  */
+/* .md-button.md-primary.md-fab,  */
+/* .md-button.md-default-theme.md-primary.md-raised,  */
+/* .md-button.md-primary.md-raised { */
+/*     background-color: rgba(0, 0, 0, 0.66); */
+/* } */
+
+md-icon.md-darkTheme-theme {
+	color: rgba(255,255,255,1);
 }
-
-.md-button.md-default-theme.md-primary:not([disabled]) md-icon, 
-.md-button.md-primary:not([disabled]) md-icon {
-    color: rgb(255, 255, 255);
-}
-
-
-.md-button.md-default-theme:not([disabled]).md-focused, 
-.md-button:not([disabled]).md-focused, 
-.md-button.md-default-theme:not([disabled]):hover, 
-.md-button:not([disabled]):hover {
-    background-color: rgba(0, 0, 0, 0.33);
-}
-
-.md-button.md-default-theme.md-primary.md-fab:not([disabled]).md-focused, 
-.md-button.md-primary.md-fab:not([disabled]).md-focused,
-.md-button.md-default-theme.md-primary.md-fab:not([disabled]):hover, 
-.md-button.md-primary.md-fab:not([disabled]):hover, 
-.md-button.md-default-theme.md-primary.md-raised:not([disabled]).md-focused, 
-.md-button.md-primary.md-raised:not([disabled]).md-focused, 
-.md-button.md-default-theme.md-primary.md-raised:not([disabled]):hover, 
-.md-button.md-primary.md-raised:not([disabled]):hover {
-    background-color: rgba(0, 0, 0, 0.66);
-}
-
-.md-button.md-default-theme.md-primary.md-fab, 
-.md-button.md-primary.md-fab, 
-.md-button.md-default-theme.md-primary.md-raised, 
-.md-button.md-primary.md-raised {
-    background-color: rgba(0, 0, 0, 0.66);
-}
-
-md-card {
-    background-color: rgba(250, 250, 175, 1);
+md-card.md-darkTheme-theme {
+	color: rgba(0, 0, 0, 1);
+    background-color: rgba(250, 250, 150, 1);
     height: 15em;
     width: 20em;
+}
+
+md-card-actions button.md-darkTheme-theme {
+	background-color: rgba(0, 0, 0, 0.0);
+}
+
+md-card-actions button md-icon.md-darkTheme-theme {
+	color: rgba(0, 0, 0, 1);
 }
 
 md-card:hover {
     cursor: pointer;
 }
+.md-button:hover {
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.33);
+}
 
-md-card:hover,
-md-card:focus {
+md-card:hover {
     -moz-box-shadow: 10px 10px 7px rgba(0, 0, 0, .3);
     -webkit-box-shadow: 10px 10px 7px rgba(0, 0, 0, .3);
     box-shadow: 10px 10px 7px rgba(0, 0, 0, .3);
@@ -74,13 +93,5 @@ md-card:focus {
     -o-transform: scale(1.1);
     position: relative;
     z-index: 5;
-}
-
-
-ng-md-icon {
-	fill: currentColor;
-	size: currentSize;
-	vertical-align: middle;
-	display: inline-block;
-	line-height: 1;
+    background-color: rgba(250, 250, 175, 1);
 }
