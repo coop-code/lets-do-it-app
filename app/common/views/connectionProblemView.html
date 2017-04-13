@@ -1,14 +1,15 @@
 <div layout='row' layout-align="center center" class='md-padding'>
-    <md-card class="page md-warning-card md-padding">
-        <h3 layout-align="center center" class="center center">
-            <md-icon>error_outline</md-icon> {{vm.title}}
-            <md-icon>error_outline</md-icon>
-        </h3>
-        <p class=".md-caption">The backend server is offline. This web app needs a API to provide data manipulation operations. If you already implemented
-            one, start it. But if not, there's no need to panic. We have a solution ready for you.</p>
-        <p class=".md-caption">There's RESTful API coded using NodeJS called Lets Do It API that provides the resources you need. Go to the <a href="https://github.com/coop-code/lets-do-it-api">API repository</a> and
-            download this solution. To setup the application, first you need to install its dependencies using "npm install". After this, just run "npm start", set the API URL in the TaskService.js and
-            you're good to go.</p>
-    </md-card>
-    </md-content>
+    <md-card class="md-warning-card md-padding">
+	    <md-card-content>
+	        <h2 align="center">
+				<md-icon>error_outline</md-icon> {{vm.title}} <md-icon>error_outline</md-icon>
+	        </h2>
+	        <br>
+	        <p>The backend server is offline. This web app needs an API to provide data manipulation operations. If you already implemented
+	            one, start it. But if not, no need to panic. We have a solution ready for you! <md-icon>insert_emoticon</md-icon></p>
+	    	<p>There's a RESTful API coded using NodeJS called Lets Do It API that provides the resources you need. Go to the <a href="https://github.com/coop-code/lets-do-it-api" target="_blank">API repository</a> and
+	            download this solution. To setup the application, first you need to install its dependencies using "npm install". After this, just run "npm start", set the API URL in the TaskService.js and
+	            you're good to go.</p>
+		</md-card-content>
+	</md-card>
 </div>

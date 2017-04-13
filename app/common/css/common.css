@@ -1,24 +1,111 @@
+/* Main body font family */
 body{
 	font-family: 'Gloria Hallelujah', cursive;
 }
 
+/* Main icon color */
 md-icon.md-darkTheme-theme {
-	color: rgba(255,255,255,1) !important;
+	color: rgba(255,255,255,1);
 }
 
-md-input-container.md-input-invalid > md-icon {
-	color: red !important;
+/* BEGIN DIALOG FORM DEFINITIONS */
+/*Default label and placeholder are very transparent to not deviate user focus */
+md-input-container.md-darkTheme-theme .md-placeholder, 
+md-input-container.md-darkTheme-theme label {
+	color: rgba(255,255,255,0.1) !important;
 }
 
-md-input-container:not(md-input-invalid).md-input-has-value > md-icon {
-	color: green  !important;
+/* Default icon color in dialog form */
+md-input-container.md-darkTheme-theme md-icon {
+	color: rgba(255,255,255,0.5) !important;
+}
+/* As a default, when focused, all input elements are more evident but still transparent enough...*/
+md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-datepicker-open md-icon,
+md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-focused md-icon,
+md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-focused label,
+md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-focused label.md-required:after {
+	color: rgba(255,255,255,0.5) !important;
+}
+/* ...and so is the line beneath input field */
+md-input-container.md-darkTheme-theme  .md-input {
+	border-color: rgba(255,255,255,0.5) !important;
 }
 
-md-card:hover{
-	cursor: pointer;
-	background-color: rgba(250, 250, 200, 1) !important;
+/* If the input is invalid, whether it has a value or not, its elements become a semi-transparent red to show
+the user that something is wrong with that input. Chosen transparency is enough to provide enough perception
+of such error but also enough to not deviate user attention from whatever other action it is performing... */
+md-input-container.md-darkTheme-theme.md-input-invalid.md-input-has-value md-icon,
+md-input-container.md-darkTheme-theme.md-input-invalid.md-input-has-value label,
+md-input-container.md-darkTheme-theme.md-input-invalid.md-input-has-value label.md-required:after,
+md-input-container.md-darkTheme-theme.md-input-invalid md-icon,
+md-input-container.md-darkTheme-theme.md-input-invalid label,
+md-input-container.md-darkTheme-theme.md-input-invalid label.md-required:after{
+	color: rgba(250, 150, 150, 0.5) !important;
+}
+/* ...and so is the line beneath input field...*/
+md-input-container.md-darkTheme-theme.md-input-invalid .md-input {
+	border-color: rgba(250, 150, 150, 0.5) !important;
+}
+/* ...just like any error message shown beneath such line. Here we remove the
+transition effect so the highlighting (and only the highlighting) speed is concise 
+with the speed of highlight of the other elements involved. We want everything acting together*/
+md-input-container.md-darkTheme-theme.md-input-invalid .md-input-message-animation{
+	color: rgba(250, 150, 150, 0.5) !important;
+	transition: none;
 }
 
+
+/* If the input is invalid, whether it has a value or not, and its also focused, its elements become solid red to both show
+the user that something is wrong with that input and keep user focus on it... */
+md-input-container.md-darkTheme-theme.md-input-invalid.md-input-has-value.md-input-focused md-icon,
+md-input-container.md-darkTheme-theme.md-input-invalid.md-input-has-value.md-input-focused label,
+md-input-container.md-darkTheme-theme.md-input-invalid.md-input-has-value.md-input-focused label.md-required:after,
+md-input-container.md-darkTheme-theme.md-input-invalid.md-input-focused md-icon,
+md-input-container.md-darkTheme-theme.md-input-invalid.md-input-focused label,
+md-input-container.md-darkTheme-theme.md-input-invalid.md-input-focused label.md-required:after{
+	color: rgba(250, 150, 150, 1) !important;
+}
+/* ...and, again, so is the line beneath input field */
+md-input-container.md-darkTheme-theme.md-input-invalid.md-input-focused .md-input {
+	border-color: rgba(250, 150, 150, 1) !important;
+}
+/* ...just like any error message shown beneath such line. Here we remove the
+transition effect so the highlighting (and only the highlighting) speed is concise 
+with the speed of highlight of the other elements involved. We want everything acting together*/
+md-input-container.md-darkTheme-theme.md-input-invalid.md-input-focused .md-input-message-animation{
+	color: rgba(250, 150, 150, 1) !important;
+	transition: none;
+}
+/* If the input is NOT invalid, its elements become a semi-transparent green to show
+the user that said input is correctly filled. We opted to not consider the case where an input
+has no value in order to preserve the default transparency of inputs that can be (and are) empty. The chosen 
+transparency here is enough to provide enough perception of such correctness but also enough 
+to not deviate user attention from whatever other action it is performing... */
+md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-has-value md-icon,
+md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-has-value label,
+md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-has-value label.md-required:after{
+	color: rgba(150, 250, 150, 0.5)  !important;
+}
+/* ...and, again, so is the line beneath input field...i say that a lot, don't I? */
+md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-has-value .md-input {
+	border-color:  rgba(150, 250, 150, 0.5)  !important;
+}
+
+/* If the input is NOT invalid and its also focused, its elements become solid green to both show
+the user the correctness of said input and keep user focus on it... */
+md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-has-value.md-input-focused md-icon,
+md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-has-value.md-input-focused label,
+md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-has-value.md-input-focused label.md-required:after{
+	color: rgba(150, 250, 150, 1)  !important;
+}
+/* ...and, so is the line...oh, you know it already by now...*/
+md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-has-value.md-input-focused .md-input {
+	border-color:  rgba(150, 250, 150, 1)  !important;
+}
+/* END DIALOG FORM DEFINITIONS */
+
+/* BEGIN CARD DEFINITIONS */
+/* Default card visuals */
 md-card.md-darkTheme-theme {
 	color: rgba(0, 0, 0, 1);
     background-color: rgba(250, 250, 150, 1);
@@ -26,20 +113,14 @@ md-card.md-darkTheme-theme {
     width: 20em;
 }
 
-md-card-actions button md-icon.md-darkTheme-theme {
-	color: rgba(0, 0, 0, 1);
+/* Highlight the card being hovered */
+md-card:hover{
+	cursor: pointer;
+	background-color: rgba(250, 250, 200, 1) !important;
 }
 
-.md-button:hover {
-    text-decoration: none;
-    background-color: rgba(0, 0, 0, 0.33);
-}
-
-.md-button.md-fab {
-    -webkit-transition: all 0.1s cubic-bezier(0.55, 0, 0.55, 0.2);
-    transition: all 0.1s cubic-bezier(0.55, 0, 0.55, 0.2);
-}
-
+/* Cards will behave as a FAB (Floating Action Button) and, as such, the card with its actions 
+ open will be both highlighted and "raised" in order to give it a better focus than other cards */
 .cardWithOptionsShown{
 	-moz-box-shadow: 10px 10px 7px rgba(0, 0, 0, .3);
     -webkit-box-shadow: 10px 10px 7px rgba(0, 0, 0, .3);
@@ -52,15 +133,38 @@ md-card-actions button md-icon.md-darkTheme-theme {
 	background-color: rgba(250, 250, 200, 1) !important;
 }
 
+/* Error card that is shown to inform the user when there is no API working */
 .md-warning-card {
-    background-color: #fceaea;
-    height: 20em;
-    width: 40em;
-    border-style: solid;
-    border-width: 0.2em;
-    border-color: #444444;
+    height: 40em !important;
+    width: 40em !important;
+    cursor: default !important;
+}
+.md-warning-card:hover {
+	background-color: rgba(250, 250, 150, 1) !important;
 }
 
+.md-warning-card md-card-content md-icon {
+	color: rgba(0, 0, 0, 1);
+}
+/* END CARD DEFINITIONS */
+
+/* BEGIN BUTTONS DEFINITIONS */
+/* Default color of hovered buttons */
+.md-button:hover {
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.33);
+}
+
+/* Making the default highlight transition of fab buttons process faster (0.1s) */
+.md-button.md-fab {
+    -webkit-transition: all 0.1s cubic-bezier(0.55, 0, 0.55, 0.2);
+    transition: all 0.1s cubic-bezier(0.55, 0, 0.55, 0.2);
+}
+/* END BUTTONS DEFINITIONS */
+
+/* BEGIN SIDENAV DEFINITIONS */
+/* Active sidenav state color */
 .active-sidenav-link {
     background-color: rgba(0, 0, 0, 0.3);
 }
+/* END SIDENAV DEFINITIONS */

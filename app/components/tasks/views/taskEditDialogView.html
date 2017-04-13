@@ -1,7 +1,7 @@
 <md-dialog aria-label="New task" flex="35">
 	<form name='taskForm' ng-submit="vm.submit()" novalidate>
 		<md-toolbar>
-	      <div class="md-toolbar-tools" align="center">
+	      <div class="md-toolbar-tools">
 	        <h2>{{vm.title}}</h2>
 	        <span flex></span>
 	        <md-button class="md-icon-button" ng-click="vm.close()">
@@ -11,35 +11,43 @@
 	    </md-toolbar>
 		<md-dialog-content layout-padding flex>
 			<div layout="row">
+			
 	        	<md-input-container class="md-block" flex>
-	            	<md-icon>perm_identity</md-icon>
-	                <input type="text" ng-model="vm.task.title" ng-readonly="vm.titleReadOnly" placeholder="Title" required md-autofocus>
+	            	<md-icon>web</md-icon>
+	                <input name="title" ng-model="vm.task.title" ng-readonly="vm.titleReadOnly" placeholder="Title" required md-autofocus>
 	                <ng-messages for="taskForm.title.$error" role="alert">
 	                	<ng-message when="required">The title is a required field.</ng-message>
 					</ng-messages>
 				</md-input-container>
+				
 	            <md-input-container  class="md-block" flex>
-	            	<label>Deadline</label>
-	                <md-datepicker ng-model="vm.task.deadline" ng-disabled="vm.deadlineDisabled" md-hide-icons="calendar" md-open-on-focus ></md-datepicker>
+	                <md-datepicker name="deadline" ng-model="vm.task.deadline" ng-disabled="vm.deadlineDisabled" placeholder="Deadline"></md-datepicker>
+	                <ng-messages for="taskForm.deadline.$error" role="alert">
+	                	<ng-message when="valid">This is not a valid date.</ng-message>
+					</ng-messages>
 				</md-input-container>
 			</div>
+			
 	        <div layout="row">
 	        	<md-input-container class="md-block" flex>
-	            	<label>Description</label>
-	                <textarea ng-model="vm.task.description" md-maxlength="500" ng-readonly="vm.descriptionReadOnly" md-select-on-focus></textarea>
+	        		<md-icon>description</md-icon>
+	                <textarea name="description" ng-model="vm.task.description"  ng-readonly="vm.descriptionReadOnly" placeholder="Description" md-maxlength="500" md-select-on-focus></textarea>
 				</md-input-container>
 			</div>
+			
 	        <div layout="row">
 	        	<md-input-container class="md-block" flex>
-	            	<label>Comments</label>
-	                <textarea ng-model="vm.task.comments" md-maxlength="1000" rows="3" ng-readonly="vm.commentsReadOnly" md-select-on-focus></textarea>
+	            	<md-icon>comment</md-icon>
+	                <textarea name="comments" ng-model="vm.task.comments"  ng-readonly="vm.commentsReadOnly" placeholder="Comments" md-maxlength="1000" md-select-on-focus></textarea>
 				</md-input-container>
 			</div>
+			
 			<div layout="row">
 	        	<md-input-container class="md-block" flex>
-	        		<md-checkbox ng-model="vm.task.priority" class="md-warn" ng-readonly="vm.priorityReadOnly">{{vm.task.priority ? "Priority" : "Not Priority"}}</md-checkbox>
+	        		<md-checkbox ng-model="vm.task.priority" class="md-primary" ng-readonly="vm.priorityReadOnly">{{vm.task.priority ? "Prioritary task" : "Common task"}}</md-checkbox>
 				</md-input-container>
 	        </div>
+	        
 		</md-dialog-content>
 		<md-dialog-actions>
 		<md-button ng-show="vm.deleteButtonVisible" class="md-primary md-raised" ng-click="vm.delete(vm.task.id)">
