@@ -3,24 +3,27 @@
     angular
         .module("letsDoIt")
         .controller("LayoutCtrl",
-                    LayoutCtrl);
+            LayoutCtrl);
 
     function LayoutCtrl(TaskService, DialogService, $mdSidenav) {
         var vm = this;
-        
-        vm.openDialog = openDialog;
-        
+
+        vm.openNewTaskDialog = openNewTaskDialog;
+
         //Dialog
         //Triggered by the FAB button
-        function openDialog(event) {
-        	var dialogConfig = {
-        			templateUrl: 'app/components/tasks/views/taskEditDialogView.html',
-					controller: 'TaskEditDialogCtrl',
-					controllerAs: 'vm',
-        	}
-        	DialogService(event, dialogConfig);
+        function openNewTaskDialog(event, option, task) {
+            var dialogConfig = {
+                templateUrl: 'app/components/tasks/views/taskEditDialogView.html',
+                controller: 'TaskEditDialogCtrl',
+                controllerAs: 'vm',
+                locals: {
+                	task: task
+                }
+            }
+            DialogService(event, dialogConfig);
         };
-        
+
         //Sidenav menu entries
         var menuData = [
                         {	icon:	'home',
@@ -44,12 +47,13 @@
                         }
                       ];
         vm.menuOptions = [].concat(menuData);
-       
-        vm.toggleSideNav = function(){
-        	$mdSidenav('sidenav').toggle();
+
+        vm.toggleSideNav = function () {
+            $mdSidenav('sidenav').toggle();
         }
-        
+
         vm.FABIcon = 'assignment';
+
         /*
 		TaskService.finishedTasks.query(function(tasks){
 		    vm.finishedTasksLabel = tasks.length; //Finished tasks count displayed on the side menu

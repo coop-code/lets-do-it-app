@@ -1,6 +1,16 @@
+<div class='md-padding' layout="row" ng-show="vm.noFinishedTasks">
+	<md-list ng-cloak>
+		<md-list-item>
+			<p class="md-header">There are no finished tasks. C'mon, I know you can do better!</p>
+		</md-list-item>
+		<md-list-item>
+			<p class="md-subheader">Or maybe you're not keeping track of your tasks. In this case, sorry.</p>
+		</md-list-item>
+	</md-list>
+</div>
 <div class='md-padding' layout="row" layout-wrap>
-	<md-card ng-repeat="task in vm.finishedTasks">
-		<md-card-title class="md-headline">
+	<md-card class="md-task-card" ng-repeat="task in vm.finishedTasks">
+		<md-card-title class="md-headline" ng-click="vm.openDialog($event, {}, task)">
 	    	{{ task.title }}
 		</md-card-title>
 	    <md-card-content>
