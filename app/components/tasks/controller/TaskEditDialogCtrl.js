@@ -2,10 +2,11 @@
     "use strict";
     angular
         .module("letsDoIt")
-        .controller("TaskEditDialogCtrl", ['TaskService', 'ToastrService', '$http', '$state', '$mdDialog', 'task', TaskEditDialogCtrl]);
+        .controller("TaskEditDialogCtrl", ['TaskService', 'ToastrService', '$http', '$state', '$mdDialog', 'finishedTasks', 'unfinishedTasks', 'task', TaskEditDialogCtrl]);
 
-    function TaskEditDialogCtrl(TaskService, ToastrService, $http, $state, $mdDialog, task) {
+    function TaskEditDialogCtrl(TaskService, ToastrService, $http, $state, $mdDialog, finishedTasks, unfinishedTasks,  task) {
         var vm = this;
+        vm.unfinished = unfinishedTasks;
 
         //This view is a task edit if the tasks passed as parameter is not null
         //Otherwise, it's a task creation view.
@@ -38,8 +39,6 @@
         vm.submit = function () {
             ToastrService.clear();
 
-
-
             if (vm.task.id && vm.task.id > 0) {
                 //Task Edit
                 ToastrService.processing("Saving", "Please wait while the task is saved...");
@@ -50,7 +49,6 @@
                             $mdDialog.hide();
                             ToastrService.clear();
                             ToastrService.success("Task saved successfully!");
-                            $mdDialog.hide();
                             if ($state.current.name == 'main.unfinished') {
                                 $state.reload();
                             };
@@ -72,7 +70,16 @@
                             $mdDialog.hide();
                             ToastrService.clear();
                             ToastrService.success("Task created successfully!");
-                            $mdDialog.hide();
+                            var model = {
+                                    title: response.data.title,
+                                    description: response.data.description,
+                                    deadline: response.data.deadline,
+                                    comments: response.data.comments,
+                                    priority: response.data.priority,
+                            };
+                            CalculateDeadlineInDays(model);
+                            CustomizeTask(model);
+                            vm.unfinished.push(model);
                             if ($state.current.name == 'main.unfinished') {
                                 $state.reload();
                             };
@@ -186,6 +193,33 @@
             vm.descriptionReadOnly = true;
             vm.commentsReadOnly = true;
             vm.priorityReadOnly = true;
+        }
+        
+        function CalculateDeadlineInDays(task) {
+
+            var days;
+
+            if (task.deadline) {
+
+                task.deadline = new Date(task.deadline);
+                var timeDiff = task.deadline.getTime() - Date.now();
+                var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+                task.deadlineInDays = diffDays;
+
+            }
+        }
+
+        function CustomizeTask(task) {
+            task["showOptions"] = false;
+            task.priorityIcon = CustomizePriorityIcon(task.priority);
+        }
+
+        function CustomizePriorityIcon(priority) {
+            if (priority) {
+                return "star";
+            }
+            return "star_border";
         }
     }
 }());

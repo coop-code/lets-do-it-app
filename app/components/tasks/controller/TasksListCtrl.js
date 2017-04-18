@@ -2,12 +2,15 @@
     "use strict";
     angular
         .module("letsDoIt")
-        .controller("TasksListCtrl", ['TaskService', 'ToastrService', 'DialogService', '$http', '$state', TasksListCtrl]);
+        .controller("TasksListCtrl", ['TaskService', 'ToastrService', 'DialogService', '$http', '$state', 'finishedTasks', 'unfinishedTasks', TasksListCtrl]);
 
-    function TasksListCtrl(TaskService, ToastrService, DialogService, $http, $state, $promise) {
+    function TasksListCtrl(TaskService, ToastrService, DialogService, $http, $state, finishedTasks, unfinishedTasks, $promise) {
 
         var vm = this;
-
+        
+        vm.finished = finishedTasks;
+        vm.unfinished = unfinishedTasks;
+        
         //Backend Server Health Check (Lets Do It API)
         TaskService.ping().then(function (response) {
             //API is online and doing well!
@@ -28,8 +31,9 @@
                         CalculateDeadlineInDays(task);
                         CustomizeTask(task);
                     });
-
-                    vm.unfinishedTasks = tasks
+                    
+                    vm.unfinished = tasks;
+                    vm.unfinishedTasks = tasks;
                 }
 
             }, function (err) {
@@ -48,6 +52,7 @@
                         CustomizeTask(task);
                     });
 
+                    vm.finished = tasks;
                     vm.finishedTasks = tasks
                 }
             }, function (err) {
@@ -55,6 +60,7 @@
             });
 
         vm.delete = function (id) {
+        	console.log(vm.unfinished);
             ToastrService.clear();
             ToastrService.processing("Deleting", "Please wait while the task is deleted...");
             TaskService.delete(id)
@@ -62,6 +68,7 @@
                     function (response) {
                         ToastrService.clear();
                         ToastrService.success("Task succesfully deleted.");
+                        var task = response.data;
                         $state.reload();
                     },
                     function (err) {
