@@ -42,12 +42,11 @@
             if (vm.task.id && vm.task.id > 0) {
                 //Task Edit
                 ToastrService.processing("Saving", "Please wait while the task is saved...");
-                TaskService.save(vm.task)
+                TaskService.saveEditedTask(task, vm.task)
                     .then(
                         //Success callback
                         function (response) {
                             $mdDialog.hide();
-                            ToastrService.clear();
                             ToastrService.success("Task saved successfully!");
                             if ($state.current.name == 'main.unfinished') {
                                 $state.reload();
@@ -55,7 +54,6 @@
                         },
                         //Error callback
                         function (err) {
-                            ToastrService.clear();
                             ToastrService.error("Error", "Please check if the fields were filled correctly.")
                         }
                     )
@@ -63,7 +61,7 @@
             } else {
                 //Task Creation
                 ToastrService.processing("Creating", "Please wait while the task is created...");
-                TaskService.create(vm.task)
+                TaskService.createTask(vm.task)
                     .then(
                         //Success callback
                         function (response) {
@@ -95,17 +93,14 @@
         }
 
         vm.deleteTask = function (task) {
-            ToastrService.clear();
             ToastrService.processing("Deleting", "Please wait while the task is deleted...");
             TaskService.deleteTask(task)
                 .then(
                     function () {
                     	$mdDialog.hide();
-                        ToastrService.clear();
                         ToastrService.success("Task succesfully deleted.");
                     },
                     function (err) {
-                        ToastrService.clear();
                         ToastrService.error("Error", "There was a problem in the deletion. Please refresh the page before trying again.")
                     }
                 )
@@ -173,33 +168,6 @@
             vm.descriptionReadOnly = true;
             vm.commentsReadOnly = true;
             vm.priorityReadOnly = true;
-        }
-        
-        function CalculateDeadlineInDays(task) {
-
-            var days;
-
-            if (task.deadline) {
-
-                task.deadline = new Date(task.deadline);
-                var timeDiff = task.deadline.getTime() - Date.now();
-                var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
-                task.deadlineInDays = diffDays;
-
-            }
-        }
-
-        function CustomizeTask(task) {
-            task["showOptions"] = false;
-            task.priorityIcon = CustomizePriorityIcon(task.priority);
-        }
-
-        function CustomizePriorityIcon(priority) {
-            if (priority) {
-                return "star";
-            }
-            return "star_border";
         }
     }
 }());

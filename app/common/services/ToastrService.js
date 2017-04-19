@@ -33,19 +33,23 @@
 			
 		    return {
 		        success: function (title, text) {
+		        	toastr.clear();
 		            toastr.success(text ,  title , successConfig);
 		        },
 		        error: function (title, text) {
-		        	 toastr.error(text ,  title , errorConfig);
+		        	toastr.clear();
+		        	toastr.error(text ,  title , errorConfig);
 		        },
 		        info: function (title, text) {
+		        	toastr.clear();
 		        	toastr.info(text , title , infoConfig);
 		        },
 		        processing: function (title, text) {
-		        	 toastr.info(text, title, processingConfig);
+		        	toastr.clear();
+		        	toastr.info(text, title, processingConfig);
 		        },
 		        clear: function () {
-		        	 toastr.clear();
+		        	toastr.clear();
 		        }
 		    }
 		});

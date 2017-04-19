@@ -9,15 +9,27 @@
 	</md-list>
 </div>
 <div class='md-padding' layout="row" layout-wrap>
-	<md-card class="md-task-card" ng-repeat="task in vm.finishedTasks">
-		<md-card-title class="md-headline" ng-click="vm.openDialog($event, {}, task)">
-	    	{{ task.title }}
-		</md-card-title>
-	    <md-card-content>
-	    	{{ task.description }}
-	    </md-card-content>
-	    <md-card-actions layout="row" layout-align="center">
-	    	<md-button ng-click="vm.delete(task.id)"><md-icon>delete</md-icon></md-button>
-	    </md-card-actions>
-	</md-card>
+	<md-fab-speed-dial 	ng-repeat="task in vm.tasks.finished track by task.id" 
+											class="md-scale" 
+											md-open="task.showOptions" 
+											md-direction="down" 
+											ng-mouseleave="task.showOptions=false"
+											ng-class="{optionsOfHoveredCard: task.showOptions}">
+		<md-fab-trigger>
+			<md-card ng-class="{cardWithOptionsShown: task.showOptions}">
+				<md-card-header class="md-title">
+			    	{{ task.title }}
+				</md-card-header>
+			    <md-card-title>
+			    	{{ task.description }}
+			    </md-card-title>
+			</md-card>
+		</md-fab-trigger>
+	 	<md-fab-actions>
+	 		<div >
+	  		<md-button class="md-fab md-primary md-raised" ng-click="vm.deleteTask(task)"><md-icon>delete</md-icon></md-button>
+	    	<md-button class="md-fab md-primary md-raised" ng-click="vm.openDialog($event, {}, task)"><md-icon>remove_red_eye</md-icon></md-button>
+	    	</div>
+	  	</md-fab-actions>
+	</md-fab-speed-dial>
 </div>
