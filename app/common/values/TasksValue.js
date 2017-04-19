@@ -2,5 +2,5 @@
 	"use strict";
 	angular
 		.module('letsDoIt')
-		.value('unfinishedTasks', []);
+		.value('TasksValue', {finished: [], unfinished: []});
 })();

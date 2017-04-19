@@ -2,14 +2,13 @@
     "use strict";
     angular
         .module("letsDoIt")
-        .controller("TasksListCtrl", ['TaskService', 'ToastrService', 'DialogService', '$http', '$state', 'finishedTasks', 'unfinishedTasks', TasksListCtrl]);
+        .controller("TasksListCtrl", ['TaskService', 'ToastrService', 'DialogService', '$http', '$state', 'TasksValue', TasksListCtrl]);
 
-    function TasksListCtrl(TaskService, ToastrService, DialogService, $http, $state, finishedTasks, unfinishedTasks, $promise) {
+    function TasksListCtrl(TaskService, ToastrService, DialogService, $http, $state, TasksValue, $promise) {
 
         var vm = this;
         
-        vm.finished = finishedTasks;
-        vm.unfinished = unfinishedTasks;
+        vm.tasks = TasksValue;
         
         //Backend Server Health Check (Lets Do It API)
         TaskService.ping().then(function (response) {
@@ -18,58 +17,30 @@
             $state.go('main.connectionProblem');
         });
 
-        TaskService.unfinishedTasks()
-            .then(function (response) {
-                var tasks = response.data;
-
-                //If there's no task to show, show a default message...
-                if (!tasks || tasks.length == 0) {
-                    vm.noUnfinishedTasks = true;
-                } else {
-                    //There are unfinished tasks registered
-                    tasks.forEach(function (task) {
-                        CalculateDeadlineInDays(task);
-                        CustomizeTask(task);
-                    });
-                    
-                    vm.unfinished = tasks;
-                    vm.unfinishedTasks = tasks;
-                }
-
-            }, function (err) {
-                console.log(err);
+        TaskService.setUnfinishedTasks()
+            .then(function () {
+            	//Unfinished tasks set successfully
+            })
+            .catch(function (err) {
+    			console.log('TaskListCtrl error (setUnfinishedTasks): ', error);
             });
 
-        TaskService.finishedTasks()
-            .then(function (response) {
-                var tasks = response.data;
+        TaskService.setFinishedTasks()
+	        .then(function () {
+	        	//Finished tasks set successfully
+	        })
+	        .catch(function (err) {
+				console.log('TaskListCtrl error (setFinishedTasks): ', error);
+	        });
 
-                if (!tasks || tasks.length == 0) {
-                    vm.noFinishedTasks = true;
-                } else {
-                    tasks.forEach(function (task) {
-                        CalculateDeadlineInDays(task);
-                        CustomizeTask(task);
-                    });
-
-                    vm.finished = tasks;
-                    vm.finishedTasks = tasks
-                }
-            }, function (err) {
-                console.log(err);
-            });
-
-        vm.delete = function (id) {
-        	console.log(vm.unfinished);
+        vm.deleteTask = function (task) {
             ToastrService.clear();
             ToastrService.processing("Deleting", "Please wait while the task is deleted...");
-            TaskService.delete(id)
+            TaskService.deleteTask(task)
                 .then(
-                    function (response) {
+                    function () {
                         ToastrService.clear();
                         ToastrService.success("Task succesfully deleted.");
-                        var task = response.data;
-                        $state.reload();
                     },
                     function (err) {
                         ToastrService.clear();
@@ -134,32 +105,4 @@
         };
 
     }
-
-    function CalculateDeadlineInDays(task) {
-
-        var days;
-
-        if (task.deadline) {
-
-            task.deadline = new Date(task.deadline);
-            var timeDiff = task.deadline.getTime() - Date.now();
-            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
-            task.deadlineInDays = diffDays;
-
-        }
-    }
-
-    function CustomizeTask(task) {
-        task["showOptions"] = false;
-        task.priorityIcon = CustomizePriorityIcon(task.priority);
-    }
-
-    function CustomizePriorityIcon(priority) {
-        if (priority) {
-            return "star";
-        }
-        return "star_border";
-    }
-
 }());

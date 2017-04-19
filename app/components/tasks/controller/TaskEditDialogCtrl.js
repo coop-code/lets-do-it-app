@@ -2,11 +2,11 @@
     "use strict";
     angular
         .module("letsDoIt")
-        .controller("TaskEditDialogCtrl", ['TaskService', 'ToastrService', '$http', '$state', '$mdDialog', 'finishedTasks', 'unfinishedTasks', 'task', TaskEditDialogCtrl]);
+        .controller("TaskEditDialogCtrl", ['TaskService', 'ToastrService', '$http', '$state', '$mdDialog', 'TasksValue', 'task', TaskEditDialogCtrl]);
 
-    function TaskEditDialogCtrl(TaskService, ToastrService, $http, $state, $mdDialog, finishedTasks, unfinishedTasks,  task) {
+    function TaskEditDialogCtrl(TaskService, ToastrService, $http, $state, $mdDialog, TasksValue, task) {
         var vm = this;
-        vm.unfinished = unfinishedTasks;
+        vm.tasks = TasksValue;
 
         //This view is a task edit if the tasks passed as parameter is not null
         //Otherwise, it's a task creation view.
@@ -70,19 +70,6 @@
                             $mdDialog.hide();
                             ToastrService.clear();
                             ToastrService.success("Task created successfully!");
-                            var model = {
-                                    title: response.data.title,
-                                    description: response.data.description,
-                                    deadline: response.data.deadline,
-                                    comments: response.data.comments,
-                                    priority: response.data.priority,
-                            };
-                            CalculateDeadlineInDays(model);
-                            CustomizeTask(model);
-                            vm.unfinished.push(model);
-                            if ($state.current.name == 'main.unfinished') {
-                                $state.reload();
-                            };
                         },
                         //Error callback
                         function (err) {
@@ -107,29 +94,22 @@
             vm.task.priority = false;
         }
 
-        vm.delete = function (id) {
+        vm.deleteTask = function (task) {
             ToastrService.clear();
             ToastrService.processing("Deleting", "Please wait while the task is deleted...");
-            TaskService.delete(id)
+            TaskService.deleteTask(task)
                 .then(
-                    //Success callback
-                    function (response) {
-                        $mdDialog.hide();
+                    function () {
+                    	$mdDialog.hide();
                         ToastrService.clear();
-                        ToastrService.success("Task deleted successfully!");
-                        $mdDialog.hide();
-                        if ($state.current.name == 'main.unfinished' || $state.current.name == 'main.finished') {
-                            $state.reload();
-                        };
+                        ToastrService.success("Task succesfully deleted.");
                     },
-                    //Error callback
                     function (err) {
                         ToastrService.clear();
-                        ToastrService.error("Error", "There was a problem with the delete operation. Please try again later.")
+                        ToastrService.error("Error", "There was a problem in the deletion. Please refresh the page before trying again.")
                     }
                 )
         }
-
 
         //User clicked on the add button to create a task
         function NewTaskProperties() {
