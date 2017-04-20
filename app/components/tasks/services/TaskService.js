@@ -145,10 +145,11 @@
 	        var promise = $http.put(apiUrl + '/' + updatedTask.id, updatedTask);
 	    	return promise
 	    		.then(function (response) {
-	    			var finishedIndex = TasksValue.finished.indexOf(oldTask);
 	    			var unfinishedIndex = TasksValue.unfinished.indexOf(oldTask);
-	    			if(finishedIndex > -1) TasksValue.finished.splice(finishedIndex, 1, newTask);
-	    			if(unfinishedIndex > -1) TasksValue.unfinished.splice(unfinishedIndex, 1, newTask);
+	    			if(unfinishedIndex > -1) {
+	    				CustomizeTask(newTask); 
+	    				TasksValue.unfinished.splice(unfinishedIndex, 1, newTask);
+	    			}
 	    		})
 	    		.catch (function (error) {
 	    			console.log('TaskService error (saveEditedTask): ', error);

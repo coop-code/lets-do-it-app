@@ -44,22 +44,44 @@
                 .catch(function (err) {ToastrService.error("Error", "There was a problem when trying to mark the task as finished. Please refresh the page before trying again.");});
         }
 
-        function openDialog(event, options, task) {
+        function openTaskEditionDialog(event, options, task) {
             var dialogConfig = {
-                templateUrl: 'app/components/tasks/views/taskEditDialogView.html',
-                controller: 'TaskEditDialogCtrl',
+                templateUrl: 'app/components/dialog/view/taskEditionDialogView.html',
+                controller: 'TaskEditionDialogCtrl',
                 controllerAs: 'vm',
                 locals: {
                     task: task
                 }
             }
-
-            DialogService(event, dialogConfig);
+            DialogService.openDialog(event, dialogConfig);
+        };
+        
+        function openTaskVisualizationDialog(event, options, task) {
+            var dialogConfig = {
+                templateUrl: 'app/components/dialog/view/taskVisualizationDialogView.html',
+                controller: 'TaskVisualizationDialogCtrl',
+                controllerAs: 'vm',
+                locals: {
+                    task: task
+                }
+            }
+            DialogService.openDialog(event, dialogConfig);
+        };
+        
+        function openTaskCreationDialog(event, options) {
+            var dialogConfig = {
+                templateUrl: 'app/components/dialog/view/taskCreationDialogView.html',
+                controller: 'TaskCreationDialogCtrl',
+                controllerAs: 'vm',
+            }
+            DialogService.openDialog(event, dialogConfig);
         };
 
         vm.deleteTask = deleteTask;
         vm.finishTask = finishTask;
         vm.changeTaskPriority = changeTaskPriority
-        vm.openDialog = openDialog;
+        vm.openTaskEditionDialog = openTaskEditionDialog;
+        vm.openTaskVisualizationDialog = openTaskVisualizationDialog;
+        vm.openTaskCreationDialog = openTaskCreationDialog;
     }
 }());

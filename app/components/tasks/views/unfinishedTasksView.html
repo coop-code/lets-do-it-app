@@ -29,7 +29,7 @@
 	 		<div >
 	  		<md-button class="md-fab md-primary md-raised" ng-click="vm.deleteTask(task)"><md-icon>delete</md-icon></md-button>
 	    	<md-button class="md-fab md-primary md-raised" ng-click="vm.changeTaskPriority(task)"><md-icon>{{task.priorityIcon}}</md-icon></md-button>
-	    	<md-button class="md-fab md-primary md-raised" ng-click="vm.openDialog($event, {}, task)"><md-icon>edit</md-icon></md-button>
+	    	<md-button class="md-fab md-primary md-raised" ng-click="vm.openTaskEditionDialog($event, {}, task)"><md-icon>edit</md-icon></md-button>
 	    	<md-button class="md-fab md-primary md-raised" ng-click="vm.finishTask(task)"><md-icon>done</md-icon></md-button>
 	    	</div>
 	  	</md-fab-actions>

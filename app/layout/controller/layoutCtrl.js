@@ -8,20 +8,17 @@
     function LayoutCtrl(TaskService, DialogService, $mdSidenav) {
         var vm = this;
 
-        vm.openNewTaskDialog = openNewTaskDialog;
+        vm.openTaskCreationDialog = openTaskCreationDialog;
 
         //Dialog
         //Triggered by the FAB button
-        function openNewTaskDialog(event, option, task) {
+        function openTaskCreationDialog(event, options) {
             var dialogConfig = {
-                templateUrl: 'app/components/tasks/views/taskEditDialogView.html',
-                controller: 'TaskEditDialogCtrl',
+                templateUrl: 'app/components/dialog/view/taskCreationDialogView.html',
+                controller: 'TaskCreationDialogCtrl',
                 controllerAs: 'vm',
-                locals: {
-                	task: task
-                }
             }
-            DialogService(event, dialogConfig);
+            DialogService.openDialog(event, dialogConfig);
         };
 
         //Sidenav menu entries
@@ -53,15 +50,5 @@
         }
 
         vm.FABIcon = 'assignment';
-
-        /*
-		TaskService.finishedTasks.query(function(tasks){
-		    vm.finishedTasksLabel = tasks.length; //Finished tasks count displayed on the side menu
-		});
-		
-        TaskService.unfinishedTasks.query(function(tasks){
-		    vm.unfinishedTasksLabel = tasks.length; //Unfinished tasks count displayed on the side menu
-		});
-        */
     }
 }());
