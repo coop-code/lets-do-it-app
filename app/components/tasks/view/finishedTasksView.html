@@ -1,10 +1,10 @@
-<div class='md-padding' layout="row" ng-show="vm.noFinishedTasks">
+<div class='md-padding' layout="row" ng-show="vm.tasks.finished.length == 0">
 	<md-list ng-cloak>
 		<md-list-item>
 			<p class="md-header">There are no finished tasks. C'mon, I know you can do better!</p>
 		</md-list-item>
 		<md-list-item>
-			<p class="md-subheader">Or maybe you're not keeping track of your tasks. In this case, sorry.</p>
+			<p class="md-header">Or maybe you're not keeping track of your tasks. In this case, sorry.</p>
 		</md-list-item>
 	</md-list>
 </div>

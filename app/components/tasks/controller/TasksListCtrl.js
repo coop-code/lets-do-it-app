@@ -7,7 +7,8 @@
     function TasksListCtrl(TaskService, ToastrService, DialogService, $state, TasksValue) {
 
         var vm = this;
-        vm.tasks = TasksValue;
+		vm.tasks = TasksValue;
+        vm.loading = true;
         
         //Backend Server Health Check (Lets Do It API)
         TaskService.ping()
@@ -21,7 +22,8 @@
             	.then(function () {/*Finished tasks set successfully*/})
     	        .catch(function (error) {ToastrService.error("Error", "There was a problem while fetching finished tasks. Please contact the administrator.");console.log('TaskListCtrl error (setFinishedTasks): ', error);});
         	})
-        	.catch(function (error) {$state.go('main.connectionProblem');});
+        	.catch(function (error) {$state.go('main.connectionProblem');})
+        	.finally(function() {vm.loading = false;});
 
         
         function deleteTask(task) {
