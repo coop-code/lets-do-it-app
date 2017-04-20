@@ -52,7 +52,7 @@
 	        
 		</md-dialog-content>
 		<md-dialog-actions>
-			<md-button class="md-primary md-raised" ng-click="vm.deleteTask(vm.task)">
+			<md-button class="md-primary md-raised" ng-click="vm.deleteTask($event)">
 				<md-icon>{{vm.deleteIcon}}</md-icon> {{vm.deleteName}}
 			</md-button>
 			<md-button class="md-primary md-raised" ng-click="vm.submitEditedTask()">
