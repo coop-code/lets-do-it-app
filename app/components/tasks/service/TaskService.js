@@ -94,11 +94,15 @@
         function deleteTask(task) {
         	var promise =  $http.delete(apiUrl + '/' + task.id);
         	return promise
-        		.then(function (response) {
-        			var finishedIndex = TasksValue.finished.indexOf(task); 		//Check if deleted task is a finished task
-        			var unfinishedIndex = TasksValue.unfinished.indexOf(task);	//Check if deleted task is an unfinished task
-        			if(finishedIndex > -1) TasksValue.finished.splice(finishedIndex, 1); 		//If it's a finished task, delete it from finished tasks
-        			if(unfinishedIndex > -1) TasksValue.unfinished.splice(unfinishedIndex, 1); 	//If it's an ufinished task, delete it form unfinished tasks
+        		.then(function () {
+        			var finishedIndex =getObjectPositionInArrayById(task, TasksValue.finished); 		//Check if deleted task is a finished task
+        			var unfinishedIndex = getObjectPositionInArrayById(task, TasksValue.unfinished);	//Check if deleted task is an unfinished task
+        			if(finishedIndex > -1) {
+        				TasksValue.finished.splice(finishedIndex, 1); 
+        			}
+        			if(unfinishedIndex > -1) {
+        				TasksValue.unfinished.splice(unfinishedIndex, 1); 
+        			}
         		})
         		.catch (function (error) {
         			console.log('TaskService error (deleteTask): ', error);
@@ -113,7 +117,7 @@
             var promise = $http.put(apiUrl + '/' + updatedTask.id, updatedTask);
         	return promise
         		.then(function (response) {
-        			var unfinishedIndex = TasksValue.unfinished.indexOf(task);
+        			var unfinishedIndex = getObjectPositionInArrayById(task, TasksValue.unfinished);
         			if(unfinishedIndex > -1) {
         				TasksValue.unfinished.splice(unfinishedIndex, 1);
         				task.done=true;
@@ -133,7 +137,7 @@
             var promise = $http.put(apiUrl + '/' + updatedTask.id, updatedTask);
         	return promise
         		.then(function (response) {
-        			var unfinishedIndex = TasksValue.unfinished.indexOf(task);
+        			var unfinishedIndex = getObjectPositionInArrayById(task, TasksValue.unfinished);
         			if(unfinishedIndex > -1) {
         				task.priority = !task.priority;
                         CustomizeTask(task);
@@ -152,7 +156,7 @@
 	        var promise = $http.put(apiUrl + '/' + updatedTask.id, updatedTask);
 	    	return promise
 	    		.then(function (response) {
-	    			var unfinishedIndex = TasksValue.unfinished.indexOf(oldTask);
+	    			var unfinishedIndex = getObjectPositionInArrayById(oldTask, TasksValue.unfinished);
 	    			if(unfinishedIndex > -1) {
 	    				CustomizeTask(newTask); 
 	    				TasksValue.unfinished.splice(unfinishedIndex, 1, newTask);
@@ -209,6 +213,9 @@
 
         }
         
+        function getObjectPositionInArrayById (object, array) {
+        	return array.map(function(e) { return e.id; }).indexOf(object.id);
+        }
         //Calculate deadline in days
         function CalculateDeadlineInDays(task) {
             var days;
@@ -222,7 +229,7 @@
 
         //Add the 'showOptions' parameter to be used to open and close card options and set the piority icon according to priority value
         function CustomizeTask(task) {
-            task["showOptions"] = false;
+            task.showOptions = false;
             task.priorityIcon = CustomizePriorityIcon(task.priority);
         }
 

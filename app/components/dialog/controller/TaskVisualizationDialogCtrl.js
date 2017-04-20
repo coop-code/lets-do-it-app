@@ -6,14 +6,14 @@
 
     function TaskVisualizationDialogCtrl(TaskService, ToastrService, DialogService, task) {
         var vm = this;
-        vm.task = angular.copy(task);;
-
+        vm.task = task;
+        
         //Triggered by the create button
-        function deleteTask(task) {
+        function deleteTask() {
         	ToastrService.processing("Deleting", "Please wait while the task is deleted...");
             TaskService.deleteTask(task)
                 .then(function () {closeDialog(); ToastrService.success("Task succesfully deleted.");})
-                .catch(function (err) {ToastrService.error("Error", "There was a problem in the deletion. Please refresh the page before trying again.");console.log('TaskVisualizationDialogCtrl error (deleteTask): ', error);});
+                .catch(function (error) {ToastrService.error("Error", "There was a problem in the deletion. Please refresh the page before trying again.");console.log('TaskVisualizationDialogCtrl error (deleteTask): ', error);});
         }
         
         function closeDialog() {
