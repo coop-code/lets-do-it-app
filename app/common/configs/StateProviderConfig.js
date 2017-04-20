@@ -25,7 +25,7 @@
                 .state("main", {
                     abstract: true,
                     url: "/main",
-                    templateUrl: "app/layout/view/layoutView.html",
+                    templateUrl: "app/components/layout/view/layoutView.html",
                     controller: "LayoutCtrl as vm"
                 })
                 .state("main.home", {
@@ -35,17 +35,17 @@
                 })
                 .state("main.finished", {
                     url: "/tasks/finished",
-                    templateUrl: "app/components/tasks/views/finishedTasksView.html",
+                    templateUrl: "app/components/tasks/view/finishedTasksView.html",
                     controller: "TasksListCtrl as vm"
                 })
                 .state("main.unfinished", {
                     url: "/tasks/unfinished",
-                    templateUrl: "app/components/tasks/views/unfinishedTasksView.html",
+                    templateUrl: "app/components/tasks/view/unfinishedTasksView.html",
                     controller: "TasksListCtrl as vm"
                 })
                 .state("main.connectionProblem", {
                     url: '/connectionProblem',
-                    templateUrl: 'app/common/views/connectionProblemView.html',
+                    templateUrl: 'app/components/connectionProblem/view/connectionProblemView.html',
                     controller: 'ConnectionProblemCtrl as vm'
                 })
          }

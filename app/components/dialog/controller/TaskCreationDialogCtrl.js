@@ -16,11 +16,11 @@
         }
 
         //Triggered by the create button
-        function submit() {
-                ToastrService.processing("Creating", "Please wait while the task is created...");
-                TaskService.createTask(vm.task)
-                	.then(function () {closeDialog(); ToastrService.success("Task successfully created.");})
-                	.catch(function (err) {ToastrService.error("Error", "Please check if the fields were filled correctly.");});
+        function submitNewTask() {
+        	ToastrService.processing("Creating", "Please wait while the task is created...");
+            TaskService.createTask(vm.task)
+            	.then(function () {closeDialog(); ToastrService.success("Task successfully created.");})
+            	.catch(function (err) {ToastrService.error("Error", "Please check if the fields were filled correctly.");console.log('TaskCreationDialogCtrl error (submitNewTask): ', error);});
         }
 
         function closeDialog() {
@@ -36,7 +36,7 @@
             vm.task.priority = false;
         }
         
-        vm.submit = submit;
+        vm.submitNewTask = submitNewTask;
         vm.closeDialog = closeDialog;
         vm.clearDialog = clearDialog;
         

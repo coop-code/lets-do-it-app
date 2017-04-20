@@ -3,9 +3,9 @@
     angular
         .module("letsDoIt")
         .factory("TaskService",
-            ['TasksValue', '$http', TaskService]);
+            ['TasksValue', '$http', '$state', TaskService]);
 
-    function TaskService(TasksValue, $http) {
+    function TaskService(TasksValue, $http, $state) {
         //The API runs locally for now. 
         var apiHealthCheckUri = 'http://localhost:4000/ping';
         var apiUrl = 'http://localhost:4000/tasks';
@@ -15,7 +15,7 @@
         	var promise =  $http.get(apiHealthCheckUri);
         	return promise
         		.then(function (response) {/*API is online*/})
-        		.catch (function (error) {console.log('TaskService error (ping): ', error);});
+        		.catch (function (error) {console.log('TaskService error (ping): ', error); throw error;});
         }
         
         //Set the value of unfinished tasks
@@ -34,6 +34,7 @@
         		})
         		.catch (function (error) {
         			console.log('TaskService error (setUnfinishedTasksValue): ', error);
+        			throw error;
         		});
         }
 
@@ -53,6 +54,7 @@
         		})
         		.catch (function (error) {
         			console.log('TaskService error (setFinishedTasksValue): ', error);
+        			throw error;
         		});
         }
 
@@ -62,12 +64,13 @@
         	return promise
         		.then(function (response) {
         			var taskRetrieved = response.data;
-                    	CalculateDeadlineInDays(taskRetrieved);
-                    	CustomizeTask(taskRetrieved);
+                    CalculateDeadlineInDays(taskRetrieved);
+                    CustomizeTask(taskRetrieved);
                     return taskRetrieved;
         		})
         		.catch (function (error) {
         			console.log('TaskService error (getTask): ', error);
+        			throw error;
         		});
         }
         
@@ -83,6 +86,7 @@
         		})
         		.catch (function (error) {
         			console.log('TaskService error (getTask): ', error);
+        			throw error;
         		});
         }
         
@@ -98,6 +102,7 @@
         		})
         		.catch (function (error) {
         			console.log('TaskService error (deleteTask): ', error);
+        			throw error;
         		});
         }
    
@@ -117,6 +122,7 @@
         		})
         		.catch (function (error) {
         			console.log('TaskService error (finishTask): ', error);
+        			throw error;
         		});
         }
         
@@ -136,6 +142,7 @@
         		})
         		.catch (function (error) {
         			console.log('TaskService error (changePriority): ', error);
+        			throw error;
         		});
         }
         
@@ -153,6 +160,7 @@
 	    		})
 	    		.catch (function (error) {
 	    			console.log('TaskService error (saveEditedTask): ', error);
+	    			throw error;
 	    		});
         }
         

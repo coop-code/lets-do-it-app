@@ -14,14 +14,14 @@
 			
 	        	<md-input-container class="md-block" flex>
 	            	<md-icon>web</md-icon>
-	                <input name="title" ng-model="vm.task.title" placeholder="Title" required md-autofocus>
+	                <input name="title" ng-model="vm.task.title" placeholder="Title" aria-label="Title" required md-autofocus>
 	                <ng-messages for="taskForm.title.$error" role="alert">
 	                	<ng-message when="required">The title is a required field.</ng-message>
 					</ng-messages>
 				</md-input-container>
 				
 	            <md-input-container  class="md-block" flex>
-	                <md-datepicker name="deadline" ng-model="vm.task.deadline" placeholder="Deadline"></md-datepicker>
+	                <md-datepicker name="deadline" ng-model="vm.task.deadline" placeholder="Deadline" aria-label="Deadline"></md-datepicker>
 	                <ng-messages for="taskForm.deadline.$error" role="alert">
 	                	<ng-message when="valid">This is not a valid date.</ng-message>
 					</ng-messages>
@@ -31,21 +31,21 @@
 	        <div layout="row">
 	        	<md-input-container class="md-block" flex>
 	        		<md-icon>description</md-icon>
-	                <textarea name="description" ng-model="vm.task.description" placeholder="Description" md-maxlength="500" md-select-on-focus></textarea>
+	                <textarea name="description" ng-model="vm.task.description" placeholder="Description" aria-label="Description" md-maxlength="500"  md-select-on-focus></textarea>
 				</md-input-container>
 			</div>
 			
 	        <div layout="row">
 	        	<md-input-container class="md-block" flex>
 	            	<md-icon>comment</md-icon>
-	                <textarea name="comments" ng-model="vm.task.comments" placeholder="Comments" md-maxlength="1000" md-select-on-focus></textarea>
+	                <textarea name="comments" ng-model="vm.task.comments" placeholder="Comments" aria-label="Comments" md-maxlength="1000"  md-select-on-focus></textarea>
 				</md-input-container>
 			</div>
 			
 			<div layout="row">
 	        	<md-input-container class="md-block" flex>
 	        		<md-switch ng-model="vm.task.priority" class="md-warn" aria-label="Priority">
-					    {{vm.task.priority ? "Prioritary task" : "Common task"}} - {{vm.task.priority}}
+					    {{vm.task.priority ? "Prioritary task" : "Common task"}}
 					</md-switch>
 				</md-input-container>
 	        </div>
@@ -55,7 +55,7 @@
 			<md-button class="md-primary md-raised" ng-click="vm.deleteTask(vm.task)">
 				<md-icon>{{vm.deleteIcon}}</md-icon> {{vm.deleteName}}
 			</md-button>
-			<md-button class="md-primary md-raised" ng-click="vm.submit()">
+			<md-button class="md-primary md-raised" ng-click="vm.submitEditedTask()">
 				<md-icon>{{vm.saveIcon}}</md-icon> {{vm.saveName}}
 			</md-button>
 		</md-dialog-actions>
