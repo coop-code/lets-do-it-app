@@ -36,12 +36,12 @@
                 .state("main.finished", {
                     url: "/tasks/finished",
                     templateUrl: "app/components/tasks/view/finishedTasksView.html",
-                    controller: "TasksListCtrl as vm"
+                    controller: "FinishedTasksListCtrl as vm"
                 })
                 .state("main.unfinished", {
                     url: "/tasks/unfinished",
                     templateUrl: "app/components/tasks/view/unfinishedTasksView.html",
-                    controller: "TasksListCtrl as vm"
+                    controller: "UnfinishedTasksListCtrl as vm"
                 })
                 .state("main.connectionProblem", {
                     url: '/connectionProblem',

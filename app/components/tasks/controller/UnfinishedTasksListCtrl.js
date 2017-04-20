@@ -2,12 +2,14 @@
     "use strict";
     angular
         .module("letsDoIt")
-        .controller("TasksListCtrl", ['TaskService', 'ToastrService', 'DialogService', '$state', 'TasksValue', TasksListCtrl]);
+        .controller("UnfinishedTasksListCtrl", ['TaskService', 'ToastrService', 'DialogService', '$state', 'TasksValue', UnfinishedTasksListCtrl]);
 
-    function TasksListCtrl(TaskService, ToastrService, DialogService, $state, TasksValue) {
+    function UnfinishedTasksListCtrl(TaskService, ToastrService, DialogService, $state, TasksValue) {
 
         var vm = this;
         vm.tasks = TasksValue;
+         //If there's no unfinished tasks, the default message is displayed
+        vm.noUnfinishedTasks = TasksValue.unfinished.length == 0 ? true : false;
         
         //Backend Server Health Check (Lets Do It API)
         TaskService.ping()
@@ -17,10 +19,7 @@
                 .then(function () {/*Unfinished tasks set successfully*/})
                 .catch(function (error) {ToastrService.error("Error", "There was a problem while fetching unfinished tasks. Please contact the administrator.");console.log('TaskListCtrl error (setUnfinishedTasks): ', error);});
         		
-        		TaskService.setFinishedTasks()
-            	.then(function () {/*Finished tasks set successfully*/})
-    	        .catch(function (error) {ToastrService.error("Error", "There was a problem while fetching finished tasks. Please contact the administrator.");console.log('TaskListCtrl error (setFinishedTasks): ', error);});
-        	})
+        		})
         	.catch(function (error) {$state.go('main.connectionProblem');});
 
         
@@ -57,33 +56,11 @@
             }
             DialogService.openDialog(event, dialogConfig);
         };
-        
-        function openTaskVisualizationDialog(event, options, task) {
-            var dialogConfig = {
-                templateUrl: 'app/components/dialog/view/taskVisualizationDialogView.html',
-                controller: 'TaskVisualizationDialogCtrl',
-                controllerAs: 'vm',
-                locals: {
-                    task: task
-                }
-            }
-            DialogService.openDialog(event, dialogConfig);
-        };
-        
-        function openTaskCreationDialog(event, options) {
-            var dialogConfig = {
-                templateUrl: 'app/components/dialog/view/taskCreationDialogView.html',
-                controller: 'TaskCreationDialogCtrl',
-                controllerAs: 'vm',
-            }
-            DialogService.openDialog(event, dialogConfig);
-        };
+       
 
         vm.deleteTask = deleteTask;
         vm.finishTask = finishTask;
         vm.changeTaskPriority = changeTaskPriority
         vm.openTaskEditionDialog = openTaskEditionDialog;
-        vm.openTaskVisualizationDialog = openTaskVisualizationDialog;
-        vm.openTaskCreationDialog = openTaskCreationDialog;
     }
 }());

@@ -195,7 +195,7 @@
             }
         }
 
-        //Prepare a task to be inserted in DB based on provided paramenter 'task', getting only the necessary fields
+        //Prepare a task to be inserted in DB based on provided parameter 'task', getting only the necessary fields
         function createUpdatedTaskModel(task) {
             var updateTaskDto = {}
             updateTaskDto.id = task.id;
