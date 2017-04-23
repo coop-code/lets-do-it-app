@@ -9,7 +9,6 @@
         var vm = this;
         vm.tasks = TasksValue;
 
-
         //Backend Server Health Check (Lets Do It API)
         TaskService.ping()
             .then(function () {
@@ -17,9 +16,9 @@
                 TaskService.setFinishedTasks()
                     .then(function () {
                         /*Finished tasks set successfully*/
-
-                        //If there's no finished tasks, the default message is displayed
-                        vm.noFinishedTasks = TasksValue.finished.length == 0 ? true : false;
+                    	
+                    	//If there's no unfinished tasks, the default message is displayed
+                        vm.tasks.loadingFinished = false;
                     })
                     .catch(function (error) {
                         ToastrService.error("Error", "There was a problem while fetching finished tasks. Please contact the administrator.");
@@ -30,8 +29,7 @@
                 $state.go('main.connectionProblem');
             });
 
-        function deleteTask(task) {
-
+        function deleteTask(task, event) {
             DialogService.openDeleteConfirmationDialog(event)
                 .then(function (answer) {
 
@@ -69,3 +67,43 @@
         vm.openTaskVisualizationDialog = openTaskVisualizationDialog;
     }
 }());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

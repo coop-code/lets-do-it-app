@@ -18,22 +18,18 @@
                         /*Unfinished tasks set successfully*/
 
                         //If there's no unfinished tasks, the default message is displayed
-                        vm.noUnfinishedTasks = TasksValue.unfinished.length == 0 ? true : false;
+                        vm.tasks.loadingUnfinished = false;
                     })
                     .catch(function (error) {
                         ToastrService.error("Error", "There was a problem while fetching unfinished tasks. Please contact the administrator.");
                         console.log('TaskListCtrl error (setUnfinishedTasks): ', error);
                     });
-
             })
             .catch(function (error) {
                 $state.go('main.connectionProblem');
             });
 
-
-
         function deleteTask(task, event) {
-
             DialogService.openDeleteConfirmationDialog(event)
                 .then(function (answer) {
 
@@ -53,7 +49,6 @@
                 }, function () {
                     //Delete cancelled
                 });
-
         }
 
         function finishTask(task) {

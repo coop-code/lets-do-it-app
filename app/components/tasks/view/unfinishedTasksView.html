@@ -1,4 +1,4 @@
-<div class='md-padding' layout="row" ng-show="vm.noUnfinishedTasks">
+<div class='md-padding' layout="row" ng-show="!vm.tasks.loadingUnfinished && vm.tasks.unfinished.length == 0">
 	<md-list ng-cloak>
 		<md-list-item>
 			<p class="md-header">There are no unfinished tasks. Wow, you're very good (or maybe you did not registered your tasks).</p>

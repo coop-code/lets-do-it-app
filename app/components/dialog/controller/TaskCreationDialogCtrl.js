@@ -45,6 +45,8 @@
         vm.saveIcon = "save";
         vm.clearName = "Clear";
         vm.clearIcon = "format_paint";
+        
+        vm.minDate = new Date();
 
         
     }

@@ -21,9 +21,10 @@
 				</md-input-container>
 				
 	            <md-input-container  class="md-block" flex>
-	                <md-datepicker name="deadline" ng-model="vm.task.deadline" placeholder="Deadline" aria-label="Deadline"></md-datepicker>
+	                <md-datepicker name="deadline" ng-model="vm.task.deadline" placeholder="Deadline" aria-label="Deadline" md-min-date="vm.minDate"></md-datepicker>
 	                <ng-messages for="taskForm.deadline.$error" role="alert">
 	                	<ng-message when="valid">This is not a valid date.</ng-message>
+	                	<ng-message when="mindate">This date is past already.</ng-message>
 					</ng-messages>
 				</md-input-container>
 			</div>
@@ -55,7 +56,7 @@
 			<md-button class="md-primary md-raised" ng-click="vm.deleteTask($event)">
 				<md-icon>{{vm.deleteIcon}}</md-icon> {{vm.deleteName}}
 			</md-button>
-			<md-button class="md-primary md-raised" ng-click="vm.submitEditedTask()">
+			<md-button class="md-primary md-raised" ng-click="vm.submitEditedTask()" ng-disabled="taskForm.$invalid">
 				<md-icon>{{vm.saveIcon}}</md-icon> {{vm.saveName}}
 			</md-button>
 		</md-dialog-actions>

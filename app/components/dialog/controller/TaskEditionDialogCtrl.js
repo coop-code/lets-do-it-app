@@ -60,5 +60,7 @@
         vm.saveIcon = "save";
         vm.deleteName = "Delete";
         vm.deleteIcon = "delete";
+        
+        vm.minDate = new Date();
     }
 }());
