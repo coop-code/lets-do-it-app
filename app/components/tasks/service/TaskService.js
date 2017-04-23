@@ -3,9 +3,9 @@
     angular
         .module("letsDoIt")
         .factory("TaskService",
-            ['TasksValue', '$http', '$state', TaskService]);
+            ['TasksValue', '$http', TaskService]);
 
-    function TaskService(TasksValue, $http, $state) {
+    function TaskService(TasksValue, $http) {
         //The API runs locally for now. 
         var apiHealthCheckUri = 'http://localhost:4000/ping';
         var apiUrl = 'http://localhost:4000/tasks';
@@ -210,7 +210,6 @@
             updateTaskDto.priority = task.priority;
             updateTaskDto.done = task.done;
             return updateTaskDto;
-
         }
         
         function getObjectPositionInArrayById (object, array) {

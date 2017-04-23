@@ -2,9 +2,9 @@
     "use strict";
     angular
         .module("letsDoIt")
-        .controller("FinishedTasksListCtrl", ['TaskService', 'ToastrService', 'DialogService', '$state', 'TasksValue', FinishedTasksListCtrl]);
+        .controller("FinishedTasksListCtrl", ['TaskService', 'ToastrService', 'DialogService', 'StateService', 'TasksValue', FinishedTasksListCtrl]);
 
-    function FinishedTasksListCtrl(TaskService, ToastrService, DialogService, $state, TasksValue) {
+    function FinishedTasksListCtrl(TaskService, ToastrService, DialogService, StateService, TasksValue) {
 
         var vm = this;
         vm.tasks = TasksValue;
@@ -25,8 +25,8 @@
                         console.log('TaskListCtrl error (setFinishedTasks): ', error);
                     });
             })
-            .catch(function (error) {
-                $state.go('main.connectionProblem');
+            .catch(function (error) { 
+            	StateService.goToConnectionProblem();
             });
 
         function deleteTask(task, event) {
@@ -67,43 +67,3 @@
         vm.openTaskVisualizationDialog = openTaskVisualizationDialog;
     }
 }());
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

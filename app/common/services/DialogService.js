@@ -9,7 +9,7 @@
 		function openDialog(event, config) {
 			var defaults = {
 				clickOutsideToClose: true,
-				targetEvent: event
+				targetEvent: event,
 			}
 			return $mdDialog.show(angular.extend(defaults, config));
 		}

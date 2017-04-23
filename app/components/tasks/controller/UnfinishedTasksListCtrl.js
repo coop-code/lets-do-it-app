@@ -2,9 +2,9 @@
     "use strict";
     angular
         .module("letsDoIt")
-        .controller("UnfinishedTasksListCtrl", ['TaskService', 'ToastrService', 'DialogService', '$state', 'TasksValue', UnfinishedTasksListCtrl]);
+        .controller("UnfinishedTasksListCtrl", ['TaskService', 'ToastrService', 'DialogService', 'StateService', 'TasksValue', UnfinishedTasksListCtrl]);
 
-    function UnfinishedTasksListCtrl(TaskService, ToastrService, DialogService, $state, TasksValue) {
+    function UnfinishedTasksListCtrl(TaskService, ToastrService, DialogService, StateService, TasksValue) {
 
         var vm = this;
         vm.tasks = TasksValue;
@@ -26,7 +26,7 @@
                     });
             })
             .catch(function (error) {
-                $state.go('main.connectionProblem');
+            	StateService.goToConnectionProblem();
             });
 
         function deleteTask(task, event) {
