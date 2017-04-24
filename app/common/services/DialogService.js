@@ -6,10 +6,11 @@
 
 	function DialogService($mdDialog) {
 
-		function openDialog(event, config) {
+		function openDialog($event, config) {
 			var defaults = {
 				clickOutsideToClose: true,
-				targetEvent: event,
+				targetEvent: $event,
+				multiple : true
 			}
 			return $mdDialog.show(angular.extend(defaults, config));
 		}
@@ -31,18 +32,6 @@
 			},
 			answerDialog: function (answer) {
 				answerDialog(answer);
-			},
-			openDeleteConfirmationDialog: function (event) {
-				
-				var deleteConfirmationDialogConfig = {
-					templateUrl: 'app/components/dialog/view/deleteConfirmationDialogView.html',
-					controller: 'DeleteConfirmationDialogCtrl',
-					controllerAs: 'vm',
-					multiple : true
-				}
-				
-				return openDialog(event, deleteConfirmationDialogConfig);
-			
 			}
 		}
 	}

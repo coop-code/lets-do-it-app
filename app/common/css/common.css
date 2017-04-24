@@ -204,3 +204,7 @@ md-card:hover{
 /* END SIDENAV DEFINITIONS */
 /***************************/
 /***************************/
+
+.semiTransparent {
+	opacity: 0.1 !important;
+}

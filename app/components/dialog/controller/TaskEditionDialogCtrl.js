@@ -7,6 +7,7 @@
     function TaskEditionDialogCtrl(TaskService, ToastrService, DialogService, task) {
         var vm = this;
         vm.task = task;
+        vm.ConfirmationDialogIsOpen = false;
 
         //Triggered by the create button
         function submitEditedTask() {
@@ -22,12 +23,22 @@
                 });
         }
 
+        function openDeleteConfirmationDialog(event) {
+            var dialogConfig = {
+            	templateUrl: 'app/components/dialog/view/deleteConfirmationDialogView.html',
+				controller: 'DeleteConfirmationDialogCtrl',
+				controllerAs: 'vm',
+				clickOutsideToClose: false
+            }
+            return DialogService.openDialog(event, dialogConfig);
+        };
+        
         function deleteTask(event) {
-
-            DialogService.openDeleteConfirmationDialog(event)
+        	vm.ConfirmationDialogIsOpen = true;
+        	openDeleteConfirmationDialog(event)
                 .then(function (answer) {
-
                     //Answer can be yes or no. If yes, then proceed with the delete operation, otherwise, do nothing.
+                	vm.ConfirmationDialogIsOpen = false;
                     if (answer === 'yes') {
                         closeDialog();
                         ToastrService.processing("Deleting", "Please wait while the task is deleted...");
@@ -41,8 +52,9 @@
                             });
                     }
 
-                }, function () {
-                    //Delete cancelled
+                })
+                .catch( function () {
+                	vm.ConfirmationDialogIsOpen = false; //Delete cancelled
                 });
 
         }

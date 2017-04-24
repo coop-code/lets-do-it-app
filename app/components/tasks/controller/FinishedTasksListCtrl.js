@@ -29,10 +29,20 @@
             	StateService.goToConnectionProblem();
             });
 
+        function openDeleteConfirmationDialog(event) {
+            var dialogConfig = {
+            	templateUrl: 'app/components/dialog/view/deleteConfirmationDialogView.html',
+				controller: 'DeleteConfirmationDialogCtrl',
+				controllerAs: 'vm',
+				multiple : true,
+				clickOutsideToClose: false
+            }
+            return DialogService.openDialog(event, dialogConfig);
+        };
+        
         function deleteTask(task, event) {
-            DialogService.openDeleteConfirmationDialog(event)
+        	openDeleteConfirmationDialog(event)
                 .then(function (answer) {
-
                     //Answer can be yes or no. If yes, then proceed with the delete operation, otherwise, do nothing.
                     if (answer === 'yes') {
                         ToastrService.processing("Deleting", "Please wait while the task is deleted...");
@@ -42,16 +52,17 @@
                             })
                             .catch(function (error) {
                                 ToastrService.error("Error", "There was a problem in the deletion. Please refresh the page before trying again.");
-                                console.log('TaskListCtrl error (deleteTask): ', error);
+                                console.log('TaskListCtrl error (deleteTask -> openDeleteConfirmationDialog): ', error);
                             });
                     }
 
-                }, function () {
+                })
+                .catch( function () {
                     //Delete cancelled
                 });
         }
 
-        function openTaskVisualizationDialog(event, options, task) {
+        function openTaskVisualizationDialog(task, $event) {
             var dialogConfig = {
                 templateUrl: 'app/components/dialog/view/taskVisualizationDialogView.html',
                 controller: 'TaskVisualizationDialogCtrl',
@@ -60,7 +71,7 @@
                     task: task
                 }
             }
-            DialogService.openDialog(event, dialogConfig);
+            return DialogService.openDialog($event, dialogConfig);
         };
 
         vm.deleteTask = deleteTask;
