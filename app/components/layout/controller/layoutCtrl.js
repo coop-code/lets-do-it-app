@@ -16,9 +16,6 @@
             $mdSidenav('sidenav').toggle();
         }
 
-        vm.openTaskCreationDialog = openTaskCreationDialog;
-        vm.toggleSideNav = toggleSideNav;
-        
         vm.FABIcon = 'assignment';
         vm.menuOptions = 
         	[
@@ -44,5 +41,8 @@
         	 		link:	'main.finished'
         	 	}
         	 ];
+        
+        vm.openTaskCreationDialog = openTaskCreationDialog;
+        vm.toggleSideNav = toggleSideNav;
     }
 }());
