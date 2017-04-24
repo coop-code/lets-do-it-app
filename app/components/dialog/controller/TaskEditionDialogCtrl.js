@@ -22,20 +22,10 @@
                     console.log('TaskEditionDialogCtrl error (submitEditedTask): ', error);
                 });
         }
-
-        function openDeleteConfirmationDialog(event) {
-            var dialogConfig = {
-            	templateUrl: 'app/components/dialog/view/deleteConfirmationDialogView.html',
-				controller: 'DeleteConfirmationDialogCtrl',
-				controllerAs: 'vm',
-				clickOutsideToClose: false
-            }
-            return DialogService.openDialog(event, dialogConfig);
-        };
         
         function deleteTask(event) {
         	vm.ConfirmationDialogIsOpen = true;
-        	openDeleteConfirmationDialog(event)
+        	DialogService.openDeleteConfirmationDialog(event)
                 .then(function (answer) {
                     //Answer can be yes or no. If yes, then proceed with the delete operation, otherwise, do nothing.
                 	vm.ConfirmationDialogIsOpen = false;

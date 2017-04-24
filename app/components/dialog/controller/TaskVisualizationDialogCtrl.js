@@ -8,22 +8,11 @@
         var vm = this;
         vm.task = task;
         vm.ConfirmationDialogIsOpen = false;
-        
-        function openDeleteConfirmationDialog(event) {
-            var dialogConfig = {
-            	templateUrl: 'app/components/dialog/view/deleteConfirmationDialogView.html',
-				controller: 'DeleteConfirmationDialogCtrl',
-				controllerAs: 'vm',
-				multiple : true,
-				clickOutsideToClose: false
-            }
-            return DialogService.openDialog(event, dialogConfig);
-        };
-        
+
         //Triggered by the create button
         function deleteTask(event) {
         	vm.ConfirmationDialogIsOpen = true;
-        	openDeleteConfirmationDialog(event)
+        	DialogService.openDeleteConfirmationDialog(event)
 	            .then(function (answer) {
 	            	//Answer can be yes or no. If yes, then proceed with the delete operation, otherwise, do nothing.
 	            	vm.ConfirmationDialogIsOpen = false;
