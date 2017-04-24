@@ -28,20 +28,9 @@
             .catch(function (error) { 
             	StateService.goToConnectionProblem();
             });
-
-        function openDeleteConfirmationDialog(event) {
-            var dialogConfig = {
-            	templateUrl: 'app/components/dialog/view/deleteConfirmationDialogView.html',
-				controller: 'DeleteConfirmationDialogCtrl',
-				controllerAs: 'vm',
-				multiple : true,
-				clickOutsideToClose: false
-            }
-            return DialogService.openDialog(event, dialogConfig);
-        };
         
         function deleteTask(task, event) {
-        	openDeleteConfirmationDialog(event)
+        	DialogService.openDeleteConfirmationDialog(event)
                 .then(function (answer) {
                     //Answer can be yes or no. If yes, then proceed with the delete operation, otherwise, do nothing.
                     if (answer === 'yes') {
@@ -63,15 +52,7 @@
         }
 
         function openTaskVisualizationDialog(task, $event) {
-            var dialogConfig = {
-                templateUrl: 'app/components/dialog/view/taskVisualizationDialogView.html',
-                controller: 'TaskVisualizationDialogCtrl',
-                controllerAs: 'vm',
-                locals: {
-                    task: task
-                }
-            }
-            return DialogService.openDialog($event, dialogConfig);
+            DialogService.openTaskVisualizationDialog(task, $event);
         };
 
         vm.deleteTask = deleteTask;

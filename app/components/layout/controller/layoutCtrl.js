@@ -2,24 +2,16 @@
     "use strict";
     angular
         .module("letsDoIt")
-        .controller("LayoutCtrl",
-            LayoutCtrl);
+        .controller("LayoutCtrl",['TaskService', 'DialogService', '$mdSidenav', LayoutCtrl]);
 
     function LayoutCtrl(TaskService, DialogService, $mdSidenav) {
         var vm = this;
-
-        vm.openTaskCreationDialog = openTaskCreationDialog;
-
         //Dialog
         //Triggered by the FAB button
-        function openTaskCreationDialog(event, options) {
-            var dialogConfig = {
-                templateUrl: 'app/components/dialog/view/taskCreationDialogView.html',
-                controller: 'TaskCreationDialogCtrl',
-                controllerAs: 'vm',
-            }
-            DialogService.openDialog(event, dialogConfig);
-        };
+        function openTaskCreationDialog(event) {
+        	return DialogService.openTaskCreationDialog(event);
+        }
+        
 
         //Sidenav menu entries
         var menuData = [
@@ -49,6 +41,8 @@
             $mdSidenav('sidenav').toggle();
         }
 
+        vm.openTaskCreationDialog = openTaskCreationDialog;
+        
         vm.FABIcon = 'assignment';
     }
 }());
