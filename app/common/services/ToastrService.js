@@ -3,54 +3,66 @@
 	angular.module('letsDoIt')
 		.factory('ToastrService', function (toastr) {
 			
-			var successConfig = {
-				allowHtml: true,
-				tapToDismiss: true,
-				timeOut: 2000
-			};
+			function success(title, text){
+				var config = {
+					allowHtml: true,
+					tapToDismiss: true,
+					timeOut: 2000
+				};
+				toastr.clear();
+	            toastr.success(text, title, config);
+			}
 			
-			var errorConfig =  {
-				allowHtml: true,
-				tapToDismiss: true,
-				timeOut: 0,
-				progressBar: true
-	        };
+			function success(title, text){
+				var config = {
+					allowHtml: true,
+					tapToDismiss: true,
+					timeOut: 2000
+				};
+				toastr.clear();
+	            toastr.success(text, title, config);
+			}
 			
-			var infoConfig = {
-				allowHtml: true,
-				tapToDismiss: true,
-				timeOut: 5000,
-				progressBar: true,
-				extendedTimeOut: 2000
-			};
+			function error(title, text){
+				var config =  {
+						allowHtml: true,
+						tapToDismiss: true,
+						timeOut: 0,
+						progressBar: true
+			        };
+				toastr.clear();
+	            toastr.error(text, title, config);
+			}
 			
-			var processingConfig = {
-				allowHtml: true,
-				tapToDismiss: true,
-				timeOut: 0,
-				progressBar: false
-			};
+			function info(title, text){
+				var config = {
+						allowHtml: true,
+						tapToDismiss: true,
+						timeOut: 5000,
+						progressBar: true,
+						extendedTimeOut: 2000
+					};
+				toastr.clear();
+	            toastr.info(text, title, config);
+			}
 			
+			function processing(title, text){
+				var config = {
+						allowHtml: true,
+						tapToDismiss: true,
+						timeOut: 0,
+						progressBar: false
+					};
+				toastr.clear();
+	            toastr.info(text, title, config);
+			}
+			
+			//Public calls
 		    return {
-		        success: function (title, text) {
-		        	toastr.clear();
-		            toastr.success(text ,  title , successConfig);
-		        },
-		        error: function (title, text) {
-		        	toastr.clear();
-		        	toastr.error(text ,  title , errorConfig);
-		        },
-		        info: function (title, text) {
-		        	toastr.clear();
-		        	toastr.info(text , title , infoConfig);
-		        },
-		        processing: function (title, text) {
-		        	toastr.clear();
-		        	toastr.info(text, title, processingConfig);
-		        },
-		        clear: function () {
-		        	toastr.clear();
-		        }
+		        success: success,
+		        error: error,
+		        info: info,
+		        processing: processing
 		    }
 		});
 	})();

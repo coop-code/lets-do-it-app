@@ -53,16 +53,17 @@
             DialogService.closeDialog();
         }
 
-        vm.submitEditedTask = submitEditedTask;
-        vm.deleteTask = deleteTask;
-        vm.closeDialog = closeDialog;
-
         vm.title = "Edit task";
         vm.saveName = "Save";
         vm.saveIcon = "save";
         vm.deleteName = "Delete";
         vm.deleteIcon = "delete";
+        vm.minDate = new Date()
         
-        vm.minDate = new Date();
+        vm.submitEditedTask = submitEditedTask;
+        vm.deleteTask = deleteTask;
+        vm.closeDialog = closeDialog;
+        
+       ;
     }
 }());

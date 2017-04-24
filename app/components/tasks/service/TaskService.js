@@ -17,29 +17,9 @@
         		.then(function (response) {/*API is online*/})
         		.catch (function (error) {console.log('TaskService error (ping): ', error); throw error;});
         }
-        
-        //Set the value of unfinished tasks
-        function setUnfinishedTasksValue() {
-        	var promise =  $http.get(apiUrl, {
-                params: {"finished": false}
-            });
-        	return promise
-        		.then(function (response) {
-        			var tasks = response.data;
-                    tasks.forEach(function (task) {
-                    	CalculateDeadlineInDays(task);
-                    	CustomizeTask(task);
-                    });
-                    TasksValue.unfinished = tasks;
-        		})
-        		.catch (function (error) {
-        			console.log('TaskService error (setUnfinishedTasksValue): ', error);
-        			throw error;
-        		});
-        }
 
         //Set the value of finished tasks
-        function setFinishedTasksValue() {
+        function setFinishedTasks() {
         	var promise =  $http.get(apiUrl, {
                 params: {"finished": true}
             });
@@ -58,6 +38,26 @@
         		});
         }
 
+      //Set the value of unfinished tasks
+        function setUnfinishedTasks() {
+        	var promise =  $http.get(apiUrl, {
+                params: {"finished": false}
+            });
+        	return promise
+        		.then(function (response) {
+        			var tasks = response.data;
+                    tasks.forEach(function (task) {
+                    	CalculateDeadlineInDays(task);
+                    	CustomizeTask(task);
+                    });
+                    TasksValue.unfinished = tasks;
+        		})
+        		.catch (function (error) {
+        			console.log('TaskService error (setUnfinishedTasksValue): ', error);
+        			throw error;
+        		});
+        }
+        
         //Get a task by its id
         function getTask(task) {
         	var promise =  $http.get(apiUrl + '/' + task.id);
@@ -167,37 +167,6 @@
 	    			throw error;
 	    		});
         }
-        
-        //Public calls
-        return {
-            ping: function () {
-                return ping();
-            },
-            setUnfinishedTasks: function () {
-            	return setUnfinishedTasksValue();
-            },
-            setFinishedTasks: function () {
-            	return setFinishedTasksValue();
-            },
-            getTask: function (task) {
-                return getTask(task);
-            },
-            createTask: function (task) {
-                return createTask(task);
-            },
-            changeTaskPriority: function (task) {
-                return changeTaskPriority(task);
-            },
-            finishTask: function (task) {
-                return finishTask(task);
-            },
-            deleteTask: function (task) {
-                return deleteTask(task);
-            },
-            saveEditedTask: function (oldTask, newTask) {
-            	return saveEditedTask(oldTask, newTask);
-            }
-        }
 
         //Prepare a task to be inserted in DB based on provided parameter 'task', getting only the necessary fields
         function createUpdatedTaskModel(task) {
@@ -212,9 +181,11 @@
             return updateTaskDto;
         }
         
+        //Get an object index in an array, returning -1 if it doesn't exist
         function getObjectPositionInArrayById (object, array) {
         	return array.map(function(e) { return e.id; }).indexOf(object.id);
         }
+        
         //Calculate deadline in days
         function CalculateDeadlineInDays(task) {
             var days;
@@ -226,16 +197,23 @@
             }
         }
 
-        //Add the 'showOptions' parameter to be used to open and close card options and set the piority icon according to priority value
+        //Add the 'showOptions' parameter to be used to open and close card options and set the priority icon according to priority value
         function CustomizeTask(task) {
             task.showOptions = false;
-            task.priorityIcon = CustomizePriorityIcon(task.priority);
+            task.priorityIcon = (task.priority) ? "star" : "star_border";
         }
-
-        //Priority icon setter
-        function CustomizePriorityIcon(priority) {
-            if (priority) {return "star";}
-            return "star_border";
+        
+        //Public calls
+        return {
+            ping: ping,
+            setUnfinishedTasks: setUnfinishedTasks,
+            setFinishedTasks: setFinishedTasks,
+            getTask: getTask,
+            createTask: createTask,
+            changeTaskPriority: changeTaskPriority,
+            finishTask: finishTask,
+            deleteTask: deleteTask,
+            saveEditedTask: saveEditedTask
         }
     }
 

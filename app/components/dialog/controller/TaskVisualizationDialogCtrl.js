@@ -38,11 +38,11 @@
         	DialogService.closeDialog();
         }
         
-        vm.deleteTask = deleteTask;
-        vm.closeDialog = closeDialog;
-        
         vm.title = "Task data";
         vm.deleteName = "Delete";
         vm.deleteIcon = "delete";
+        
+        vm.deleteTask = deleteTask;
+        vm.closeDialog = closeDialog;
     }
 }());

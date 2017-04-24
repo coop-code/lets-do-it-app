@@ -36,17 +36,16 @@
             vm.task.priority = false;
         }
         
-        vm.submitNewTask = submitNewTask;
-        vm.closeDialog = closeDialog;
-        vm.clearDialog = clearDialog;
-        
         vm.title = "New task";
         vm.saveName = "Save";
         vm.saveIcon = "save";
         vm.clearName = "Clear";
         vm.clearIcon = "format_paint";
-        
         vm.minDate = new Date();
+        
+        vm.submitNewTask = submitNewTask;
+        vm.closeDialog = closeDialog;
+        vm.clearDialog = clearDialog;
 
         
     }
