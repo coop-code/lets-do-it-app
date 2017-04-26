@@ -5,24 +5,30 @@
 		.factory("StateService", ['$state', StateService]);
 
 	function StateService($state) {
+		
+		function goToState(state) {
+			$state.go(state);
+		}
+		
 		function goToHome() {
-			$state.go('main.home');
+			$state.goToState('main.home');
 		}
 
 		function goToFinishedTasks() {
-			$state.go('main.finished');
+			$state.goToState('main.finished');
 		}
 		
 		function goToUnfinishedTasks() {
-			$state.go('main.unfinished');
+			$state.goToState('main.unfinished');
 		}
 		
 		function goToConnectionProblem() {
-			$state.go('main.connectionProblem');
+			$state.goToState('main.connectionProblem');
 		}
 
 		//Public calls
         return {
+        	goToState: goToState,
         	goToHome: goToHome,
             goToFinishedTasks: goToFinishedTasks,
             goToUnfinishedTasks: goToUnfinishedTasks,

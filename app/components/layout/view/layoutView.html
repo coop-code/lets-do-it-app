@@ -1,20 +1,45 @@
-<div layout="row" style="height:100%" flex>
-    <md-sidenav 
-    	class="md-sidenav-left" 
-    	md-component-id="sidenav" 
-    	md-is-locked-open="$mdMedia('gt-sm')" 
-    	md-whiteframe="24">
+<div layout="column"  layout-fill>
+	
+	<md-toolbar class="md-theme-indigo">
+    	<div class="md-toolbar-tools">
+	    	<md-button hide-gt-sm class="md-icon-button" aria-label="Menu" ng-click="vm.toggleSideNav()">
+	        	<md-icon>menu</md-icon>
+	        </md-button>
+	
+	        <h2 hide show-gt-sm flex md-truncate>Let's do it!</h2>
+	        <h2 hide-gt-sm flex md-truncate>{{vm.title}}</h2>
+
+	        <md-button class="md-icon-button" aria-label="Search">
+	          	<md-icon>search</md-icon>
+	        </md-button>
+		</div>
+	</md-toolbar>
+	
+	<md-tabs hide show-gt-sm md-stretch-tabs="always">
+		<md-tab	ng-repeat="option in vm.menuOptions" 
+        					style="text-align:left" 
+        					ui-sref="{{ option.link }}" 
+        					ui-sref-active="active-sidenav-link"
+        					md-ink-ripple="{{ option.ripple }}"
+        					ng-click="vm.changeTitle(option)">
+        	<md-icon>{{ option.icon }}</md-icon> {{ option.name }}
+        </md-tab>  
+	</md-tabs>
+	  	
+	<md-sidenav 	class="md-sidenav-left" 
+    							md-component-id="sidenav" 
+    							md-whiteframe="24">
       	<md-toolbar class="md-theme-indigo">
         	<h1 class="md-toolbar-tools" >Let's do it!</h1>
       	</md-toolbar>
       	<md-content layout="column" layout-padding>
-        	<md-button 
-        		ng-repeat="option in vm.menuOptions" 
-        		style="text-align:left" 
-        		ui-sref="{{ option.link }}" 
-        		ui-sref-active="active-sidenav-link"
-        		class="{{ option.class }}"
-        		md-ink-ripple="{{ option.ripple }}">
+        	<md-button 	ng-repeat="option in vm.menuOptions" 
+        							style="text-align:left" 
+        							ui-sref="{{ option.link }}" 
+        							ui-sref-active="active-sidenav-link"
+        							class="{{ option.class }}"
+        							md-ink-ripple="{{ option.ripple }}"
+        							ng-click="vm.changeTitleCloseSidenav(option)">
         		<md-icon>{{ option.icon }}</md-icon> {{ option.name }}
         	</md-button>
       	</md-content>
