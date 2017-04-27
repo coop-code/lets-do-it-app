@@ -6,7 +6,7 @@
 
     function HomeCtrl(TaskService, StateService) {
         var vm = this;
-        vm.title = "Welcome to Lets Do It";
+        vm.title = "Welcome to Let's Do It";
 
         vm.developers = [{
                 "icon" : "person_outline",

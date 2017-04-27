@@ -2,24 +2,30 @@
 	<h2 class="md-flex">{{vm.title}}</h2>
 </div>
 
-<md-content flex layout-padding>
-	<p>Let's Do It is task management app (a to-do list) designed for studying purposes. This app is implemented using the <b>AngularJS framework</b>		and <b>Angular Material</b></p>
-	<p>In order to work properly, this app interacts with a API to read, create, update e delete tasks. But don't worry, we already
-		implemented one (a RESTFul Web API using NodeJS and MongoDB) and it is available and working well</p>
+<md-content layout="row" layout-align="center center" flex layout-padding>
+	<div flex=60>
+	<p>"Let's Do It" is a task management app (a to-do list) designed for studying purposes. This app was implemented using the following:</p>
+	<md-list>
+		<md-list-item><span><md-icon md-svg-icon="app/common/icon/angular-icon.svg" aria-label="angular"></md-icon></span>&nbsp<b>AngularJS framework</b></md-list-item>
+		<md-list-item><span><md-icon md-svg-icon="app/common/icon/angular-icon.svg" aria-label="angular"></md-icon></span>&nbsp<b>Angular Material</b></md-list-item>
+	</md-list>
+	<p>In order to work properly, this app interacts with an API to read, create, update e delete tasks. But don't worry, we already
+		implemented one (a RESTFul Web API using <b>NodeJS</b> and <b>MongoDB</b>) and it is available for you!</p>
 	<p>Well, I'm sure you came here to test the APP and see how it works. If you want to create a task, just click in the button
 		on the bottom right corner and a form will pop up.</p>
-	<p>The Lets Do It App provides all the basic operations regarding tasks (read, creation, editing and deleting). Some other
+	<p>The Let's Do It App provides all the basic operations regarding tasks (read, creation, editing and deleting). Some other
 		operations were added, such as prioritize and mark the task as done. The tasks are separated as follows:</p>
 	<md-list>
 		<md-list-item><span><md-icon>assignment</md-icon></span>&nbspTASKS (unfinished or pending tasks) - can be edited, prioritized, marked as
 			done and deleted. </md-list-item>
-		<md-list-item><span><md-icon>assignment_turned_in</md-icon></span>&nbspFINISHED (finisehd or done tasks) - can be viewed and deleted.</md-list-item>
+		<md-list-item><span><md-icon>assignment_turned_in</md-icon></span>&nbspFINISHED (finished or done tasks) - can be viewed and deleted.</md-list-item>
 	</md-list>
-	<p>Feel free to use this APP the way you like. If you want to report any issue, go to the <a class="light-link" href="https://github.com/coop-code/lets-do-it-app">APP repository on GitHub</a>.</p>
+	<p>Feel free to use this APP the way you like, after all, it's for studying purposes. If you want to report any issue, please do so at our <a class="light-link" href="https://github.com/coop-code/lets-do-it-app">APP repository on GitHub</a>.</p>
 	<p>This APP was developed and is maintained by the developers:</p>
 	<md-list>
 		<md-list-item ng-repeat="developer in vm.developers">
 			<span><md-icon>{{developer.icon}}</md-icon></span>&nbsp{{developer.name}} (<a target="_blank" class="light-link" href={{developer.githubAddress}}>GitHub</a>,&nbsp
 			<a target="_blank" class="light-link" href={{developer.developerPortfolioAddress}}>Developer Portfolio</a>) </md-list-item>
 	</md-list>
+	</div>
 </md-content>

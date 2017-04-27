@@ -1,4 +1,4 @@
-<md-dialog aria-label="New task" flex="35" ng-class="{semiTransparent: vm.ConfirmationDialogIsOpen}">
+<md-dialog aria-label="New task" flex="60" ng-class="{semiTransparent: vm.ConfirmationDialogIsOpen}">
 	<form name='taskForm' novalidate>
 		<md-toolbar>
 	      <div class="md-toolbar-tools">
@@ -11,7 +11,6 @@
 	    </md-toolbar>
 		<md-dialog-content layout-padding flex>
 			<div layout="row">
-			
 	        	<md-input-container class="md-block" flex>
 	            	<md-icon>web</md-icon>
 	                <input name="title" ng-model="vm.task.title" placeholder="Title" aria-label="Title" required md-autofocus>
@@ -20,7 +19,7 @@
 					</ng-messages>
 				</md-input-container>
 				
-	            <md-input-container  class="md-block" flex>
+	            <md-input-container class="md-block" flex>
 	                <md-datepicker name="deadline" ng-model="vm.task.deadline" placeholder="Deadline" aria-label="Deadline" md-min-date="vm.minDate"></md-datepicker>
 	                <ng-messages for="taskForm.deadline.$error" role="alert">
 	                	<ng-message when="valid">This is not a valid date.</ng-message>
@@ -45,9 +44,9 @@
 			
 			<div layout="row">
 	        	<md-input-container class="md-block" flex>
-	        		<md-switch ng-model="vm.task.priority" class="md-warn" aria-label="Priority">
-					    {{vm.task.priority ? "Prioritary task" : "Common task"}}
-					</md-switch>
+	        		<md-button class="md-icon-button" ng-model="vm.task.priority" ng-click="vm.task.priority = !vm.task.priority" aria-label="Priority">
+			          	<md-icon ng-class="{'md-warn': vm.task.priority}">{{vm.task.priority ? "star" : "star_border"}}</md-icon>
+			        </md-button> {{vm.task.priority ? "Priority" : "Normal"}}
 				</md-input-container>
 	        </div>
 	        
