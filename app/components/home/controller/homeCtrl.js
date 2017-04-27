@@ -2,13 +2,24 @@
     "use strict";
     angular
         .module("letsDoIt")
-        .controller("HomeCtrl",['TaskService', 'StateService', HomeCtrl]);
+        .controller("HomeCtrl", ['TaskService', 'StateService', HomeCtrl]);
 
     function HomeCtrl(TaskService, StateService) {
         var vm = this;
-        vm.title = "HOME";
-        TaskService.ping()
-	    	.then(function () {/*API is online and doing well!*/})
-	    	.catch(function (err) {StateService.goToConnectionProblem();});
+        vm.title = "Welcome to Lets Do It";
+
+        vm.developers = [{
+                "icon" : "person_outline",
+                "name": "Breno Wruck Schneider",
+                "githubAddress": "https://github.com/brenowschneider",
+                "developerPortfolioAddress": "http://www.brenoschneider.info"
+            },
+            {
+                "icon" : "person_outline",
+                "name": "Ygor Kiefer",
+                "githubAddress": "https://github.com/llKieferll",
+                "developerPortfolioAddress": "http://www.ygorkiefer.info"
+            }
+        ]
     }
 }());

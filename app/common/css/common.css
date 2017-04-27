@@ -208,3 +208,33 @@ md-card:hover{
 .semiTransparent {
 	opacity: 0.1 !important;
 }
+
+/***************************/
+/***************************/
+/**** TEXT DEFINITIONS *****/
+/***************************/
+/***************************/
+
+a.light-link:link {
+	color: #aae2ff
+}
+
+a.light-link:visited {
+	color: #aae2ff
+}
+
+a.light-link:hover {
+	color: #4abef9
+}
+
+a.light-link {
+	text-decoration: none;
+}
+
+
+
+/***************************/
+/***************************/
+/** END TEXT DEFINITIONS ***/
+/***************************/
+/***************************/
