@@ -8,6 +8,11 @@ md-icon.md-darkTheme-theme {
 	color: rgba(255,255,255,1);
 }
 
+/* Warn icon color */
+md-icon.md-darkTheme-theme.md-warn {
+    color: rgb(255,87,34) !important; 
+}
+
 md-toolbar.md-darkTheme-theme:not(.md-menu-toolbar) {
     background-color: rgba(0, 0, 0, 1);
 }
@@ -19,31 +24,40 @@ md-toolbar.md-darkTheme-theme:not(.md-menu-toolbar) {
 /*******************************/
 /*Base colors for all tabs*/
 md-tabs.md-darkTheme-theme .md-tab {
-    color: rgba(255, 255, 255, 1);
-    background-color: rgb(0, 0, 0);
-}
-
-md-tabs.md-darkTheme-theme .md-tab:hover {
+    color: rgba(255, 255, 255, 0.33);
 	background-color: rgba(0, 0, 0, 1);
+    border-top: 3px solid rgba(255, 255, 255, 0.1);
+    border-left: 3px solid rgba(255, 255, 255, 0.1);
+    border-righ: 3px solid rgba(255, 255, 255, 0.1);
 }
-/*Specific color for active tab*/
+/*Semi-transparent icon and text inside tabs*/
+md-tabs.md-darkTheme-theme .md-tab md-icon {
+	color: rgba(255, 255, 255, 0.33);
+}
+/*Hover effect for tabs*/
+md-tabs.md-darkTheme-theme .md-tab:hover {
+	background-color: rgba(0, 0, 0, 0.9);
+	border-top: 3px solid rgba(255, 255, 255, 0.2);
+}
+/*Specific borders and colors for active tab*/
 md-tabs.md-darkTheme-theme .md-tab.md-active, 
+md-tabs.md-darkTheme-theme .md-tab.md-focused {
+	color: rgb(255, 255, 255);
+    background-color: rgb(48, 48, 48);
+    border-top: 3px solid white;
+    border-left: 3px solid rgba(255, 255, 255, 0);
+    border-righ: 3px solid rgba(255, 255, 255, 0);
+}
+/*Specific colors for active tab icons*/
 md-tabs.md-darkTheme-theme .md-tab.md-active md-icon, 
-md-tabs.md-darkTheme-theme .md-tab.md-focused, 
 md-tabs.md-darkTheme-theme .md-tab.md-focused md-icon {
     color: rgb(255, 255, 255);
     background-color: rgb(48, 48, 48);
-    border-bottom: 3px solid rgba(255, 255, 255, 0);
 }
 
-md-tabs.md-darkTheme-theme .md-tab.md-active, 
-md-tabs.md-darkTheme-theme .md-tab.md-focused{
-    border-top: 3px solid white;
-}
-/*Inkbar color*/
-md-tabs.md-darkTheme-theme md-ink-bar {
-    color: rgb(250, 250, 250);
-    background: rgba(0, 0, 0, 1);
+/*Accelerating the transition of colors for hover effect*/
+.md-tab {
+	transition: background-color 0.1s cubic-bezier(0.35, 0, 0.25, 1)
 }
 /*****************************/
 /*****************************/
@@ -269,6 +283,14 @@ md-card:hover{
 /* Active sidenav state color */
 .active-sidenav-link {
     background-color: rgba(0, 0, 0, 0.3);
+}
+/* Active sidenav state color */
+.active-tab-link {
+    color: rgb(255, 255, 255);
+    background-color: rgb(48, 48, 48);
+    border-top: 3px solid white;
+    border-left: 3px solid rgba(255, 255, 255, 0);
+    border-righ: 3px solid rgba(255, 255, 255, 0);
 }
 /*********************************/
 /*********************************/

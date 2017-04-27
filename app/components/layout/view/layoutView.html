@@ -15,13 +15,13 @@
 		</div>
 	</md-toolbar>
 	
-	<md-tabs hide show-gt-xs md-no-ink-bar md-stretch-tabs="always">
+	<md-tabs hide show-gt-xs md-no-ink-bar md-selected="vm.selectedTabIndex" md-stretch-tabs="always">
 		<md-tab	ng-repeat="option in vm.menuOptions" 
         					style="text-align:left" 
         					ui-sref="{{ option.link }}" 
-        					ui-sref-active="active-sidenav-link"
+        					md-active="vm.currentState == option.link"
         					md-ink-ripple="{{ option.ripple }}"
-        					ng-click="vm.changeTitle(option)">
+        					ng-click="vm.updateCurrentStateAndTitleTabs(option)">
         	<md-icon>{{ option.icon }}</md-icon> {{ option.name }}
         </md-tab>  
 	</md-tabs>
@@ -39,7 +39,7 @@
         							ui-sref-active="active-sidenav-link"
         							class="{{ option.class }}"
         							md-ink-ripple="{{ option.ripple }}"
-        							ng-click="vm.changeTitleCloseSidenav(option)">
+        							ng-click="vm.updateCurrentStateAndTitleSidenav(option)">
         		<md-icon>{{ option.icon }}</md-icon> {{ option.name }}
         	</md-button>
       	</md-content>

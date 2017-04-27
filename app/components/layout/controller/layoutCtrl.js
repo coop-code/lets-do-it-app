@@ -6,7 +6,7 @@
 
     function LayoutCtrl(TaskService, DialogService, StateService, $mdSidenav) {
         var vm = this;
-        
+
         //Triggered by the FAB button
         function openTaskCreationDialog(event) {
         	return DialogService.openTaskCreationDialog(event);
@@ -15,18 +15,15 @@
         function toggleSideNav() {
             $mdSidenav('sidenav').toggle();
         }
-
-        function changeTitle(option){
-        	vm.title = option.name;
-        }
         
-        function changeTitleCloseSidenav(option){
-        	changeTitle(option);
+        function updateCurrentStateAndTitleSidenav(option){
+        	updateCurrentStateAndTitleTabs(option);
         	toggleSideNav();
         }
-        
-        function goToState(state) {
-        	StateService.goToState(state);
+
+        function updateCurrentStateAndTitleTabs(option) {
+        	vm.currentState = option.link;
+        	vm.title = option.name;
         }
         
         vm.FABIcon = 'assignment';
@@ -54,10 +51,12 @@
         	 		link:	'main.finished'
         	 	}
         	 ];
+        vm.currentState = StateService.getCurrentState().name;
+        vm.title = vm.menuOptions[vm.menuOptions.map(function(e) { return e.link; }).indexOf(vm.currentState)].name;
         
         vm.openTaskCreationDialog = openTaskCreationDialog;
-        vm.changeTitleCloseSidenav = changeTitleCloseSidenav;
-        vm.changeTitle = changeTitle;
+        vm.updateCurrentStateAndTitleSidenav = updateCurrentStateAndTitleSidenav;
+        vm.updateCurrentStateAndTitleTabs = updateCurrentStateAndTitleTabs;
         vm.toggleSideNav = toggleSideNav;
     }
 }());

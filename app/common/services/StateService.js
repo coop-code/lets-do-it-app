@@ -6,6 +6,10 @@
 
 	function StateService($state) {
 		
+		function getCurrentState() {
+			return $state.current;
+		}
+		
 		function goToState(state) {
 			$state.go(state);
 		}
@@ -25,9 +29,10 @@
 		function goToConnectionProblem() {
 			$state.goToState('main.connectionProblem');
 		}
-
+		
 		//Public calls
         return {
+        	getCurrentState: getCurrentState,
         	goToState: goToState,
         	goToHome: goToHome,
             goToFinishedTasks: goToFinishedTasks,

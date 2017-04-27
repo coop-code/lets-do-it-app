@@ -1,4 +1,4 @@
-<md-dialog aria-label="New task" flex>
+<md-dialog aria-label="New task" flex="60">
 	<form name='taskForm' novalidate>
 		<md-toolbar>
 	      <div class="md-toolbar-tools">
@@ -18,8 +18,8 @@
 	                	<ng-message when="required">The title is a required field.</ng-message>
 					</ng-messages>
 				</md-input-container>
+				
 				<md-input-container class="md-block" flex>
-					<md-icon>calendar</md-icon>
 	                <md-datepicker name="deadline" ng-model="vm.task.deadline" placeholder="Deadline" aria-label="Deadline" md-min-date="vm.minDate"></md-datepicker>
 	                <ng-messages for="taskForm.deadline.$error" role="alert">
 	                	<ng-message when="valid">This is not a valid date.</ng-message>
@@ -27,6 +27,7 @@
 					</ng-messages>
 				</md-input-container>
 			</div>
+			
 	        <div layout="row">
 	        	<md-input-container class="md-block" flex>
 	        		<md-icon>description</md-icon>
@@ -42,9 +43,9 @@
 			</div>
 			
 			<div layout="row">
-	        	<md-input-container class="md-block" layout-align="center none" flex>
+	        	<md-input-container class="md-block" flex>
 	        		<md-button class="md-icon-button" ng-model="vm.task.priority" ng-click="vm.task.priority = !vm.task.priority" aria-label="Priority">
-			          	<md-icon>{{vm.task.priority ? "star" : "star_border"}}</md-icon>
+			          	<md-icon ng-class="{'md-warn': vm.task.priority}">{{vm.task.priority ? "star" : "star_border"}}</md-icon>
 			        </md-button> {{vm.task.priority ? "Priority" : "Normal"}}
 				</md-input-container>
 	        </div>
