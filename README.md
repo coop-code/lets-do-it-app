@@ -12,7 +12,7 @@ This project is divided into two subprojects:
 * The **backend** subproject: the [Lets Do It Api](https://github.com/coop-code/lets-do-it-api), which is a RESTFul Web Api implemented using NodeJS and MongoDB.
 
 The main goal of the APP is to deal with user interactions.
-The API, on the other way, deal with the data itself: processing and answering to all the requests made by the APP, such as task creation, getting the tasks lists much more.
+The API, on the other way, deal with the data itself: processing and answering to all the requests made by the APP, such as task creation, getting tasks and much more.
 
 The rest of this document will focus only on the APP. For more information about the API, please check its [repository](https://github.com/coop-code/lets-do-it-api)
 
