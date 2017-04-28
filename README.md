@@ -17,7 +17,7 @@ The rest of this document will focus only on the APP. For more information about
 Lets Do It App is the frontend part of the Lets Do It project.
 This app is developed using the **AngularJS** framework and the **Angular Material** for better UX.
 
-As said, it has studying purposes. In other words, It's a **demonstration** about how AngularJS and Angular Material work together. Feel free to test it the way you like.
+As said, it has studying purposes. In other words, It's a **demonstration** of how AngularJS and Angular Material work together. Feel free to test it the way you like.
 
 Just one more information, this app don't have user authentication yet, so the tasks are the same for everyone.
 
