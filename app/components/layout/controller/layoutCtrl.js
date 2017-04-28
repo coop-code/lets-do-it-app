@@ -6,7 +6,7 @@
 
     function LayoutCtrl(TaskService, DialogService, StateService, $mdSidenav) {
         var vm = this;
-
+        
         //Triggered by the FAB button
         function openTaskCreationDialog(event) {
         	return DialogService.openTaskCreationDialog(event);
@@ -52,7 +52,10 @@
         	 	}
         	 ];
         vm.currentState = StateService.getCurrentState().name;
-        vm.title = vm.menuOptions[vm.menuOptions.map(function(e) { return e.link; }).indexOf(vm.currentState)].name;
+        vm.title = 
+        	vm.currentState === "main.connectionProblem"
+        	? "Can't do it :(" 
+        	: vm.menuOptions[vm.menuOptions.map(function(e) { return e.link; }).indexOf(vm.currentState)].name;
         
         vm.openTaskCreationDialog = openTaskCreationDialog;
         vm.updateCurrentStateAndTitleSidenav = updateCurrentStateAndTitleSidenav;

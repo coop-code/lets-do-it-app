@@ -15,25 +15,24 @@
 		}
 		
 		function goToHome() {
-			$state.goToState('main.home');
+			goToState('main.home');
 		}
 
 		function goToFinishedTasks() {
-			$state.goToState('main.finished');
+			goToState('main.finished');
 		}
 		
 		function goToUnfinishedTasks() {
-			$state.goToState('main.unfinished');
+			goToState('main.unfinished');
 		}
 		
 		function goToConnectionProblem() {
-			$state.goToState('main.connectionProblem');
+			goToState('main.connectionProblem');
 		}
 		
 		//Public calls
         return {
         	getCurrentState: getCurrentState,
-        	goToState: goToState,
         	goToHome: goToHome,
             goToFinishedTasks: goToFinishedTasks,
             goToUnfinishedTasks: goToUnfinishedTasks,
