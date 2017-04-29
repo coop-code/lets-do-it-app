@@ -374,11 +374,10 @@ md-toolbar.md-darkTheme-theme:not(.md-menu-toolbar) {
 }
 
 /* Glitch pulling the tabs 8 pixels up and leaving a white line between the tabs and the content.
-Since the toolbar got smaller, the tas were pulled up. We added 8 to the previous value (56 -> 64) */
-@media (max-width: 959px) and (min-width: 0) and (orientation: portrait){
-	md-toolbar {
-	    min-height: 64px;
-	}
+Since the toolbar got smaller, the tabs were pulled up. Not only that, the label of the search bar
+was getting slightly cut. So, two birds with one stone, we changed the minimum value to 75*/
+.md-toolbar-tools {
+	  min-height: 75px;
 }
 
 /***************************/
@@ -433,3 +432,24 @@ a.light-link {
 /**END TEXT DEFINITIONS**/
 /************************/
 /************************/
+
+
+/***************************/
+/***************************/
+/**BEGIN IMAGE DEFINITIONS**/
+/***************************/
+/***************************/
+
+/*Specific sizes for toad size. The guy is pretty short!*/
+img.toad{
+	min-height: 60px;
+    min-width: 50px;
+    height: 10%; 
+    width: 10%;
+}
+
+/*************************/
+/*************************/
+/**END IMAGE DEFINITIONS**/
+/*************************/
+/*************************/
