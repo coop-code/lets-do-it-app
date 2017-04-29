@@ -3,21 +3,6 @@ body{
 	font-family: 'Gloria Hallelujah', cursive;
 }
 
-/* Main icon color */
-md-icon.md-darkTheme-theme {
-	color: rgba(255,255,255,1);
-}
-
-/* Main warn icon color */
-md-icon.md-darkTheme-theme.md-warn {
-    color: rgb(255,87,34) !important; 
-}
-
-/*Main toolbar color*/
-md-toolbar.md-darkTheme-theme:not(.md-menu-toolbar) {
-    background-color: rgba(0, 0, 0, 1);
-}
-
 /**************************/
 /**************************/
 /**BEGIN TABS DEFINITIONS**/
@@ -47,9 +32,9 @@ md-tabs.md-darkTheme-theme .md-tab:hover {
 /* Specific borders and colors for active tab */
 md-tabs.md-darkTheme-theme .md-tab.md-active, 
 md-tabs.md-darkTheme-theme .md-tab.md-focused {
-	color: rgb(255, 255, 255);
-    background-color: rgb(48, 48, 48);
-    border-top: 3px solid white;
+	color: rgba(255, 255, 255, 1);
+    background-color: rgba(48, 48, 48, 1);
+    border-top: 3px solid rgba(255, 255, 255, 1);
     border-left: 3px solid rgba(255, 255, 255, 0);
     border-right: 3px solid rgba(255, 255, 255, 0);
 }
@@ -57,8 +42,8 @@ md-tabs.md-darkTheme-theme .md-tab.md-focused {
 /* Specific colors for active tab icons */
 md-tabs.md-darkTheme-theme .md-tab.md-active md-icon, 
 md-tabs.md-darkTheme-theme .md-tab.md-focused md-icon {
-    color: rgb(255, 255, 255);
-    background-color: rgb(48, 48, 48);
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(48, 48, 48, 1);
 }
 
 /* Accelerating the transition of colors for hover effect */
@@ -81,12 +66,12 @@ md-tabs.md-darkTheme-theme .md-tab.md-focused md-icon {
 /* Default label and placeholder are very transparent to not deviate user focus */
 md-input-container.md-darkTheme-theme .md-placeholder, 
 md-input-container.md-darkTheme-theme label {
-	color: rgba(255,255,255,0.1) !important;
+	color: rgba(255, 255, 255, 0.1) !important;
 }
 
 /* Default icon color in dialog form */
 md-input-container.md-darkTheme-theme md-icon {
-	color: rgba(255,255,255,0.5) !important;
+	color: rgba(255, 255, 255, 0.5) !important;
 }
 
 /* As a default, when focused, all input elements are more evident but still transparent enough... */
@@ -94,12 +79,12 @@ md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-datepicker-open 
 md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-focused md-icon,
 md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-focused label,
 md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-focused label.md-required:after {
-	color: rgba(255,255,255,0.5) !important;
+	color: rgba(255, 255, 255, 0.5) !important;
 }
 
 /* ...and so is the line beneath input field */
 md-input-container.md-darkTheme-theme  .md-input {
-	border-color: rgba(255,255,255,0.5) !important;
+	border-color: rgba(255, 255, 255, 0.5) !important;
 }
 
 /* If the input is invalid, whether it has a value or not, its elements become a semi-transparent red to show
@@ -285,10 +270,71 @@ md-card:hover{
     background-color: rgba(0, 0, 0, 0.33);
 }
 
+/*Default color of main used buttons*/
+.md-button.md-darkTheme-theme.md-primary.md-fab, 
+.md-button.md-darkTheme-theme.md-primary.md-raised {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+/*Default color of disabled main used buttons*/
+.md-button.md-darkTheme-theme.md-fab[disabled], 
+.md-button.md-darkTheme-theme.md-raised[disabled]{
+    background-color: rgba(0, 0, 0, 0.1);
+    color: rgba(255, 255, 255, 0.1);
+}
+
+/*Default color of disabled icons inside disabled main used buttons*/
+.md-button.md-darkTheme-theme.md-fab[disabled] md-icon, 
+.md-button.md-darkTheme-theme.md-raised[disabled] md-icon, 
+.md-button.md-darkTheme-theme[disabled] md-icon {
+    color: rgba(255, 255, 255, 0.1);
+}
+
 /* Making the default highlight transition of fab buttons process faster (0.1s) */
 .md-button.md-fab {
     -webkit-transition: all 0.1s cubic-bezier(0.55, 0, 0.55, 0.2);
     transition: all 0.1s cubic-bezier(0.55, 0, 0.55, 0.2);
+}
+
+/***************************/
+/***************************/
+/**END BUTTONS DEFINITIONS**/
+/***************************/
+/***************************/
+
+
+/***************************/
+/***************************/
+/**BEGIN ICONS DEFINITIONS**/
+/***************************/
+/***************************/
+
+/* Main icon color */
+md-icon.md-darkTheme-theme {
+	color: rgba(255, 255, 255, 1);
+}
+
+/* Main warn icon color */
+md-icon.md-darkTheme-theme.md-warn {
+    color: rgba(255, 87, 34, 1) !important; 
+}
+
+/*************************/
+/*************************/
+/**END ICONS DEFINITIONS**/
+/*************************/
+/*************************/
+
+
+/*****************************/
+/*****************************/
+/**BEGIN TOOLBAR DEFINITIONS**/
+/*****************************/
+/*****************************/
+
+/*Main toolbar color*/
+md-toolbar.md-darkTheme-theme:not(.md-menu-toolbar) {
+    background-color: rgba(0, 0, 0, 1);
 }
 
 /* Glitch pulling the tabs 8 pixels up and leaving a white line between the tabs and the content.
@@ -298,9 +344,10 @@ Since the toolbar got smaller, the tas were pulled up. We added 8 to the previou
 	    min-height: 64px;
 	}
 }
+
 /***************************/
 /***************************/
-/**END BUTTONS DEFINITIONS**/
+/**END TOOLBAR DEFINITIONS**/
 /***************************/
 /***************************/
 
@@ -316,14 +363,6 @@ Since the toolbar got smaller, the tas were pulled up. We added 8 to the previou
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-/* Active sidenav state color */
-.active-tab-link {
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(48, 48, 48, 1);
-    border-top: 3px solid rgba(255, 255, 255, 0);
-    border-left: 3px solid rgba(255, 255, 255, 0);
-    border-right: 3px solid rgba(255, 255, 255, 0);
-}
 /*********************************/
 /*********************************/
 /**END SIDENAV DEFINITIONS**/
