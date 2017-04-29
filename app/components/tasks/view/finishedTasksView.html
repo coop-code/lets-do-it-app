@@ -9,7 +9,7 @@
 	</md-list>
 </div>
 <div class='md-padding' layout="row" layout-align="center none" layout-wrap>
-	<md-fab-speed-dial 	ng-repeat="task in vm.tasks.finished | filter: search.title as results track by task.id" 
+	<md-fab-speed-dial 	ng-repeat="task in vm.tasks.finished | filter: vm.searchTask(searchTerms) as results track by task.id" 
 											class="md-scale" 
 											md-open="task.showOptions" 
 											md-direction="down" 

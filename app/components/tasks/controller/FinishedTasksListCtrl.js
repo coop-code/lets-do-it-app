@@ -54,8 +54,17 @@
         function openTaskVisualizationDialog(task, $event) {
             DialogService.openTaskVisualizationDialog(task, $event);
         };
+        
+        function searchTask(searchTerms) {
+            return function(task) {
+            	if(searchTerms === '' || searchTerms === null || searchTerms === undefined) return true;
+            	searchTerms = searchTerms.toLocaleLowerCase();
+            	return (task.title.toLocaleLowerCase().includes(searchTerms) || task.description.toLocaleLowerCase().includes(searchTerms));
+            };
+        };
 
         vm.deleteTask = deleteTask;
         vm.openTaskVisualizationDialog = openTaskVisualizationDialog;
+        vm.searchTask = searchTask;
     }
 }());

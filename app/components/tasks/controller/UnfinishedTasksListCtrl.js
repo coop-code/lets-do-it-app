@@ -78,10 +78,19 @@
         function openTaskEditionDialog(task, event) {
             DialogService.openTaskEditionDialog(task, event);
         };
+        
+        function searchTask(searchTerms) {
+            return function(task) {
+            	if(searchTerms === '' || searchTerms === null || searchTerms === undefined) return true;
+            	searchTerms = searchTerms.toLocaleLowerCase();
+            	return (task.title.toLocaleLowerCase().includes(searchTerms) || task.description.toLocaleLowerCase().includes(searchTerms));
+            };
+        };
 
         vm.deleteTask = deleteTask;
         vm.finishTask = finishTask;
-        vm.changeTaskPriority = changeTaskPriority
+        vm.changeTaskPriority = changeTaskPriority;
         vm.openTaskEditionDialog = openTaskEditionDialog;
+        vm.searchTask = searchTask;
     }
 }());
