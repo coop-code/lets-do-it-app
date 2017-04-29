@@ -51,15 +51,24 @@
         }
 
         function finishTask(task) {
-            ToastrService.processing("Finishing", "Please wait while the task is marked as finished...");
-            TaskService.finishTask(task)
-                .then(function () {
-                    ToastrService.success("Task successfully marked as finished.");
-                })
-                .catch(function (error) {
-                    ToastrService.error("Error", "There was a problem when trying to mark the task as finished. Please refresh the page before trying again.");
-                    console.log('TaskListCtrl error (finishTask): ', error);
-                });
+        	DialogService.openFinishConfirmationDialog(event)
+        	.then(function (answer) {
+        		//Answer can be yes or no. If yes, then proceed with the delete operation, otherwise, do nothing.
+                if (answer === 'yes') {
+		            ToastrService.processing("Finishing", "Please wait while the task is marked as finished...");
+		            TaskService.finishTask(task)
+		                .then(function () {
+		                    ToastrService.success("Task successfully marked as finished.");
+		                })
+		                .catch(function (error) {
+		                    ToastrService.error("Error", "There was a problem when trying to mark the task as finished. Please refresh the page before trying again.");
+		                    console.log('TaskListCtrl error (finishTask): ', error);
+		                });
+                }
+        	})
+            .catch( function (error) {
+            	//Confirmation cancelled
+            });
         }
 
         function changeTaskPriority(task) {
