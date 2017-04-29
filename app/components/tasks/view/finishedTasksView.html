@@ -9,7 +9,7 @@
 	</md-list>
 </div>
 <div class='md-padding' layout="row" layout-align="center none" layout-wrap>
-	<md-fab-speed-dial 	ng-repeat="task in vm.tasks.finished track by task.id" 
+	<md-fab-speed-dial 	ng-repeat="task in vm.tasks.finished | filter: search.title as results track by task.id" 
 											class="md-scale" 
 											md-open="task.showOptions" 
 											md-direction="down" 
@@ -38,4 +38,8 @@
 	    	</div>
 	  	</md-fab-actions>
 	</md-fab-speed-dial>
+	<div ng-if="!vm.tasks.loadingFinished && results.length == 0">
+		<p> No tasks found for search terms given. It may be in another castle!</p>
+		<p style="text-align: center;"><img ng-src="app\common\img\8-bit-toad.png" alt="Description" height="10%" width="10%" align="middle"/></p>
+	</div>
 </div>
