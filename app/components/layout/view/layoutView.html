@@ -1,56 +1,66 @@
 <div layout="column"  layout-fill>
 	
+<!-- 	Toolbar containing title and searchbar -->
 	<md-toolbar class="md-theme-indigo">
     	<div class="md-toolbar-tools">
-	    	<md-button hide-gt-xs class="md-icon-button" aria-label="Menu" ng-click="vm.toggleSideNav()">
+	    	<md-button hide-gt-xs class="md-icon-button" aria-label="Menu" ng-click="vm.toggleSideNav('sidenav')">
 	        	<md-icon>menu</md-icon>
 	        </md-button>
 	
 	        <h2 hide show-gt-xs flex md-truncate>Let's do it!</h2>
 	        <h2 hide-gt-xs flex md-truncate>{{vm.title}}</h2>
 			
-			<input ng-model="searchTerms" /> 
+			<md-input-container class="md-block searchInput">
+				<label>Search task</label>
+				<input ng-model="searchTerms" /> 
+	        </md-input-container>
 	        <md-button class="md-icon-button" aria-label="Search">
-	          	<md-icon>search</md-icon>
-	        </md-button>
+		    	<md-icon>search</md-icon>
+		    </md-button>
 		</div>
 	</md-toolbar>
 	
+<!-- 	Tabs used for navigation on medium and above screens -->
 	<md-tabs hide show-gt-xs md-no-ink-bar md-selected="vm.selectedTabIndex" md-stretch-tabs="always">
 		<md-tab	ng-repeat="option in vm.menuOptions" 
-        					style="text-align:left" 
-        					ui-sref="{{ option.link }}" 
-        					md-active="vm.currentState == option.link"
-        					md-ink-ripple="{{ option.ripple }}"
-        					ng-click="vm.updateCurrentStateAndTitleTabs(option)">
+        		style="text-align:left" 
+        		ui-sref="{{ option.link }}" 
+        		md-active="vm.currentState == option.link"
+        		md-ink-ripple="{{ option.ripple }}"
+        		ng-click="vm.updateCurrentStateAndTitleTabs(option)">
         	<md-icon>{{ option.icon }}</md-icon> {{ option.name }}
         </md-tab>  
 	</md-tabs>
 	  	
-	<md-sidenav 	class="md-sidenav-left" 
-    							md-component-id="sidenav" 
-    							md-whiteframe="24">
+<!-- 	Sidenav used for navigation on small screens -->
+	<md-sidenav class="md-sidenav-left" 
+    			md-component-id="sidenav" 
+    			md-whiteframe="24">
       	<md-toolbar class="md-theme-indigo">
         	<h1 class="md-toolbar-tools" >Let's do it!</h1>
       	</md-toolbar>
       	<md-content layout="column" layout-padding>
         	<md-button 	ng-repeat="option in vm.menuOptions" 
-        							style="text-align:left" 
-        							ui-sref="{{ option.link }}" 
-        							ui-sref-active="active-sidenav-link"
-        							class="{{ option.class }}"
-        							md-ink-ripple="{{ option.ripple }}"
-        							ng-click="vm.updateCurrentStateAndTitleSidenav(option)">
+        				style="text-align:left" 
+        				ui-sref="{{ option.link }}" 
+        				ui-sref-active="active-sidenav-link"
+        				class="{{ option.class }}"
+        				md-ink-ripple="{{ option.ripple }}"
+        				ng-click="vm.updateCurrentStateAndTitleSidenav(option, 'sidenav')">
         		<md-icon>{{ option.icon }}</md-icon> {{ option.name }}
         	</md-button>
       	</md-content>
     </md-sidenav>
+    
+<!--     Actual app content -->
     <md-content flex layout-padding>
         <div ui-view>
 			<div ui-view="main.home"></div>
 		</div>
     </md-content>
+    
+<!-- 	FAB for ease of access to task creation -->
     <md-button style="position: fixed;" class="md-fab md-primary md-raised md-fab-bottom-right" aria-label="Add" ng-click="vm.openTaskCreationDialog($event)">
-		<md-icon>{{vm.FABIcon}}</md-icon>
+		<md-icon>add</md-icon>
 	</md-button>
 </div>

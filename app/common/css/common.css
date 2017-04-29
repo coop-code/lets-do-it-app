@@ -57,81 +57,81 @@ md-tabs.md-darkTheme-theme .md-tab.md-focused md-icon {
 /************************/
 /************************/
 
-/*********************************/
-/*********************************/
-/**BEGIN DIALOG FORM DEFINITIONS**/
-/*********************************/
-/*********************************/
+/****************************/
+/****************************/
+/**BEGIN INPUTS DEFINITIONS**/
+/****************************/
+/****************************/
 
 /* Default label and placeholder are very transparent to not deviate user focus */
-md-input-container.md-darkTheme-theme .md-placeholder, 
-md-input-container.md-darkTheme-theme label {
+md-input-container:not(.searchInput).md-darkTheme-theme .md-placeholder, 
+md-input-container:not(.searchInput).md-darkTheme-theme label {
 	color: rgba(255, 255, 255, 0.1) !important;
 }
 
 /* Default icon color in dialog form */
-md-input-container.md-darkTheme-theme md-icon {
+md-input-container:not(.searchInput).md-darkTheme-theme md-icon {
 	color: rgba(255, 255, 255, 0.5) !important;
 }
 
 /* As a default, when focused, all input elements are more evident but still transparent enough... */
-md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-datepicker-open md-icon,
-md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-focused md-icon,
-md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-focused label,
-md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-focused label.md-required:after {
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-datepicker-open md-icon,
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-focused md-icon,
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-focused label,
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-focused label.md-required:after {
 	color: rgba(255, 255, 255, 0.5) !important;
 }
 
 /* ...and so is the line beneath input field */
-md-input-container.md-darkTheme-theme  .md-input {
+md-input-container:not(.searchInput).md-darkTheme-theme  .md-input {
 	border-color: rgba(255, 255, 255, 0.5) !important;
 }
 
 /* If the input is invalid, whether it has a value or not, its elements become a semi-transparent red to show
 the user that something is wrong with that input. Chosen transparency is enough to provide enough perception
 of such error but also enough to not deviate user attention from whatever other action it is performing... */
-md-input-container.md-darkTheme-theme.md-input-invalid.md-input-has-value md-icon,
-md-input-container.md-darkTheme-theme.md-input-invalid.md-input-has-value label,
-md-input-container.md-darkTheme-theme.md-input-invalid.md-input-has-value label.md-required:after,
-md-input-container.md-darkTheme-theme.md-input-invalid md-icon,
-md-input-container.md-darkTheme-theme.md-input-invalid label,
-md-input-container.md-darkTheme-theme.md-input-invalid label.md-required:after{
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-has-value md-icon,
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-has-value label,
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-has-value label.md-required:after,
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid md-icon,
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid label,
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid label.md-required:after{
 	color: rgba(250, 150, 150, 0.5) !important;
 }
 
 /* ...and so is the line beneath input field... */
-md-input-container.md-darkTheme-theme.md-input-invalid .md-input {
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid .md-input {
 	border-color: rgba(250, 150, 150, 0.5) !important;
 }
 
 /* ...just like any error message shown beneath such line. Here we remove the
 transition effect so the highlighting (and only the highlighting) speed is concise 
 with the speed of highlight of the other elements involved. We want everything acting together */
-md-input-container.md-darkTheme-theme.md-input-invalid .md-input-message-animation{
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid .md-input-message-animation{
 	color: rgba(250, 150, 150, 0.5) !important;
 	transition: none;
 }
 
 /* If the input is invalid, whether it has a value or not, and its also focused, its elements become solid red to both show
 the user that something is wrong with that input and keep user focus on it... */
-md-input-container.md-darkTheme-theme.md-input-invalid.md-input-has-value.md-input-focused md-icon,
-md-input-container.md-darkTheme-theme.md-input-invalid.md-input-has-value.md-input-focused label,
-md-input-container.md-darkTheme-theme.md-input-invalid.md-input-has-value.md-input-focused label.md-required:after,
-md-input-container.md-darkTheme-theme.md-input-invalid.md-input-focused md-icon,
-md-input-container.md-darkTheme-theme.md-input-invalid.md-input-focused label,
-md-input-container.md-darkTheme-theme.md-input-invalid.md-input-focused label.md-required:after{
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-has-value.md-input-focused md-icon,
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-has-value.md-input-focused label,
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-has-value.md-input-focused label.md-required:after,
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-focused md-icon,
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-focused label,
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-focused label.md-required:after{
 	color: rgba(250, 150, 150, 1) !important;
 }
 
 /* ...and, again, so is the line beneath input field */
-md-input-container.md-darkTheme-theme.md-input-invalid.md-input-focused .md-input {
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-focused .md-input {
 	border-color: rgba(250, 150, 150, 1) !important;
 }
 
 /* ...just like any error message shown beneath such line. Here we remove the
 transition effect so the highlighting (and only the highlighting) speed is concise 
 with the speed of highlight of the other elements involved. We want everything acting together */
-md-input-container.md-darkTheme-theme.md-input-invalid.md-input-focused .md-input-message-animation{
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-focused .md-input-message-animation{
 	color: rgba(250, 150, 150, 1) !important;
 	transition: none;
 }
@@ -141,45 +141,81 @@ the user that said input is correctly filled. We opted to not consider the case 
 has no value in order to preserve the default transparency of inputs that can be (and are) empty. The chosen 
 transparency here is enough to provide enough perception of such correctness but also enough 
 to not deviate user attention from whatever other action it is performing... */
-md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-has-value md-icon,
-md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-has-value label,
-md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-has-value label.md-required:after{
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-has-value md-icon,
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-has-value label,
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-has-value label.md-required:after{
 	color: rgba(150, 250, 150, 0.5)  !important;
 }
 
 /* ...and, again, so is the line beneath input field...i say that a lot, don't I? */
-md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-has-value .md-input {
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-has-value .md-input {
 	border-color:  rgba(150, 250, 150, 0.5)  !important;
 }
 
 /* If the input is NOT invalid and its also focused, its elements become solid green to both show
 the user the correctness of said input and keep user focus on it... */
-md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-has-value.md-input-focused md-icon,
-md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-has-value.md-input-focused label,
-md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-has-value.md-input-focused label.md-required:after{
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-has-value.md-input-focused md-icon,
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-has-value.md-input-focused label,
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-has-value.md-input-focused label.md-required:after{
 	color: rgba(150, 250, 150, 1)  !important;
 }
 
 /* ...and, so is the line...oh, you know it already by now... */
-md-input-container.md-darkTheme-theme:not(.md-input-invalid).md-input-has-value.md-input-focused .md-input {
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-has-value.md-input-focused .md-input {
 	border-color:  rgba(150, 250, 150, 1)  !important;
 }
 
-/* Removing the div underneath the actual input in order to align said input correctly */
-md-input-container .md-errors-spacer {
+/*Specific basic border-color for the search input*/
+md-input-container.searchInput.md-darkTheme-theme .md-input,
+md-input-container.searchInput.md-darkTheme-theme .md-input-invalid .md-input,
+md-input-container.searchInput.md-darkTheme-theme .md-input-invalid .md-input-focused .md-input
+md-input-container.searchInput.md-darkTheme-theme:not(.md-input-invalid) .md-input-has-value .md-input
+md-input-container.searchInput.md-darkTheme-theme:not(.md-input-invalid) .md-input-has-value .md-input-focused .md-input {
+	border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/*Specific basic color for the search input*/
+md-input-container.searchInput.md-darkTheme-theme .md-placeholder, 
+md-input-container.searchInput.md-darkTheme-theme label,
+md-input-container.searchInput.md-darkTheme-theme:not(.md-input-invalid).md-input-focused label,
+md-input-container.searchInput.md-darkTheme-theme.md-input-invalid .md-input-has-value label,
+md-input-container.searchInput.md-darkTheme-theme.md-input-invalid label,
+md-input-container.searchInput.md-darkTheme-theme.md-input-invalid .md-input-has-value .md-input-focused label,
+md-input-container.searchInput.md-darkTheme-theme.md-input-invalid .md-input-focused label,
+md-input-container.searchInput.md-darkTheme-theme:not(.md-input-invalid).md-input-has-value label,
+md-input-container.searchInput.md-darkTheme-theme:not(.md-input-invalid).md-input-has-value.md-input-focused label {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+/* Specifically removing the div beneath the actual input in order to align said input correctly */
+md-input-container.searchInput .md-errors-spacer {
     min-height: 0;
 }
+
+/**************************/
+/**************************/
+/**END INPUTS DEFINITIONS**/
+/**************************/
+/**************************/
+
+
+/****************************/
+/****************************/
+/**BEGIN DIALOG DEFINITIONS**/
+/****************************/
+/****************************/
 
 /* Make a dialog semi transparent if a new dialog is opened from it */
 .semiTransparent {
 	opacity: 0.1 !important;
 }
 
-/*******************************/
-/*******************************/
-/**END DIALOG FORM DEFINITIONS**/
-/*******************************/
-/*******************************/
+/**************************/
+/**************************/
+/**END DIALOG DEFINITIONS**/
+/**************************/
+/**************************/
+
 
 /**************************/
 /**************************/

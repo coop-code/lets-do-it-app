@@ -2,9 +2,9 @@
     "use strict";
     angular
         .module("letsDoIt")
-        .controller("LayoutCtrl",['TaskService', 'DialogService', 'StateService', '$mdSidenav', LayoutCtrl]);
+        .controller("LayoutCtrl",['TaskService', 'DialogService', 'StateService', 'SidenavService', LayoutCtrl]);
 
-    function LayoutCtrl(TaskService, DialogService, StateService, $mdSidenav) {
+    function LayoutCtrl(TaskService, DialogService, StateService, SidenavService) {
         var vm = this;
         
         //Triggered by the FAB button
@@ -12,21 +12,20 @@
         	return DialogService.openTaskCreationDialog(event);
         }
 
-        function toggleSideNav() {
-            $mdSidenav('sidenav').toggle();
+        function toggleSideNav(sidenavID) {
+        	SidenavService.toggleSidenav(sidenavID);
         }
         
-        function updateCurrentStateAndTitleSidenav(option){
+        function updateCurrentStateAndTitleSidenav(option, sidenavID){
         	updateCurrentStateAndTitleTabs(option);
-        	toggleSideNav();
+        	SidenavService.toggleSidenav(sidenavID);
         }
 
         function updateCurrentStateAndTitleTabs(option) {
         	vm.currentState = option.link;
         	vm.title = option.name;
         }
-        
-        vm.FABIcon = 'assignment';
+
         vm.menuOptions = 
         	[
         	 	{	

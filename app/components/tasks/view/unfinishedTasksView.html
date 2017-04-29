@@ -1,13 +1,3 @@
-<div class='md-padding' layout="row" ng-show="!vm.tasks.loadingUnfinished && vm.tasks.unfinished.length == 0">
-	<md-list ng-cloak>
-		<md-list-item>
-			<p class="md-header">There are no unfinished tasks. Wow, you're very good (or maybe you did not registered your tasks).</p>
-		</md-list-item>
-		<md-list-item>
-			<p class="md-header">To create tasks, just click on the button on the bottom right corner.</p>
-		</md-list-item>
-	</md-list>
-</div>
 <div class='md-padding' layout="row" layout-align="center none" layout-wrap>
 	<md-fab-speed-dial 	ng-repeat="task in vm.tasks.unfinished | filter: vm.searchTask(searchTerms) as results track by task.id" 
 											class="md-scale" 
@@ -46,8 +36,18 @@
 	    	</div>
 	  	</md-fab-actions>
 	</md-fab-speed-dial>
-	<div ng-if="!vm.tasks.loadingUnfinished && results.length == 0">
-		<p> No tasks found for search terms given. It may be in another castle!</p>
-		<p style="text-align: center;"><img ng-src="app\common\img\8-bit-toad.png" alt="Description" height="10%" width="10%" align="middle"/></p>
-	</div>
+	
+	<md-content layout="row" layout-align="center center" flex layout-padding ng-if="!vm.tasks.loadingUnfinished && vm.tasks.unfinished.length == 0">
+		<div flex=60 style="text-align: center;">
+			<p>There are no unfinished tasks. Wow, you're very good (or maybe you did not registered your tasks).</p>
+			<p>To create tasks, just click on the button on the bottom right corner. {{results}}</p>
+		</div>
+	</md-content>
+	
+	<md-content layout="row" layout-align="center center" flex layout-padding ng-if="!vm.tasks.loadingUnfinished && vm.tasks.unfinished.length != 0 && results.length == 0">
+		<div flex=60 style="text-align: center;">
+			<p> No tasks found for search terms given. It may be in another castle!</p>
+			<p><img ng-src="app\common\img\8-bit-toad.png" alt="Description" height="10%" width="10%" align="middle"/></p>
+		</div>
+	</md-content>
 </div>
