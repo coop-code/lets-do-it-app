@@ -1,14 +1,15 @@
 <div class='md-padding' layout="row" layout-align="center none" layout-wrap>
-	<md-fab-speed-dial 	ng-repeat="task in vm.tasks.unfinished | filter: vm.searchTask(searchTerms) as results track by task.id" 
+	<md-fab-speed-dial 	ng-repeat="task in vm.tasks.unfinished | orderBy: 'deadlineInDays' | filter: vm.searchTask(searchTerms) as results track by task.id" 
 											class="md-scale" 
 											md-open="task.showOptions" 
 											md-direction="down" 
 											ng-mouseleave="task.showOptions=false"
 											ng-class="{optionsOfHoveredCard: task.showOptions}">
 		<md-fab-trigger>
-			<md-card ng-class="{cardWithOptionsShown: task.showOptions}">
-				<md-card-header class="md-title">
-			    	{{ task.title }}
+			<md-card class="default" ng-class="{cardWithOptionsShown: task.showOptions, 'priority\-task': task.priority}">
+				<md-chips><md-chip ng-class="{{task.chipsClasses}}">{{task.deadlineInDays}} days</md-chip></md-chips>
+				<md-card-header class="md-title have-chip">
+			    	{{ task.title }} 
 				</md-card-header>
 			    <md-card-title>
 			    	{{ task.description }}

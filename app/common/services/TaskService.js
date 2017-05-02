@@ -158,6 +158,7 @@
 	    		.then(function (response) {
 	    			var unfinishedIndex = getObjectPositionInArrayById(oldTask, TasksValue.unfinished);
 	    			if(unfinishedIndex > -1) {
+	    				CalculateDeadlineInDays(newTask)
 	    				CustomizeTask(newTask); 
 	    				TasksValue.unfinished.splice(unfinishedIndex, 1, newTask);
 	    			}
@@ -201,6 +202,12 @@
         function CustomizeTask(task) {
             task.showOptions = false;
             task.priorityIcon = (task.priority) ? "star" : "star_border";
+            task.chipsClasses = {
+            	red: (task.deadlineInDays <= 1 ? true : false),
+            	orange: ((task.deadlineInDays >= 2 && task.deadlineInDays <= 4) ? true : false),
+            	yellow: ((task.deadlineInDays >= 5 && task.deadlineInDays <= 7) ? true : false),
+            	green: (task.deadlineInDays >=8 ? true : false)
+            }
         }
         
         //Public calls
