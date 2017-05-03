@@ -6,9 +6,22 @@
             ['TasksValue', '$http', TaskService]);
 
     function TaskService(TasksValue, $http) {
-        //The API runs locally for now. 
-        var apiHealthCheckUri = 'http://localhost:4000/ping';
-        var apiUrl = 'http://localhost:4000/tasks';
+        
+		
+		/*
+		The address of the API that provides data manipulation functions
+		If you are receiving a connection problem message, you need to start an API.
+		The Lets Do It API provides all the functions you need to use APP.
+		There are 3 steps to run the API
+			1) Clone its repository (https://github.com/coop-code/lets-do-it-api) 
+			2) Run "npm install" to install all dependencies
+			3) Run "npm start" and you are good to go
+		
+		The API runs locally on PORT 4001, so the complete address is http://localhost:4001
+		*/
+		var apiHealthCheckUri = 'http://localhost:4001/ping';
+        var apiUrl = 'http://localhost:4001/tasks';
+
 
         //Check if the API is online. If not, send to error page.
         function ping() {
