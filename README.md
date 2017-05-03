@@ -1,6 +1,6 @@
 # The Lets Do It Project
 
-Lets Do IT is a task management app (a to-do list) implemented for studying purposes. In this project, you can do all the operations regarding tasks (read, create, edit and delete). Some other functionalities were added as well, such as prioritizing tasks. Feel free to use it the way you like.
+Lets Do IT is a task management app (a to-do list) implemented for studying purposes. In this project, you can do all the operations regarding tasks (read, create, edit and delete). Some other functionalities were added as well, such as prioritizing tasks.
 
 This project is divided into two subprojects:
 
@@ -11,8 +11,6 @@ The main goal of the APP is to deal with user interactions.
 The API, on the other way, deal with the data itself: processing and answering to all the requests made by the APP, such as task creation, getting tasks and much more.
 
 To work properly, **both the APP and the API need to be running**. There's a setup section in this document that explains how to start both applications.
-
-The rest of this document will focus only on the APP. For more information about the API, please check its [repository](https://github.com/coop-code/lets-do-it-api)
 
 # The Lets Do It App
 
@@ -38,6 +36,8 @@ As said, it has studying purposes. In other words, It's a **demonstration** of h
 The interacation between APP and API is already set. There's no need to open the source code to configure it.
 
 If you have any issue or comment, you can contact the [developers](https://github.com/coop-code/lets-do-it-app/graphs/contributors) or register and [issue](https://github.com/coop-code/lets-do-it-app/issues) anytime. Feedback is very important to us.
+
+Feel free to use the APP the way you like!
 
 ## Additional Information
 
