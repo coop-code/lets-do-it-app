@@ -1,12 +1,11 @@
 <div class='md-padding' layout="row" layout-align="center none" layout-wrap>
 	<md-fab-speed-dial 	ng-repeat="task in vm.tasks.finished | filter: vm.searchTask(searchTerms) as results track by task.id" 
 											class="md-scale" 
-											md-open="task.showOptions" 
+											md-open="task.finishedCardClasses.showCardOptions" 
 											md-direction="down" 
-											ng-mouseleave="task.showOptions=false"
-											ng-class="{optionsOfHoveredCard: task.showOptions}">
+											ng-mouseleave="task.finishedCardClasses.showCardOptions=false"">
 		<md-fab-trigger>
-			<md-card class="default" ng-class="{cardWithOptionsShown: task.showOptions}">
+			<md-card ng-class="task.finishedCardClasses">
 				<md-card-header class="md-title">
 			    	{{ task.title }}
 				</md-card-header>

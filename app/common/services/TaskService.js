@@ -210,13 +210,26 @@
 
         //Add the 'showOptions' parameter to be used to open and close card options and set the priority icon according to priority value
         function CustomizeTask(task) {
-            task.showOptions = false;
             task.priorityIcon = (task.priority) ? "star" : "star_border";
-            task.chipsClasses = {
-            	red: (task.deadlineInDays <= 1 ? true : false),
-            	orange: ((task.deadlineInDays >= 2 && task.deadlineInDays <= 4) ? true : false),
-            	yellow: ((task.deadlineInDays >= 5 && task.deadlineInDays <= 7) ? true : false),
-            	green: (task.deadlineInDays >=8 ? true : false)
+            task.chipClasses = {
+            		red: (task.deadlineInDays <= 1 ? true : false),
+            		orange: ((task.deadlineInDays >= 2 && task.deadlineInDays <= 4) ? true : false),
+            		yellow: ((task.deadlineInDays >= 5 && task.deadlineInDays <= 7) ? true : false),
+            		green: (task.deadlineInDays >=8 ? true : false)
+            };
+            task.unfinishedCardClasses = {
+            		defaultCard: true,
+            		red: (task.deadlineInDays <= 1 ? true : false),
+                	orange: ((task.deadlineInDays >= 2 && task.deadlineInDays <= 4) ? true : false),
+                	yellow: ((task.deadlineInDays >= 5 && task.deadlineInDays <= 7) ? true : false),
+                	green: (task.deadlineInDays >=8 ? true : false),
+                	showCardOptions: false,
+            		priorityTask: task.priority
+            };
+            task.finishedCardClasses = {
+            		defaultCard: true,
+            		showCardOptions: false,
+            		priorityTask: task.priority
             }
         }
         

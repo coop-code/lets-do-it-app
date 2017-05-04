@@ -17,25 +17,21 @@ body{
 /*Unfinished tasks: green*/
 .md-darkTheme-theme.green{
     border-top: 0.2em solid green;
-    border-bottom: 0.2em solid green;
 }
 
 /*Unfinished tasks: yellow*/
 .md-darkTheme-theme.yellow{
     border-top: 0.2em solid yellow;
-    border-bottom: 0.2em solid yellow;
 }
 
 /*Unfinished tasks: orange*/
 .md-darkTheme-theme.orange{
     border-top: 0.2em solid orange;
-    border-bottom: 0.2em solid orange;
 }
 
 /*Unfinished tasks: red*/
 .md-darkTheme-theme.red{
     border-top: 0.2em solid red;
-    border-bottom: 0.2em solid red;
 }
 
 
@@ -276,24 +272,32 @@ md-card.md-darkTheme-theme {
     border-radius: 10px;
 }
 
-md-card.md-darkTheme-theme.priority-task {
-	border-bottom: 1em solid gold;
+/* md-card.md-darkTheme-theme.priorityTask { */
+/* 	border-bottom: 1em solid rgba(125, 100, 0, 1); */
+/* } */
+
+md-card.md-darkTheme-theme.priorityTask:after {
+	content: '\e002';
+   	font-family: "Material Icons";
+   	font-size: 36px;
+   	text-align: center;
 }
+
 /* Default card being hovered */
 md-card:hover{
 	cursor: pointer;
 }
 
-.md-title.have-chip {
+.md-title.haveChip {
     margin-top: -1.176em;
 }
-.md-title.no-chip {
+.md-title.noChip {
     margin-top: 0em;
 }
 
 /* Cards will behave as a FAB (Floating Action Button) and, as such, the card with its actions 
  open will be both highlighted and "raised" in order to give it a better focus than other cards */
-.cardWithOptionsShown{
+.showCardOptions{
 	-moz-box-shadow: 10px 10px 7px rgba(0, 0, 0, .3);
     -webkit-box-shadow: 10px 10px 7px rgba(0, 0, 0, .3);
     box-shadow: 10px 10px 7px rgba(0, 0, 0, .3);
@@ -305,11 +309,11 @@ md-card:hover{
 }
 
 /*Finished tasks displayed in yellow*/
-.md-darkTheme-theme.default {
+.md-darkTheme-theme.defaultCard {
     background-color: rgba(250, 250, 150, 1);
 }
 /*Finished tasks hover displayed in white*/
-.md-darkTheme-theme.default:hover{
+.md-darkTheme-theme.defaultCard:hover{
 	background-color: rgba(250, 250, 250, 1);
 }
 
@@ -351,7 +355,11 @@ md-card:hover{
 	   
 	}
 	
-	.md-title.have-chip {
+	md-card.md-darkTheme-theme.priorityTask:after {
+   	font-size: 24px;
+}
+	
+	.md-title.haveChip {
     	margin-top: -1.394em !important;
 	}
 }
