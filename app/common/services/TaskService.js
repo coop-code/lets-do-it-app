@@ -140,6 +140,26 @@
         		});
         }
         
+      //Finish a task
+        function reopenTask(task) {
+        	var updatedTask = createUpdatedTaskModel(task);
+        	updatedTask.done = false;
+            var promise = $http.put(apiUrl + '/' + updatedTask.id, updatedTask);
+        	return promise
+        		.then(function (response) {
+        			var finishedIndex = getObjectPositionInArrayById(task, TasksValue.finished);
+        			if(finishedIndex > -1) {
+        				TasksValue.finished.splice(finishedIndex, 1);
+        				task.done=false;
+        				TasksValue.unfinished.push(task);
+        			}
+        		})
+        		.catch (function (error) {
+        			console.log('TaskService error (reopen Task): ', error);
+        			throw error;
+        		});
+        }
+        
         //Toggle the priority of a task
         function changeTaskPriority(task) {
         	var updatedTask = createUpdatedTaskModel(task);
@@ -212,22 +232,22 @@
         function CustomizeTask(task) {
             task.priorityIcon = (task.priority) ? "star" : "star_border";
             task.chipClasses = {
-            		red: (task.deadlineInDays <= 1 ? true : false),
-            		orange: ((task.deadlineInDays >= 2 && task.deadlineInDays <= 4) ? true : false),
-            		yellow: ((task.deadlineInDays >= 5 && task.deadlineInDays <= 7) ? true : false),
-            		green: (task.deadlineInDays >=8 ? true : false)
+            		red: task.deadlineInDays <= 1,
+            		orange: task.deadlineInDays >= 2 && task.deadlineInDays <= 4,
+            		yellow: task.deadlineInDays >= 5 && task.deadlineInDays <= 7,
+            		green: task.deadlineInDays >=8 || task.deadlineInDays == undefined || task.deadlineInDays == null
             };
             task.unfinishedCardClasses = {
-            		defaultCard: true,
-            		red: (task.deadlineInDays <= 1 ? true : false),
-                	orange: ((task.deadlineInDays >= 2 && task.deadlineInDays <= 4) ? true : false),
-                	yellow: ((task.deadlineInDays >= 5 && task.deadlineInDays <= 7) ? true : false),
-                	green: (task.deadlineInDays >=8 ? true : false),
+            		taskCard: true,
+            		red: task.deadlineInDays <= 1,
+                	orange: task.deadlineInDays >= 2 && task.deadlineInDays <= 4,
+                	yellow: task.deadlineInDays >= 5 && task.deadlineInDays <= 7,
+                	green: task.deadlineInDays >=8 || task.deadlineInDays == undefined || task.deadlineInDays == null,
                 	showCardOptions: false,
             		priorityTask: task.priority
             };
             task.finishedCardClasses = {
-            		defaultCard: true,
+            		taskCard: true,
             		showCardOptions: false,
             		priorityTask: task.priority
             }
@@ -242,6 +262,7 @@
             createTask: createTask,
             changeTaskPriority: changeTaskPriority,
             finishTask: finishTask,
+            reopenTask: reopenTask,
             deleteTask: deleteTask,
             saveEditedTask: saveEditedTask
         }

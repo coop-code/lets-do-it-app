@@ -67,6 +67,16 @@
             }
             return openDialog(event, dialogConfig);
         };
+        
+        function openReopenConfirmationDialog(event) {
+            var dialogConfig = {
+            	templateUrl: 'app/components/dialog/view/reopenConfirmationDialogView.html',
+				controller: 'ReopenConfirmationDialogCtrl',
+				controllerAs: 'vm',
+				clickOutsideToClose: false
+            }
+            return openDialog(event, dialogConfig);
+        };
 
 		function closeDialog() {
 			$mdDialog.cancel();
@@ -82,6 +92,7 @@
 			openTaskVisualizationDialog: openTaskVisualizationDialog,
 			openTaskEditionDialog: openTaskEditionDialog,
 			openFinishConfirmationDialog: openFinishConfirmationDialog,
+			openReopenConfirmationDialog: openReopenConfirmationDialog,
 			openDeleteConfirmationDialog: openDeleteConfirmationDialog,
 			closeDialog: closeDialog,
 			answerDialog: answerDialog

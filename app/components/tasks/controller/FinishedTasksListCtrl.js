@@ -50,6 +50,27 @@
                     //Delete cancelled
                 });
         }
+        
+        function reopenTask(task) {
+        	DialogService.openReopenConfirmationDialog(event)
+        	.then(function (answer) {
+        		//Answer can be yes or no. If yes, then proceed with the delete operation, otherwise, do nothing.
+                if (answer === 'yes') {
+		            ToastrService.processing("Reopening", "Please wait while the task is marked as unfinished...");
+		            TaskService.reopenTask(task)
+		                .then(function () {
+		                    ToastrService.success("Task successfully marked as unfinished.");
+		                })
+		                .catch(function (error) {
+		                    ToastrService.error("Error", "There was a problem when trying to mark the task as unfinished. Please refresh the page before trying again.");
+		                    console.log('FinishedTasksListCtrl error (reopenTask): ', error);
+		                });
+                }
+        	})
+            .catch( function (error) {
+            	//Confirmation cancelled
+            });
+        }
 
         function openTaskVisualizationDialog(task, $event) {
             DialogService.openTaskVisualizationDialog(task, $event);
@@ -65,6 +86,7 @@
 
         vm.deleteTask = deleteTask;
         vm.openTaskVisualizationDialog = openTaskVisualizationDialog;
+        vm.reopenTask = reopenTask;
         vm.searchTask = searchTask;
     }
 }());

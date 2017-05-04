@@ -9,13 +9,13 @@
         vm.title = "Welcome to Let's Do It";
 
         vm.developers = [{
-                "icon" : "person_outline",
+                "icon" : "person",
                 "name": "Breno Wruck Schneider",
                 "githubAddress": "https://github.com/brenowschneider",
                 "developerPortfolioAddress": "http://www.brenoschneider.info"
             },
             {
-                "icon" : "person_outline",
+                "icon" : "person",
                 "name": "Ygor Kiefer",
                 "githubAddress": "https://github.com/llKieferll",
                 "developerPortfolioAddress": "http://www.ygorkiefer.info"

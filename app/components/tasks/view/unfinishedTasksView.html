@@ -7,10 +7,14 @@
 		<md-fab-trigger>
 			<md-card ng-class="task.unfinishedCardClasses">
 				<md-chips>
-					<md-chip ng-class="task.chipClasses">{{task.deadlineInDays}} days</md-chip>
+					<md-chip ng-show="task.deadlineInDays < 0" ng-class="task.chipClasses">Late</md-chip>
+					<md-chip ng-show="task.deadlineInDays == 0" ng-class="task.chipClasses">Today</md-chip>
+					<md-chip ng-show="task.deadlineInDays == 1" ng-class="task.chipClasses">Tomorrow</md-chip>
+					<md-chip ng-show="task.deadlineInDays > 1" ng-class="task.chipClasses">{{task.deadlineInDays}} days</md-chip>
+					<md-chip ng-show="task.deadlineInDays == undefined || task.deadlineInDays == null" ng-class="task.chipClasses">Anytime</md-chip>
 				</md-chips>
 				<md-card-header class="md-title haveChip">
-			    	{{ task.title }} 
+			    	{{ task.title }}
 				</md-card-header>
 			    <md-card-title>
 			    	{{ task.description }}

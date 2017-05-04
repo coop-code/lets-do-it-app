@@ -3,7 +3,7 @@ body{
 	font-family: 'Gloria Hallelujah', cursive;
 }
 
-.md-chips md-chip {
+.md-chips md-chip.md-darkTheme-theme {
     cursor: pointer;
     margin: 0;
     margin-top: -1em;
@@ -12,30 +12,36 @@ body{
     font-family: 'Gloria Hallelujah', cursive;
 	height: 2em;
     line-height: 1.5em;
+   	background: rgba(48, 48, 48, 1);
+    color: rgba(255, 255, 255, 1);
 }
 
 /*Unfinished tasks: green*/
-.md-darkTheme-theme.green{
+md-chip.md-darkTheme-theme.green,
+md-card.md-darkTheme-theme.green{
     border-top: 0.2em solid green;
 }
 
 /*Unfinished tasks: yellow*/
-.md-darkTheme-theme.yellow{
+md-chip.md-darkTheme-theme.yellow,
+md-card.md-darkTheme-theme.yellow{
     border-top: 0.2em solid yellow;
 }
 
 /*Unfinished tasks: orange*/
-.md-darkTheme-theme.orange{
+md-chip.md-darkTheme-theme.orange,
+md-card.md-darkTheme-theme.orange{
     border-top: 0.2em solid orange;
 }
 
 /*Unfinished tasks: red*/
-.md-darkTheme-theme.red{
+md-chip.md-darkTheme-theme.red,
+md-card.md-darkTheme-theme.red{
     border-top: 0.2em solid red;
 }
 
 
-/* Smaller cards for smaller screen */
+/* Smaller chips for smaller screens */
 @media only screen and (max-width: 540px) {
     .md-chips md-chip {
 		margin-left: 7em;
@@ -272,15 +278,13 @@ md-card.md-darkTheme-theme {
     border-radius: 10px;
 }
 
-/* md-card.md-darkTheme-theme.priorityTask { */
-/* 	border-bottom: 1em solid rgba(125, 100, 0, 1); */
-/* } */
-
-md-card.md-darkTheme-theme.priorityTask:after {
-	content: '\e002';
-   	font-family: "Material Icons";
-   	font-size: 36px;
-   	text-align: center;
+/*Tasks displayed in yellow*/
+.md-darkTheme-theme.taskCard {
+    background-color: rgba(250, 250, 150, 1);
+}
+/*Tasks hover displayed in white*/
+.md-darkTheme-theme.taskCard:hover{
+	background-color: rgba(250, 250, 250, 1);
 }
 
 /* Default card being hovered */
@@ -288,9 +292,20 @@ md-card:hover{
 	cursor: pointer;
 }
 
+/*Card marked as priority have a warning icon*/
+md-card.md-darkTheme-theme.priorityTask:after {
+	content: '\e838';
+   	font-family: "Material Icons";
+   	font-size: 24px;
+   	text-align: center;
+}
+
+/*Exact margin value for cards with chips showing deadlines*/
 .md-title.haveChip {
     margin-top: -1.176em;
 }
+
+/*Cards with no chips don't need any margin*/
 .md-title.noChip {
     margin-top: 0em;
 }
@@ -306,26 +321,15 @@ md-card:hover{
     -o-transform: scale(1.05);
     position: relative;
     z-index: 5;
+    background-color: rgba(250, 250, 250, 1) !important;
 }
-
-/*Finished tasks displayed in yellow*/
-.md-darkTheme-theme.defaultCard {
-    background-color: rgba(250, 250, 150, 1);
-}
-/*Finished tasks hover displayed in white*/
-.md-darkTheme-theme.defaultCard:hover{
-	background-color: rgba(250, 250, 250, 1);
-}
-
 
 /* Error card that is shown to inform the user when there is no API working */
 .md-warning-card {
-    height: 40em !important;
+    height: 30em !important;
     width: 40em !important;
     cursor: default !important;
 }
-
-
 
 /* Hover effect for the error card to keep its original color instead of changing it like main cards */
 .md-warning-card:hover {
@@ -339,26 +343,30 @@ md-card:hover{
 
 /* Smaller cards for smaller screen */
 @media only screen and (max-width: 540px) {
+	/*Smaller size*/
     md-card.md-darkTheme-theme {
 	    height: 12em;
 	    width: 15em;
 	}
 	
+	/*Smaller font and padding for the card hearder*/
 	md-card md-card-header {
 	    padding: 12px;
 	    font-size: 14px !important
 	}
 	
+	/*smaller font and padding for the card title*/
 	md-card md-card-title {
 	    padding: 18px 12px 12px;
 	    font-size: 12px !important
-	   
 	}
 	
+	/*Smaller warning icon for tasks marked as priority*/
 	md-card.md-darkTheme-theme.priorityTask:after {
-   	font-size: 24px;
-}
+   		font-size: 24px;
+	}
 	
+	/*Exact margin for chips on smaller cards*/
 	.md-title.haveChip {
     	margin-top: -1.394em !important;
 	}
