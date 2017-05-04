@@ -17,26 +17,28 @@ body{
 }
 
 /*Unfinished tasks: green*/
-md-chip.md-darkTheme-theme.green,
-md-card.md-darkTheme-theme.green{
+/* md-card.md-darkTheme-theme.green, */
+md-chip.md-darkTheme-theme.green
+{
     border-top: 0.2em solid green;
 }
 
 /*Unfinished tasks: yellow*/
-md-chip.md-darkTheme-theme.yellow,
-md-card.md-darkTheme-theme.yellow{
+/* md-card.md-darkTheme-theme.yellow, */
+md-chip.md-darkTheme-theme.yellow
+{
     border-top: 0.2em solid yellow;
 }
 
 /*Unfinished tasks: orange*/
-md-chip.md-darkTheme-theme.orange,
-md-card.md-darkTheme-theme.orange{
+/* md-card.md-darkTheme-theme.orange, */
+md-chip.md-darkTheme-theme.orange{
     border-top: 0.2em solid orange;
 }
 
 /*Unfinished tasks: red*/
-md-chip.md-darkTheme-theme.red,
-md-card.md-darkTheme-theme.red{
+/* md-card.md-darkTheme-theme.red, */
+md-chip.md-darkTheme-theme.red{
     border-top: 0.2em solid red;
 }
 
