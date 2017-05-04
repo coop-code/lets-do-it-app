@@ -2,9 +2,9 @@
     "use strict";
     angular
         .module("letsDoIt")
-        .controller("ReopenConfirmationDialogCtrl", ['DialogService', ReopenConfirmationDialogCtrl]);
+        .controller("ConfirmationDialogCtrl", ['DialogService', 'title', 'question', ConfirmationDialogCtrl]);
 
-    function ReopenConfirmationDialogCtrl(DialogService) {
+    function ConfirmationDialogCtrl(DialogService, title, question) {
         var vm = this;
         
         function closeDialog() {
@@ -15,8 +15,8 @@
             DialogService.answerDialog(answer);
         }
 
-        vm.title = "Reopen Confirmation";
-        vm.question = "Are you sure you want to mark this task as unfinished again?";
+        vm.title = title;
+        vm.question = question;
         vm.yesText = "Yes";
         vm.noText = "No";
         

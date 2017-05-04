@@ -50,9 +50,13 @@
         
 		function openDeleteConfirmationDialog(event) {
             var dialogConfig = {
-            	templateUrl: 'app/components/dialog/view/deleteConfirmationDialogView.html',
-				controller: 'DeleteConfirmationDialogCtrl',
+            	templateUrl: 'app/components/dialog/view/confirmationDialogView.html',
+				controller: 'ConfirmationDialogCtrl',
 				controllerAs: 'vm',
+				locals: {
+                    title: "Delete confirmation",
+                    question: "Are you sure you want to permanently delete this task?"
+                },
 				clickOutsideToClose: false
             }
             return openDialog(event, dialogConfig);
@@ -60,9 +64,13 @@
         
         function openFinishConfirmationDialog(event) {
             var dialogConfig = {
-            	templateUrl: 'app/components/dialog/view/finishConfirmationDialogView.html',
-				controller: 'FinishConfirmationDialogCtrl',
-				controllerAs: 'vm',
+            		templateUrl: 'app/components/dialog/view/confirmationDialogView.html',
+    				controller: 'ConfirmationDialogCtrl',
+    				controllerAs: 'vm',
+    				locals: {
+                        title: "Finish confirmation",
+                        question: "Are you sure you want to mark this task as finished?"
+                    },
 				clickOutsideToClose: false
             }
             return openDialog(event, dialogConfig);
@@ -70,9 +78,13 @@
         
         function openReopenConfirmationDialog(event) {
             var dialogConfig = {
-            	templateUrl: 'app/components/dialog/view/reopenConfirmationDialogView.html',
-				controller: 'ReopenConfirmationDialogCtrl',
-				controllerAs: 'vm',
+            		templateUrl: 'app/components/dialog/view/confirmationDialogView.html',
+    				controller: 'ConfirmationDialogCtrl',
+    				controllerAs: 'vm',
+    				locals: {
+                        title: "Delete confirmation",
+                        question: "Are you sure you want to reopen this task and mark it as unfinished again?"
+                    },
 				clickOutsideToClose: false
             }
             return openDialog(event, dialogConfig);
