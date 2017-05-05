@@ -6,6 +6,11 @@
 
     function LayoutCtrl(TaskService, DialogService, StateService, SidenavService) {
         var vm = this;
+
+		vm.openTaskCreationDialog = openTaskCreationDialog;
+        vm.updateCurrentStateAndTitleSidenav = updateCurrentStateAndTitleSidenav;
+        vm.updateCurrentStateAndTitleTabs = updateCurrentStateAndTitleTabs;
+        vm.toggleSideNav = toggleSideNav;
         
         //Triggered by the FAB button
         function openTaskCreationDialog(event) {
@@ -56,9 +61,5 @@
         	? "Can't do it :(" 
         	: vm.menuOptions[vm.menuOptions.map(function(e) { return e.link; }).indexOf(vm.currentState)].name;
         
-        vm.openTaskCreationDialog = openTaskCreationDialog;
-        vm.updateCurrentStateAndTitleSidenav = updateCurrentStateAndTitleSidenav;
-        vm.updateCurrentStateAndTitleTabs = updateCurrentStateAndTitleTabs;
-        vm.toggleSideNav = toggleSideNav;
     }
 }());

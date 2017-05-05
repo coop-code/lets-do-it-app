@@ -9,6 +9,13 @@
         var vm = this;
         vm.tasks = TasksValue;
 
+
+        vm.deleteTask = deleteTask;
+        vm.finishTask = finishTask;
+        vm.changeTaskPriority = changeTaskPriority;
+        vm.openTaskEditionDialog = openTaskEditionDialog;
+        vm.searchTask = searchTask;
+
         //Backend Server Health Check (Lets Do It API)
         TaskService.ping()
             .then(function () {
@@ -96,10 +103,5 @@
             };
         };
 
-        vm.deleteTask = deleteTask;
-        vm.finishTask = finishTask;
-        vm.changeTaskPriority = changeTaskPriority;
-        vm.openTaskEditionDialog = openTaskEditionDialog;
-        vm.searchTask = searchTask;
     }
 }());

@@ -9,6 +9,11 @@
         var vm = this;
         vm.tasks = TasksValue;
 
+        vm.deleteTask = deleteTask;
+        vm.openTaskVisualizationDialog = openTaskVisualizationDialog;
+        vm.reopenTask = reopenTask;
+        vm.searchTask = searchTask;
+
         //Backend Server Health Check (Lets Do It API)
         TaskService.ping()
             .then(function () {
@@ -16,8 +21,8 @@
                 TaskService.setFinishedTasks()
                     .then(function () {
                         /*Finished tasks set successfully*/
-                    	
-                    	//If there's no unfinished tasks, the default message is displayed
+
+                        //If there's no unfinished tasks, the default message is displayed
                         vm.tasks.loadingFinished = false;
                     })
                     .catch(function (error) {
@@ -25,12 +30,12 @@
                         console.log('TaskListCtrl error (setFinishedTasks): ', error);
                     });
             })
-            .catch(function (error) { 
-            	StateService.goToConnectionProblem();
+            .catch(function (error) {
+                StateService.goToConnectionProblem();
             });
-        
+
         function deleteTask(task, event) {
-        	DialogService.openDeleteConfirmationDialog(event)
+            DialogService.openDeleteConfirmationDialog(event)
                 .then(function (answer) {
                     //Answer can be yes or no. If yes, then proceed with the delete operation, otherwise, do nothing.
                     if (answer === 'yes') {
@@ -46,47 +51,43 @@
                     }
 
                 })
-                .catch( function () {
+                .catch(function () {
                     //Delete cancelled
                 });
         }
-        
+
         function reopenTask(task) {
-        	DialogService.openReopenConfirmationDialog(event)
-        	.then(function (answer) {
-        		//Answer can be yes or no. If yes, then proceed with the delete operation, otherwise, do nothing.
-                if (answer === 'yes') {
-		            ToastrService.processing("Reopening", "Please wait while the task is marked as unfinished...");
-		            TaskService.reopenTask(task)
-		                .then(function () {
-		                    ToastrService.success("Task successfully marked as unfinished.");
-		                })
-		                .catch(function (error) {
-		                    ToastrService.error("Error", "There was a problem when trying to mark the task as unfinished. Please refresh the page before trying again.");
-		                    console.log('FinishedTasksListCtrl error (reopenTask): ', error);
-		                });
-                }
-        	})
-            .catch( function (error) {
-            	//Confirmation cancelled
-            });
+            DialogService.openReopenConfirmationDialog(event)
+                .then(function (answer) {
+                    //Answer can be yes or no. If yes, then proceed with the delete operation, otherwise, do nothing.
+                    if (answer === 'yes') {
+                        ToastrService.processing("Reopening", "Please wait while the task is marked as unfinished...");
+                        TaskService.reopenTask(task)
+                            .then(function () {
+                                ToastrService.success("Task successfully marked as unfinished.");
+                            })
+                            .catch(function (error) {
+                                ToastrService.error("Error", "There was a problem when trying to mark the task as unfinished. Please refresh the page before trying again.");
+                                console.log('FinishedTasksListCtrl error (reopenTask): ', error);
+                            });
+                    }
+                })
+                .catch(function (error) {
+                    //Confirmation cancelled
+                });
         }
 
         function openTaskVisualizationDialog(task, $event) {
             DialogService.openTaskVisualizationDialog(task, $event);
         };
-        
+
         function searchTask(searchTerms) {
-            return function(task) {
-            	if(searchTerms === '' || searchTerms === null || searchTerms === undefined) return true;
-            	searchTerms = searchTerms.toLocaleLowerCase();
-            	return (task.title.toLocaleLowerCase().includes(searchTerms) || task.description.toLocaleLowerCase().includes(searchTerms));
+            return function (task) {
+                if (searchTerms === '' || searchTerms === null || searchTerms === undefined) return true;
+                searchTerms = searchTerms.toLocaleLowerCase();
+                return (task.title.toLocaleLowerCase().includes(searchTerms) || task.description.toLocaleLowerCase().includes(searchTerms));
             };
         };
 
-        vm.deleteTask = deleteTask;
-        vm.openTaskVisualizationDialog = openTaskVisualizationDialog;
-        vm.reopenTask = reopenTask;
-        vm.searchTask = searchTask;
     }
 }());
