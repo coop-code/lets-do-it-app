@@ -4,28 +4,58 @@
 
 <md-content layout="row" layout-align="center center" flex layout-padding>
 	<div flex=60>
+	
 	<p>"Let's Do It" is a task management app (a to-do list) designed for studying purposes. This app was implemented using the following:</p>
+	
 	<md-list>
-		<md-list-item><span><md-icon md-svg-icon="app/common/icon/angular-icon.svg" aria-label="angular"></md-icon></span>&nbsp<b>AngularJS framework</b></md-list-item>
-		<md-list-item><span><md-icon md-svg-icon="app/common/icon/angular-icon.svg" aria-label="angular"></md-icon></span>&nbsp<b>Angular Material</b></md-list-item>
+		<md-list-item>
+			<span><md-icon md-svg-icon="app/common/icon/angular-icon.svg" aria-label="angular"></md-icon></span>&nbsp<b>AngularJS framework</b>
+		</md-list-item>
+		<md-list-item>
+			<span><md-icon md-svg-icon="app/common/icon/angular-icon.svg" aria-label="angular"></md-icon></span>&nbsp<b>Angular Material</b>
+		</md-list-item>
 	</md-list>
+	
 	<p>In order to work properly, this app interacts with an API to read, create, update e delete tasks. But don't worry, we already
 		implemented one (a RESTFul Web API using <b>NodeJS</b> and <b>MongoDB</b>) and it is available for you!</p>
 	<p>Well, I'm sure you came here to test the APP and see how it works. If you want to create a task, just click on the "add" button
 		at the bottom right and a form will pop up.</p>
 	<p>The Let's Do It App provides all the basic operations regarding tasks (read, creation, editing and deleting). Some other
 		operations were added, such as prioritize and mark the task as finished or unfinished. The tasks are separated as follows:</p>
+	
 	<md-list>
-		<md-list-item><span><md-icon>assignment</md-icon></span>&nbspTASKS (unfinished or pending tasks) - can be edited, prioritized, marked as
-			done and deleted. </md-list-item>
-		<md-list-item><span><md-icon>assignment_turned_in</md-icon></span>&nbspFINISHED (finished or done tasks) - can be viewed and deleted and reopened (marked as unfinished).</md-list-item>
+		<md-list-item>
+			<span><md-icon>assignment</md-icon></span>&nbspTASKS (unfinished or pending tasks) - can be edited, prioritized, marked as done and deleted. 
+		</md-list-item>
+		<md-list-item>
+			<span><md-icon>assignment_turned_in</md-icon></span>&nbspFINISHED (finished or done tasks) - can be viewed and deleted and reopened (marked as unfinished).
+		</md-list-item>
 	</md-list>
+	
+	<p>Finished tasks are pretty intuitive by themselves. On the other hand, unfinished tasks have some explicit information on them, priority and deadline to be more precise. They are showed as follows:</p>
+	
+	<md-list>
+		<md-list-item>
+			<span>
+				<md-chips>
+					<md-chip readonly="true" md-removable="false" class="orange" style="margin-top:0; margin-left:0; border-bottom: 1px solid white;">X days</md-chip>
+				</md-chips>
+			</span>&nbspCHIPS show the remaining days until a task reaches its deadline, if it exists. The colors indicate how close to its deadline a task is, ranging from green (far) to red (close).
+		</md-list-item>
+		<md-list-item>
+			<span><md-icon>star</md-icon></span>&nbspPRIORITY is a star symbol used to indicate a task of critical priority.
+		</md-list-item>
+	</md-list>
+	
+	<p>Also, you will notice that the unfinished tasks are ordered using the two characteristics above, both priority and deadline, where priority has a higher...well...priority than deadline. Haha.</p>
 	<p>Feel free to use this APP the way you like, after all, it's for studying purposes. If you want to report any issue, please do so at our <a class="light-link" href="https://github.com/coop-code/lets-do-it-app">APP repository on GitHub</a>.</p>
-	<p>This APP was developed and is maintained by the developers:</p>
+	<p>This APP was developed and is maintained by:</p>
+	
 	<md-list>
 		<md-list-item ng-repeat="developer in vm.developers">
 			<span><md-icon>{{developer.icon}}</md-icon></span>&nbsp{{developer.name}} (<a target="_blank" class="light-link" href={{developer.githubAddress}}>GitHub</a>,&nbsp
 			<a target="_blank" class="light-link" href={{developer.developerPortfolioAddress}}>Developer Portfolio</a>) </md-list-item>
 	</md-list>
+	
 	</div>
 </md-content>
