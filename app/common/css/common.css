@@ -1,18 +1,57 @@
-/* Main body font family */
+/* Default body font family */
 body{
 	font-family: 'Droid Sans', sans-serif;
 }
 
+/* Default content color*/
 md-content.md-darkTheme-theme {
     color: rgba(200, 200, 200, 1);
 }
 
+
+/*******************************/
+/*******************************/
+/**BEGIN LISTS DEFINITIONS**/
+/*******************************/
+/*******************************/
+
+/*Default color for 2 items lists*/
 md-list.md-darkTheme-theme md-list-item.md-2-line .md-list-item-text h3, 
 md-list.md-darkTheme-theme md-list-item.md-2-line .md-list-item-text h4,
 md-list.md-darkTheme-theme md-list-item.md-2-line .md-list-item-text p,
 md-list.md-darkTheme-theme md-list-item.md-2-line .md-list-item-text md-chips md-chip  {
     color: rgba(200, 200, 200, 1);
 }
+
+/*****************************/
+/*****************************/
+/**END LISTS DEFINITIONS**/
+/*****************************/
+/*****************************/
+
+
+/**************************************/
+/**************************************/
+/**BEGIN CHECKBOX DEFINITIONS**/
+/**************************************/
+/**************************************/
+
+/*Default color for checkboxes*/
+md-checkbox.md-darkTheme-theme:not([disabled]).md-primary:not(.md-checked) .md-icon {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/*Default color for disabled checkboxes*/
+md-checkbox.md-darkTheme-theme[disabled].md-checked .md-icon {
+    background-color: rgba(97,97,97,0.87);
+}
+
+/************************************/
+/************************************/
+/**END CHECKBOX DEFINITIONS**/
+/************************************/
+/************************************/
+
 
 /*******************************/
 /*******************************/

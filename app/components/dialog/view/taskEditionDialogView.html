@@ -44,9 +44,9 @@
 			
 			<div layout="row">
 	        	<md-input-container class="md-block" flex>
-	        		<md-button class="md-icon-button" ng-model="vm.task.priority" ng-click="vm.task.priority = !vm.task.priority" aria-label="Priority">
-			          	<md-icon ng-class="{'md-warn': vm.task.priority}">{{vm.task.priority ? "star" : "star_border"}}</md-icon>
-			        </md-button> {{vm.task.priority ? "Priority" : "Normal"}}
+	        		<md-checkbox aria-label="Priority" ng-model="vm.task.priority" class="md-primary">
+		            	<text style="color: rgba(255, 255, 255, 0.5);">Critical task </text>
+					</md-checkbox>
 				</md-input-container>
 	        </div>
 	        
