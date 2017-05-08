@@ -6,7 +6,7 @@
 
     function TaskEditionDialogCtrl(TaskService, ToastrService, DialogService, task) {
         var vm = this;
-        vm.task = task;
+        vm.task = angular.copy(task); //Deep copy so we don't change the card while we change the inputs in the dialog. Changes will happen only after a successful submit.
         vm.ConfirmationDialogIsOpen = false;
 
         //Triggered by the create button
