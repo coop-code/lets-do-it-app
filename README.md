@@ -42,7 +42,7 @@ Feel free to use the APP the way you like!
 ## Additional Information
 
 - The project does not work with user authentication yet.
-- The tasks are registered globally, which means that they are the same for everyone.
+- The tasks are registered in a mondodb hosted in the cloud. Also, they are registered globally, which means that the tasks are the same for everyone. The API has the configuration of the mongodb server connection.
 
 ## Special Thanks
 
