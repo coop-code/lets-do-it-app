@@ -24,7 +24,7 @@ As said, it has studying purposes. In other words, it's a **demonstration** of h
 ### Let's Do It APP
 
 1. Clone this repository 
-2. Open a command prompt, navigate to the folder that cointains the cloned repository and run `npm install` to install all the dependencies.
+2. Open a command prompt, navigate to the folder that contains the cloned repository and run `npm install` to install all the dependencies.
 3. Run `npm start` to the start the application.
 
 ###  Let's Do It API
