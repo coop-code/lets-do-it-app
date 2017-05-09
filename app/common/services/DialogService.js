@@ -48,6 +48,20 @@
             return openDialog(event, dialogConfig);
         };
         
+        function openCreateConfirmationDialog(event) {
+            var dialogConfig = {
+            	templateUrl: 'app/components/dialog/view/confirmationDialogView.html',
+				controller: 'ConfirmationDialogCtrl',
+				controllerAs: 'vm',
+				locals: {
+                    title: "Create confirmation",
+                    question: "Are you sure you want to create this task?"
+                },
+				clickOutsideToClose: false
+            }
+            return openDialog(event, dialogConfig);
+        };
+        
 		function openDeleteConfirmationDialog(event) {
             var dialogConfig = {
             	templateUrl: 'app/components/dialog/view/confirmationDialogView.html',
@@ -103,6 +117,7 @@
 			openTaskCreationDialog: openTaskCreationDialog,
 			openTaskVisualizationDialog: openTaskVisualizationDialog,
 			openTaskEditionDialog: openTaskEditionDialog,
+			openCreateConfirmationDialog: openCreateConfirmationDialog,
 			openFinishConfirmationDialog: openFinishConfirmationDialog,
 			openReopenConfirmationDialog: openReopenConfirmationDialog,
 			openDeleteConfirmationDialog: openDeleteConfirmationDialog,
