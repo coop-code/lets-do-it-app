@@ -1,5 +1,5 @@
 <div class='md-padding' layout="row" layout-align="center none" layout-wrap>
-	<md-fab-speed-dial 	ng-repeat="task in vm.tasks.unfinished | orderBy: ['deadlineInDays', '-priority'] | filter: vm.searchTask(searchTerms) as results track by task.id" 
+	<md-fab-speed-dial 	ng-repeat="task in vm.tasks.unfinished | orderBy: ['deadlineInDays', '-priority'] | searchTitleAndDescription:searchTerms as results track by task.id" 
 											class="md-scale" 
 											md-open="task.unfinishedCardClasses.showCardOptions" 
 											md-direction="down" 
@@ -14,10 +14,10 @@
 					<md-chip ng-show="task.deadlineInDays == undefined || task.deadlineInDays == null" ng-class="task.chipClasses">Anytime</md-chip>
 				</md-chips>
 				<md-card-header class="md-title haveChip">
-			    	{{ task.title }}
+			    	{{ task.title | maxCharacters:55 }}
 				</md-card-header>
 			    <md-card-title>
-			    	{{ task.description }}
+			    	{{ task.description | maxCharacters:150 }}
 			    </md-card-title>
 			</md-card>
 		</md-fab-trigger>
@@ -46,7 +46,7 @@
 	<md-content layout="row" layout-align="center center" flex layout-padding ng-if="!vm.tasks.loadingUnfinished && vm.tasks.unfinished.length == 0">
 		<div flex=60 style="text-align: center;">
 			<p>There are no unfinished tasks. Wow, you're very good (or maybe you did not registered your tasks).</p>
-			<p>To create tasks, just click on the button on the bottom right corner. {{results}}</p>
+			<p>To create tasks, just click on the button on the bottom right corner.</p>
 		</div>
 	</md-content>
 	

@@ -14,7 +14,6 @@
         vm.finishTask = finishTask;
         vm.changeTaskPriority = changeTaskPriority;
         vm.openTaskEditionDialog = openTaskEditionDialog;
-        vm.searchTask = searchTask;
 
         //Backend Server Health Check (Lets Do It API)
         TaskService.ping()
@@ -94,14 +93,5 @@
         function openTaskEditionDialog(task, event) {
             DialogService.openTaskEditionDialog(task, event);
         };
-        
-        function searchTask(searchTerms) {
-            return function(task) {
-            	if(searchTerms === '' || searchTerms === null || searchTerms === undefined) return true;
-            	searchTerms = searchTerms.toLocaleLowerCase();
-            	return (task.title.toLocaleLowerCase().includes(searchTerms) || task.description.toLocaleLowerCase().includes(searchTerms));
-            };
-        };
-
     }
 }());

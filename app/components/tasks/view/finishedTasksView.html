@@ -1,5 +1,5 @@
 <div class='md-padding' layout="row" layout-align="center none" layout-wrap>
-	<md-fab-speed-dial 	ng-repeat="task in vm.tasks.finished | filter: vm.searchTask(searchTerms) as results track by task.id" 
+	<md-fab-speed-dial 	ng-repeat="task in vm.tasks.finished | searchTitleAndDescription:searchTerms as results track by task.id" 
 											class="md-scale" 
 											md-open="task.finishedCardClasses.showCardOptions" 
 											md-direction="down" 
@@ -7,10 +7,10 @@
 		<md-fab-trigger>
 			<md-card ng-class="task.finishedCardClasses">
 				<md-card-header class="md-title">
-			    	{{ task.title }}
+			    	{{ task.title | maxCharacters:55 }}
 				</md-card-header>
 			    <md-card-title>
-			    	{{ task.description }}
+			    	{{ task.description | maxCharacters:150 }}
 			    </md-card-title>
 			</md-card>
 		</md-fab-trigger>
