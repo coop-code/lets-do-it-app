@@ -17,14 +17,18 @@
 	<!-- Style sheets -->
 	<link type="text/css" href="node_modules/angular-material/angular-material.css" rel="stylesheet" />
 	<link type="text/css" href="node_modules/angular-toastr/dist/angular-toastr.css" rel="stylesheet" />
-	<link type="text/css" href="app/common/css/common.css" rel="stylesheet"/>
+	<link type="text/css" href="app/css/common.css" rel="stylesheet"/>
 	
 	<!-- Library Scripts -->
 	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
-	<script type="text/javascript" src="node_modules/moment/moment.js"></script>
 	<script type="text/javascript" src="node_modules/angular-toastr/dist/angular-toastr.tpls.js"></script>	
 	<script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
 	<script type="text/javascript" src="node_modules/angular-resource/angular-resource.js"></script>
+	<script type="text/javascript" src="node_modules/moment/moment.js"></script>
+	
+<!-- 	Localization -->
+<!-- Uncomment the line below and change <filename> to the appropriate file if you need date internationalization support -->
+<!-- <script type="text/javascript" src="node_modules/moment/locale/<filename>.js"></script> -->
 	
 	<!-- Angular Material required libraries -->
 	<script type="text/javascript" src="node_modules/angular-animate/angular-animate.js"></script>
@@ -33,40 +37,41 @@
 
 	<!-- Angular Material Library -->
 	<script type="text/javascript" src="node_modules/angular-material/angular-material.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.1/angular-material-icons.min.js"></script>
 
 	<!-- Application Script -->
-	<script type="text/javascript" src="app/app.js"></script>
+	<script type="text/javascript" src="app/app.module.js"></script>
 
 	<!-- Configurations -->
-	<script type="text/javascript" src="app/common/configs/StateProviderConfig.js"></script>
-	<script type="text/javascript" src="app/common/configs/DefaultToastrConfig.js"></script>
-	<script type="text/javascript" src="app/common/configs/DarkThemeConfig.js"></script>
+	<script type="text/javascript" src="app/configs/url-router-provider.config.js"></script>
+	<script type="text/javascript" src="app/configs/state-provider.config.js"></script>
+	<script type="text/javascript" src="app/configs/date-locale-provider.config.js"></script>
+	<script type="text/javascript" src="app/configs/toastr.config.js"></script>
+	<script type="text/javascript" src="app/configs/dark-theme.config.js"></script>
 	
 	<!-- Filters -->
-	<script type="text/javascript" src="app/common/filters/MaxCharactersFilter.js"></script>
-	<script type="text/javascript" src="app/common/filters/SearchFilter.js"></script>
+	<script type="text/javascript" src="app/filters/max-characters.filter.js"></script>
+	<script type="text/javascript" src="app/filters/search.filter.js"></script>
 	
 	<!-- Values -->
-	<script type="text/javascript" src="app/common/values/TasksValue.js"></script>
+	<script type="text/javascript" src="app/values/task.value.js"></script>
 	
 	<!-- Services -->
-	<script type="text/javascript" src="app/common/services/TaskService.js"></script>
-	<script type="text/javascript" src="app/common/services/SidenavService.js"></script>
-	<script type="text/javascript" src="app/common/services/DialogService.js"></script>
-	<script type="text/javascript" src="app/common/services/ToastrService.js"></script>
-	<script type="text/javascript" src="app/common/services/StateService.js"></script>
+	<script type="text/javascript" src="app/services/task.service.js"></script>
+	<script type="text/javascript" src="app/services/sidenav.service.js"></script>
+	<script type="text/javascript" src="app/services/dialog.service.js"></script>
+	<script type="text/javascript" src="app/services/toastr.service.js"></script>
+	<script type="text/javascript" src="app/services/state.service.js"></script>
 
 	<!-- Controllers -->
-	<script type="text/javascript" src="app/components/layout/controller/layoutCtrl.js"></script>
-	<script type="text/javascript" src="app/components/home/controller/homeCtrl.js"></script>
-	<script type="text/javascript" src="app/components/tasks/controller/FinishedTasksListCtrl.js"></script>
-	<script type="text/javascript" src="app/components/tasks/controller/UnfinishedTasksListCtrl.js"></script>
-	<script type="text/javascript" src="app/components/dialog/controller/TaskCreationDialogCtrl.js"></script>
-	<script type="text/javascript" src="app/components/dialog/controller/TaskVisualizationDialogCtrl.js"></script>
-	<script type="text/javascript" src="app/components/dialog/controller/TaskEditionDialogCtrl.js"></script>
-	<script type="text/javascript" src="app/components/dialog/controller/ConfirmationDialogCtrl.js"></script>
-	<script type="text/javascript" src="app/components/connectionProblem/controller/ConnectionProblemCtrl.js"></script>
+	<script type="text/javascript" src="app/layout/controller/layout.controller.js"></script>
+	<script type="text/javascript" src="app/home/controller/home.controller.js"></script>
+	<script type="text/javascript" src="app/tasks/controller/finished-tasks.controller.js"></script>
+	<script type="text/javascript" src="app/tasks/controller/unfinished-tasks.controller.js"></script>
+	<script type="text/javascript" src="app/dialog/controller/task-creation-dialog.controller.js"></script>
+	<script type="text/javascript" src="app/dialog/controller/task-visualization-dialog.controller.js"></script>
+	<script type="text/javascript" src="app/dialog/controller/task-edition-dialog.controller.js"></script>
+	<script type="text/javascript" src="app/dialog/controller/confirmation-dialog.controller.js"></script>
+	<script type="text/javascript" src="app/connectionProblem/controller/connection-problem.controller.js"></script>
 
 </head>
 

@@ -1,0 +1,621 @@
+/* Default body font family */
+body{
+	font-family: 'Droid Sans', sans-serif;
+}
+
+/* Default content color*/
+md-content.md-darkTheme-theme {
+    color: rgba(200, 200, 200, 1);
+}
+
+
+/*******************************/
+/*******************************/
+/**BEGIN LISTS DEFINITIONS**/
+/*******************************/
+/*******************************/
+
+/*Default color for 2 items lists*/
+md-list.md-darkTheme-theme md-list-item.md-2-line .md-list-item-text h3, 
+md-list.md-darkTheme-theme md-list-item.md-2-line .md-list-item-text h4,
+md-list.md-darkTheme-theme md-list-item.md-2-line .md-list-item-text p,
+md-list.md-darkTheme-theme md-list-item.md-2-line .md-list-item-text md-chips md-chip  {
+    color: rgba(200, 200, 200, 1);
+}
+
+/*****************************/
+/*****************************/
+/**END LISTS DEFINITIONS**/
+/*****************************/
+/*****************************/
+
+
+/**************************************/
+/**************************************/
+/**BEGIN CHECKBOX DEFINITIONS**/
+/**************************************/
+/**************************************/
+
+/*Default color for checkboxes*/
+md-checkbox.md-darkTheme-theme:not([disabled]).md-primary:not(.md-checked) .md-icon {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/*Default color for disabled checkboxes*/
+md-checkbox.md-darkTheme-theme[disabled].md-checked .md-icon {
+    background-color: rgba(97,97,97,0.87);
+}
+
+/************************************/
+/************************************/
+/**END CHECKBOX DEFINITIONS**/
+/************************************/
+/************************************/
+
+
+/*******************************/
+/*******************************/
+/**BEGIN CHIP DEFINITIONS**/
+/*******************************/
+/*******************************/
+
+/*Base chip configuration*/
+.md-chips md-chip.md-darkTheme-theme {
+    cursor: pointer;
+    margin: 0;
+    margin-top: -1em;
+    margin-left: 7.5em;
+    font-weigth: bold;
+    font-family: 'Gloria Hallelujah', cursive;
+	height: 2em;
+    line-height: 1.5em;
+   	background: rgba(48, 48, 48, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
+/*Unfinished tasks: green*/
+/* md-card.md-darkTheme-theme.green, */
+md-chip.md-darkTheme-theme.green
+{
+    border-top: 0.2em solid green;
+}
+
+/*Unfinished tasks: yellow*/
+/* md-card.md-darkTheme-theme.yellow, */
+md-chip.md-darkTheme-theme.yellow
+{
+    border-top: 0.2em solid yellow;
+}
+
+/*Unfinished tasks: orange*/
+/* md-card.md-darkTheme-theme.orange, */
+md-chip.md-darkTheme-theme.orange{
+    border-top: 0.2em solid orange;
+}
+
+/*Unfinished tasks: red*/
+/* md-card.md-darkTheme-theme.red, */
+md-chip.md-darkTheme-theme.red{
+    border-top: 0.2em solid red;
+}
+
+/*Example chip showed on home view*/
+md-chips.md-darkTheme-theme.homeExample .md-chips md-chip {
+	cursor: default;
+	margin-top:0; 
+	margin-left:0; 
+	border-bottom: 1px solid white;
+	border-top: 0.2em solid orange;
+}
+
+/*Taking out the divider and putting text on the same line for the example chip on home view*/
+md-chips.md-darkTheme-theme.homeExample md-chips-wrap  {
+    box-shadow: none;
+    display: inline-block;
+}
+
+/* Smaller chips for smaller screens */
+@media only screen and (max-width: 540px) {
+    .md-chips md-chip {
+		margin-left: 7em;
+	    line-height: 1.8em;
+	    font-size: 12px;
+	}
+}
+
+/*****************************/
+/*****************************/
+/**END CHIP DEFINITIONS**/
+/*****************************/
+/*****************************/
+
+
+/*******************************/
+/*******************************/
+/**BEGIN TABS DEFINITIONS**/
+/*******************************/
+/*******************************/
+
+/* Base colors for all tabs */
+md-tabs.md-darkTheme-theme .md-tab {
+    color: rgba(255, 255, 255, 0.33);
+	background-color: rgba(0, 0, 0, 1);
+    border-top: 3px solid rgba(255, 255, 255, 0.1);
+    border-left: 3px solid rgba(255, 255, 255, 0.1);
+    border-right: 3px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Semi-transparent icon and text inside tabs */
+md-tabs.md-darkTheme-theme .md-tab md-icon {
+	color: rgba(255, 255, 255, 0.33);
+}
+
+/* Hover effect for tabs */
+md-tabs.md-darkTheme-theme .md-tab:hover {
+	background-color: rgba(0, 0, 0, 0.9);
+	border-top: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Specific borders and colors for active tab */
+md-tabs.md-darkTheme-theme .md-tab.md-active, 
+md-tabs.md-darkTheme-theme .md-tab.md-focused {
+	color: rgba(255, 255, 255, 1);
+    background-color: rgba(48, 48, 48, 1);
+    border-top: 3px solid rgba(255, 255, 255, 1);
+    border-left: 3px solid rgba(255, 255, 255, 0);
+    border-right: 3px solid rgba(255, 255, 255, 0);
+}
+
+/* Specific colors for active tab icons */
+md-tabs.md-darkTheme-theme .md-tab.md-active md-icon, 
+md-tabs.md-darkTheme-theme .md-tab.md-focused md-icon {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(48, 48, 48, 1);
+}
+
+/* Accelerating the transition of colors for hover effect */
+.md-tab {
+	transition: background-color 0.1s cubic-bezier(0.35, 0, 0.25, 1)
+}
+
+/*****************************/
+/*****************************/
+/**END TABS DEFINITIONS**/
+/*****************************/
+/*****************************/
+
+/**********************************/
+/**********************************/
+/**BEGIN INPUTS DEFINITIONS**/
+/**********************************/
+/**********************************/
+
+/* Default label and placeholder are very transparent to not deviate user focus */
+md-input-container:not(.searchInput).md-darkTheme-theme .md-placeholder, 
+md-input-container:not(.searchInput).md-darkTheme-theme label {
+	color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Default icon color in dialog form */
+md-input-container:not(.searchInput).md-darkTheme-theme md-icon {
+	color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* As a default, when focused, all input elements are more evident but still transparent enough... */
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-datepicker-open md-icon,
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-focused md-icon,
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-focused label,
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-focused label.md-required:after {
+	color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ...and so is the line beneath input field */
+md-input-container:not(.searchInput).md-darkTheme-theme  .md-input {
+	border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* If the input is invalid, whether it has a value or not, its elements become a semi-transparent red to show
+the user that something is wrong with that input. Chosen transparency is enough to provide enough perception
+of such error but also enough to not deviate user attention from whatever other action it is performing... */
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-has-value md-icon,
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-has-value label,
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-has-value label.md-required:after,
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid md-icon,
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid label,
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid label.md-required:after{
+	color: rgba(250, 150, 150, 0.5) !important;
+}
+
+/* ...and so is the line beneath input field... */
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid .md-input {
+	border-color: rgba(250, 150, 150, 0.5) !important;
+}
+
+/* ...just like any error message shown beneath such line. Here we remove the
+transition effect so the highlighting (and only the highlighting) speed is concise 
+with the speed of highlight of the other elements involved. We want everything acting together */
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid .md-input-message-animation{
+	color: rgba(250, 150, 150, 0.5) !important;
+	transition: none;
+}
+
+/* If the input is invalid, whether it has a value or not, and its also focused, its elements become solid red to both show
+the user that something is wrong with that input and keep user focus on it... */
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-has-value.md-input-focused md-icon,
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-has-value.md-input-focused label,
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-has-value.md-input-focused label.md-required:after,
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-focused md-icon,
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-focused label,
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-focused label.md-required:after{
+	color: rgba(250, 150, 150, 1) !important;
+}
+
+/* ...and, again, so is the line beneath input field */
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-focused .md-input {
+	border-color: rgba(250, 150, 150, 1) !important;
+}
+
+/* ...just like any error message shown beneath such line. Here we remove the
+transition effect so the highlighting (and only the highlighting) speed is concise 
+with the speed of highlight of the other elements involved. We want everything acting together */
+md-input-container:not(.searchInput).md-darkTheme-theme.md-input-invalid.md-input-focused .md-input-message-animation{
+	color: rgba(250, 150, 150, 1) !important;
+	transition: none;
+}
+
+/* If the input is NOT invalid, its elements become a semi-transparent green to show
+the user that said input is correctly filled. We opted to not consider the case where an input
+has no value in order to preserve the default transparency of inputs that can be (and are) empty. The chosen 
+transparency here is enough to provide enough perception of such correctness but also enough 
+to not deviate user attention from whatever other action it is performing... */
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-has-value md-icon,
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-has-value label,
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-has-value label.md-required:after{
+	color: rgba(150, 250, 150, 0.5)  !important;
+}
+
+/* ...and, again, so is the line beneath input field...i say that a lot, don't I? */
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-has-value .md-input {
+	border-color:  rgba(150, 250, 150, 0.5)  !important;
+}
+
+/* If the input is NOT invalid and its also focused, its elements become solid green to both show
+the user the correctness of said input and keep user focus on it... */
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-has-value.md-input-focused md-icon,
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-has-value.md-input-focused label,
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-has-value.md-input-focused label.md-required:after{
+	color: rgba(150, 250, 150, 1)  !important;
+}
+
+/* ...and, so is the line...oh, you know it already by now... */
+md-input-container:not(.searchInput).md-darkTheme-theme:not(.md-input-invalid).md-input-has-value.md-input-focused .md-input {
+	border-color:  rgba(150, 250, 150, 1)  !important;
+}
+
+/*Specific basic border-color for the search input*/
+md-input-container.searchInput.md-darkTheme-theme .md-input,
+md-input-container.searchInput.md-darkTheme-theme .md-input-invalid .md-input,
+md-input-container.searchInput.md-darkTheme-theme .md-input-invalid .md-input-focused .md-input
+md-input-container.searchInput.md-darkTheme-theme:not(.md-input-invalid) .md-input-has-value .md-input
+md-input-container.searchInput.md-darkTheme-theme:not(.md-input-invalid) .md-input-has-value .md-input-focused .md-input {
+	border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/*Specific basic color for the search input*/
+md-input-container.searchInput.md-darkTheme-theme .md-placeholder, 
+md-input-container.searchInput.md-darkTheme-theme label,
+md-input-container.searchInput.md-darkTheme-theme:not(.md-input-invalid).md-input-focused label,
+md-input-container.searchInput.md-darkTheme-theme.md-input-invalid .md-input-has-value label,
+md-input-container.searchInput.md-darkTheme-theme.md-input-invalid label,
+md-input-container.searchInput.md-darkTheme-theme.md-input-invalid .md-input-has-value .md-input-focused label,
+md-input-container.searchInput.md-darkTheme-theme.md-input-invalid .md-input-focused label,
+md-input-container.searchInput.md-darkTheme-theme:not(.md-input-invalid).md-input-has-value label,
+md-input-container.searchInput.md-darkTheme-theme:not(.md-input-invalid).md-input-has-value.md-input-focused label {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+/* Specifically removing the div beneath the actual input in order to align said input correctly */
+md-input-container.searchInput .md-errors-spacer {
+    min-height: 0;
+}
+
+/********************************/
+/********************************/
+/**END INPUTS DEFINITIONS**/
+/********************************/
+/********************************/
+
+
+/**********************************/
+/**********************************/
+/**BEGIN DIALOG DEFINITIONS**/
+/**********************************/
+/**********************************/
+
+/* Make a dialog semi transparent if a new dialog is opened from it */
+.semiTransparent {
+	opacity: 0.1 !important;
+}
+
+/********************************/
+/********************************/
+/**END DIALOG DEFINITIONS**/
+/********************************/
+/********************************/
+
+
+/********************************/
+/********************************/
+/**BEGIN CARD DEFINITIONS**/
+/********************************/
+/********************************/
+
+/* Default card visuals */  
+md-card.md-darkTheme-theme {
+	color: rgba(0, 0, 0, 1);
+    height: 15em;
+    width: 20em;
+    border-radius: 10px;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+/*Tasks displayed in yellow*/
+.md-darkTheme-theme.taskCard {
+    background-color: rgba(250, 250, 150, 1);
+}
+/*Tasks hover displayed in white*/
+.md-darkTheme-theme.taskCard:hover{
+	background-color: rgba(250, 250, 250, 1);
+}
+
+/* Default card being hovered */
+md-card:hover{
+	cursor: pointer;
+}
+
+/*Card marked as priority have a warning icon*/
+md-card.md-darkTheme-theme.priorityTask:after {
+	content: '\e838';
+   	font-family: "Material Icons";
+   	font-size: 24px;
+   	text-align: center;
+}
+
+/*Exact margin value for cards with chips showing deadlines*/
+.md-title.haveChip {
+    margin-top: -1.176em;
+}
+
+/*Cards with no chips don't need any margin*/
+.md-title.noChip {
+    margin-top: 0em;
+}
+
+/* Cards will behave as a FAB (Floating Action Button) and, as such, the card with its actions 
+ open will be both highlighted and "raised" in order to give it a better focus than other cards */
+.showCardOptions{
+	-moz-box-shadow: 10px 10px 7px rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 10px 10px 7px rgba(0, 0, 0, .3);
+    box-shadow: 10px 10px 7px rgba(0, 0, 0, .3);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    position: relative;
+    z-index: 5;
+    background-color: rgba(250, 250, 250, 1) !important;
+}
+
+/* Error card that is shown to inform the user when there is no API working */
+.md-warning-card {
+    height: 30em !important;
+    width: 40em !important;
+    cursor: default !important;
+}
+
+/* Hover effect for the error card to keep its original color instead of changing it like main cards */
+.md-warning-card:hover {
+	background-color: rgba(250, 250, 150, 1) !important;
+}
+
+/* Icon color for the error card */
+.md-warning-card md-card-content md-icon {
+	color: rgba(0, 0, 0, 1);
+}
+
+/* Smaller cards for smaller screen */
+@media only screen and (max-width: 540px) {
+	/*Smaller size*/
+    md-card.md-darkTheme-theme {
+	    height: 12em;
+	    width: 15em;
+	}
+	
+	/*Smaller font and padding for the card hearder*/
+	md-card md-card-header {
+	    padding: 12px;
+	    font-size: 14px !important
+	}
+	
+	/*Smaller font and padding for the card title*/
+	md-card md-card-title {
+	    padding: 18px 12px 12px;
+	    font-size: 12px !important
+	}
+	
+	/*Smaller warning icon for tasks marked as priority*/
+	md-card.md-darkTheme-theme.priorityTask:after {
+   		font-size: 24px;
+	}
+	
+	/*Exact margin for chips on smaller cards*/
+	.md-title.haveChip {
+    	margin-top: -1.394em !important;
+	}
+}
+
+/******************************/
+/******************************/
+/**END CARD DEFINITIONS**/
+/******************************/
+/******************************/
+
+
+/***********************************/
+/***********************************/
+/**BEGIN BUTTONS DEFINITIONS**/
+/***********************************/
+/***********************************/
+
+/* Default color of hovered buttons */
+.md-button:hover {
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.33);
+}
+
+/*Default color of main used buttons*/
+.md-button.md-darkTheme-theme.md-primary.md-fab, 
+.md-button.md-darkTheme-theme.md-primary.md-raised {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+/*Default color of disabled main used buttons*/
+.md-button.md-darkTheme-theme.md-fab[disabled], 
+.md-button.md-darkTheme-theme.md-raised[disabled]{
+    background-color: rgba(0, 0, 0, 0.1);
+    color: rgba(255, 255, 255, 0.1);
+}
+
+/*Default color of disabled icons inside disabled main used buttons*/
+.md-button.md-darkTheme-theme.md-fab[disabled] md-icon, 
+.md-button.md-darkTheme-theme.md-raised[disabled] md-icon, 
+.md-button.md-darkTheme-theme[disabled] md-icon {
+    color: rgba(255, 255, 255, 0.1);
+}
+
+/* Making the default highlight transition of fab buttons process faster (0.1s) */
+.md-button.md-fab {
+    -webkit-transition: all 0.1s cubic-bezier(0.55, 0, 0.55, 0.2);
+    transition: all 0.1s cubic-bezier(0.55, 0, 0.55, 0.2);
+}
+
+/**********************************/
+/**********************************/
+/**END BUTTONS DEFINITIONS**/
+/**********************************/
+/**********************************/
+
+
+/*********************************/
+/*********************************/
+/**BEGIN ICONS DEFINITIONS**/
+/*********************************/
+/*********************************/
+
+/* Main icon color */
+md-icon.md-darkTheme-theme {
+	color: rgba(255, 255, 255, 1);
+}
+
+/* Main warn icon color */
+md-icon.md-darkTheme-theme.md-warn {
+    color: rgba(255, 87, 34, 1) !important; 
+}
+
+/*******************************/
+/*******************************/
+/**END ICONS DEFINITIONS**/
+/*******************************/
+/*******************************/
+
+
+/************************************/
+/************************************/
+/**BEGIN TOOLBAR DEFINITIONS**/
+/************************************/
+/************************************/
+
+/*Main toolbar color*/
+md-toolbar.md-darkTheme-theme:not(.md-menu-toolbar) {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+/* Glitch pulling the tabs 8 pixels up and leaving a white line between the tabs and the content.
+Since the toolbar got smaller, the tabs were pulled up. Not only that, the label of the search bar
+was getting slightly cut. So, two birds with one stone, we changed the minimum value to 75*/
+.md-toolbar-tools {
+	  min-height: 75px;
+}
+
+/**********************************/
+/**********************************/
+/**END TOOLBAR DEFINITIONS**/
+/**********************************/
+/**********************************/
+
+
+/***********************************/
+/***********************************/
+/**BEGIN SIDENAV DEFINITIONS**/
+/***********************************/
+/***********************************/
+
+/* Active sidenav state color */
+.active-sidenav-link {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/*********************************/
+/*********************************/
+/**END SIDENAV DEFINITIONS**/
+/*********************************/
+/*********************************/
+
+
+/*******************************/
+/*******************************/
+/**BEGIN TEXT DEFINITIONS**/
+/*******************************/
+/*******************************/
+
+a.light-link:link {
+	color: #aae2ff
+}
+
+a.light-link:visited {
+	color: #aae2ff
+}
+
+a.light-link:hover {
+	color: #4abef9
+}
+
+a.light-link {
+	text-decoration: none;
+}
+
+/*****************************/
+/*****************************/
+/**END TEXT DEFINITIONS**/
+/*****************************/
+/*****************************/
+
+
+/*********************************/
+/*********************************/
+/**BEGIN IMAGE DEFINITIONS**/
+/*********************************/
+/*********************************/
+
+/*Specific sizes for toad size. The guy is pretty short!*/
+img.toad{
+	min-height: 60px;
+    min-width: 50px;
+    height: 10%; 
+    width: 10%;
+}
+
+/*******************************/
+/*******************************/
+/**END IMAGE DEFINITIONS**/
+/*******************************/
+/*******************************/
