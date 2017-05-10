@@ -2,7 +2,7 @@
 (function () {
 	'use strict';
 	angular.module('letsDoIt').config(routerConfig);
-	
+
 	routerConfig.$inject = ['$urlRouterProvider'];
 	
 	function routerConfig($urlRouterProvider) {
