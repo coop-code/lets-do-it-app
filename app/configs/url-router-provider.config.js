@@ -1,9 +1,9 @@
 //UrlRouterProvider configuration
 (function () {
 	'use strict';
-	angular
-		.module('letsDoIt')
-		.config(['$urlRouterProvider', RouterConfig]);
+	angular.module('letsDoIt').config(RouterConfig);
+	
+	RouterConfig.$inject = ['$urlRouterProvider'];
 	
 	function RouterConfig($urlRouterProvider) {
 		

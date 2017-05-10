@@ -1,9 +1,9 @@
 //DarkTheme configuration
 (function () {
 	'use strict';
-	angular
-		.module('letsDoIt')
-		.config(['$mdThemingProvider', ThemeConfig]);
+	angular.module('letsDoIt').config(ThemeConfig);
+	
+	ThemeConfig.$inject = ['$mdThemingProvider']
 	
 	function ThemeConfig($mdThemingProvider) {
 		

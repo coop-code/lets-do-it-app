@@ -1,9 +1,9 @@
 //StateProvider configuration
 (function () {
 	'use strict';
-	angular
-		.module('letsDoIt')
-		.config(['$stateProvider', StateConfig]);
+	angular.module('letsDoIt').config(StateConfig);
+	
+	StateConfig.$inject = ['$stateProvider'];
 	
 	function StateConfig($stateProvider) {
 

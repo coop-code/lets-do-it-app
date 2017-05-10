@@ -1,9 +1,9 @@
 //DateLocaleProvider configuration
 (function () {
 	'use strict';
-	angular
-		.module('letsDoIt')
-		.config(['$mdDateLocaleProvider', DateConfig]);
+	angular.module('letsDoIt').config(DateConfig);
+	
+	DateConfig.$inject = ['$mdDateLocaleProvider'];
 	
 	function DateConfig($mdDateLocaleProvider) {
 

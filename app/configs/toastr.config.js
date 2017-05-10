@@ -1,9 +1,9 @@
 //Toastr configuration
 (function () {
 	'use strict';
-	angular
-		.module('letsDoIt')
-		.config(['toastrConfig', ToastrConfig]);
+	angular.module('letsDoIt').config(ToastrConfig);
+	
+	ToastrConfig.$inject = ['toastrConfig'];
 	
 	function ToastrConfig(toastrConfig) {
 		
