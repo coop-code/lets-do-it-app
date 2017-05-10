@@ -1,8 +1,9 @@
+//Controller for task-creation-dialog.view.html
 (function () {
     'use strict';
-    angular
-        .module('letsDoIt')
-        .controller('TaskCreationDialogController', ['taskService', 'toastrService', 'dialogService', TaskCreationDialogController]);
+    angular.module('letsDoIt').controller('TaskCreationDialogController', TaskCreationDialogController);
+    
+    TaskCreationDialogController.$inject = ['taskService', 'toastrService', 'dialogService'];
 
     function TaskCreationDialogController(taskService, toastrService, dialogService) {
         var vm = this;
@@ -17,7 +18,7 @@
             priority: false
         }
 
-        //Triggered by the create button
+        //Triggered by the save button
         function submitNewTask() {
         	vm.ConfirmationDialogIsOpen = true;
         	dialogService.openCreateConfirmationDialog(event)

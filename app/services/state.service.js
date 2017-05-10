@@ -1,8 +1,9 @@
+//Service for states
 (function () {
 	'use strict';
-	angular
-		.module('letsDoIt')
-		.factory('stateService', ['$state', stateService]);
+	angular.module('letsDoIt').factory('stateService', stateService);
+	
+	stateService.$inject = ['$state'];
 
 	function stateService($state) {
 		

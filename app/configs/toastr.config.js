@@ -1,11 +1,11 @@
 //Toastr configuration
 (function () {
 	'use strict';
-	angular
-		.module('letsDoIt')
-		.config(['toastrConfig', ToastrConfig]);
+	angular.module('letsDoIt').config(toastrConfig);
 	
-	function ToastrConfig(toastrConfig) {
+	toastrConfig.$inject = ['toastrConfig'];
+	
+	function toastrConfig(toastrConfig) {
 		
 		angular.extend(toastrConfig, {
 			autoDismiss: false,

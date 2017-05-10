@@ -1,8 +1,9 @@
+//Controller for finished-tasks.view.html
 (function () {
     'use strict';
-    angular
-        .module('letsDoIt')
-        .controller('FinishedTasksController', ['taskService', 'toastrService', 'dialogService', 'stateService', 'tasksValue', FinishedTasksController]);
+    angular.module('letsDoIt').controller('FinishedTasksController', FinishedTasksController);
+    
+    FinishedTasksController.$inject = ['taskService', 'toastrService', 'dialogService', 'stateService', 'tasksValue'];
 
     function FinishedTasksController(taskService, toastrService, dialogService, stateService, tasksValue) {
 
@@ -12,17 +13,13 @@
         vm.deleteTask = deleteTask;
         vm.openTaskVisualizationDialog = openTaskVisualizationDialog;
         vm.reopenTask = reopenTask;
-        vm.searchTask = searchTask;
 
         //Backend Server Health Check (Lets Do It API)
         taskService.ping()
             .then(function () {
                 /*API is online and doing well!*/
                 taskService.setFinishedTasks()
-                    .then(function () {
-                        /*Finished tasks set successfully*/
-
-                        //If there's no unfinished tasks, the default message is displayed
+                    .then(function () { //Loaded finished tasks successfully
                         vm.tasks.loadingFinished = false;
                     })
                     .catch(function (error) {
@@ -34,8 +31,9 @@
                 stateService.goToConnectionProblem();
             });
 
+        //Function to delete a task
         function deleteTask(task, event) {
-            dialogService.openDeleteConfirmationDialog(event)
+            dialogService.openDeleteConfirmationDialog(event) //Ask for delete confirmation
                 .then(function (answer) {
                     //Answer can be yes or no. If yes, then proceed with the delete operation, otherwise, do nothing.
                     if (answer === 'yes') {
@@ -56,10 +54,11 @@
                 });
         }
 
+        //Function to reopen a task
         function reopenTask(task) {
-            dialogService.openReopenConfirmationDialog(event)
+            dialogService.openReopenConfirmationDialog(event) //Ask for reopen confirmation
                 .then(function (answer) {
-                    //Answer can be yes or no. If yes, then proceed with the delete operation, otherwise, do nothing.
+                    //Answer can be yes or no. If yes, then proceed with the reopen operation, otherwise, do nothing.
                     if (answer === 'yes') {
                         toastrService.processing('Reopening', 'Please wait while the task is marked as unfinished...');
                         taskService.reopenTask(task)
@@ -77,16 +76,9 @@
                 });
         }
 
+        //Function to open task visualization dialog
         function openTaskVisualizationDialog(task, $event) {
             dialogService.openTaskVisualizationDialog(task, $event);
-        };
-
-        function searchTask(searchTerms) {
-            return function (task) {
-                if (searchTerms === '' || searchTerms === null || searchTerms === undefined) return true;
-                searchTerms = searchTerms.toLocaleLowerCase();
-                return (task.title.toLocaleLowerCase().includes(searchTerms) || task.description.toLocaleLowerCase().includes(searchTerms));
-            };
         };
 
     }

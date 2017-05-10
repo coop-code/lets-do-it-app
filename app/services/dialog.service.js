@@ -1,18 +1,20 @@
+//Service for dialogs
 (function () {
 	'use strict';
-	angular
-		.module('letsDoIt')
-		.factory('dialogService', ['$mdDialog', dialogService]);
+	angular.module('letsDoIt').factory('dialogService', dialogService);
+	
+	dialogService.$inject = ['$mdDialog'];
 
 	function dialogService($mdDialog) {
 
+		//Function to open a dialog with a given config
 		function openDialog($event, config) {
 			var defaults = {
 				clickOutsideToClose: true,
 				targetEvent: $event,
 				multiple : true
 			}
-			return $mdDialog.show(angular.extend(defaults, config));
+			return $mdDialog.show(angular.extend(defaults, config)); //extends the default configuration, adding 'config' to it
 		}
 		
 		function openTaskCreationDialog(event) {
@@ -90,6 +92,20 @@
             return openDialog(event, dialogConfig);
         };
         
+        function openEditConfirmationDialog(event) {
+            var dialogConfig = {
+            	templateUrl: 'app/dialog/view/confirmation-dialog.view.html',
+				controller: 'ConfirmationDialogController',
+				controllerAs: 'vm',
+				locals: {
+                    title: 'Edit confirmation',
+                    question: 'Are you sure you want to save the editions made to this task?'
+                },
+				clickOutsideToClose: false
+            }
+            return openDialog(event, dialogConfig);
+        };
+        
         function openReopenConfirmationDialog(event) {
             var dialogConfig = {
             		templateUrl: 'app/dialog/view/confirmation-dialog.view.html',
@@ -119,6 +135,7 @@
 			openTaskEditionDialog: openTaskEditionDialog,
 			openCreateConfirmationDialog: openCreateConfirmationDialog,
 			openFinishConfirmationDialog: openFinishConfirmationDialog,
+			openEditConfirmationDialog: openEditConfirmationDialog,
 			openReopenConfirmationDialog: openReopenConfirmationDialog,
 			openDeleteConfirmationDialog: openDeleteConfirmationDialog,
 			closeDialog: closeDialog,

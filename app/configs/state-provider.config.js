@@ -1,11 +1,11 @@
 //StateProvider configuration
 (function () {
 	'use strict';
-	angular
-		.module('letsDoIt')
-		.config(['$stateProvider', StateConfig]);
+	angular.module('letsDoIt').config(stateConfig);
 	
-	function StateConfig($stateProvider) {
+	stateConfig.$inject = ['$stateProvider'];
+	
+	function stateConfig($stateProvider) {
 
         $stateProvider
             .state('main', { //Abstract state in order to define child states. A layout template is used and it contains a ui-view that child states will use to insert their own templates..

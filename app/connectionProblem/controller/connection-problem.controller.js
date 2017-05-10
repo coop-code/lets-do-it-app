@@ -1,8 +1,7 @@
+//Controller for connection-problem.view.html
 (function () {
     'use strict';
-    angular
-        .module('letsDoIt')
-        .controller('ConnectionProblemController', [ConnectionProblemController]);
+    angular.module('letsDoIt').controller('ConnectionProblemController', ConnectionProblemController);
 
     function ConnectionProblemController() {
         var vm = this;

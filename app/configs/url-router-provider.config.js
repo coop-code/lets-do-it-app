@@ -1,13 +1,13 @@
 //UrlRouterProvider configuration
 (function () {
 	'use strict';
-	angular
-		.module('letsDoIt')
-		.config(['$urlRouterProvider', RouterConfig]);
+	angular.module('letsDoIt').config(routerConfig);
 	
-	function RouterConfig($urlRouterProvider) {
+	routerConfig.$inject = ['$urlRouterProvider'];
+	
+	function routerConfig($urlRouterProvider) {
 		
-        $urlRouterProvider.otherwise('/main/home'); //Redirecting to hom url in case an invalid url is provided
+        $urlRouterProvider.otherwise('/main/home'); //Redirecting to home URL in case an invalid URL is provided
         
      }
 })();

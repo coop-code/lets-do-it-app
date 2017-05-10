@@ -1,15 +1,16 @@
+//Controller for task-visualization-dialog.view.html
 (function () {
     'use strict';
-    angular
-        .module('letsDoIt')
-        .controller('TaskVisualizationDialogController', ['taskService', 'toastrService', 'dialogService', 'task', TaskVisualizationDialogController]);
+    angular.module('letsDoIt').controller('TaskVisualizationDialogController', TaskVisualizationDialogController);
+    
+    TaskVisualizationDialogController.$inject = ['taskService', 'toastrService', 'dialogService', 'task'];
 
     function TaskVisualizationDialogController(taskService, toastrService, dialogService, task) {
         var vm = this;
         vm.task = task;
         vm.ConfirmationDialogIsOpen = false;
 
-        //Triggered by the create button
+        //Triggered by the delete button
         function deleteTask(event) {
         	vm.ConfirmationDialogIsOpen = true;
         	dialogService.openDeleteConfirmationDialog(event)

@@ -1,21 +1,17 @@
+//Service for tasks
 (function () {
     'use strict';
-    angular
-        .module('letsDoIt')
-        .factory('taskService', ['tasksValue', '$http', taskService]);
+    angular.module('letsDoIt').factory('taskService', taskService);
+    
+    taskService.$inject = ['tasksValue', '$http'];
 
     function taskService(tasksValue, $http) {
     	/*
-		The address of the API that provides data manipulation functions
-		If you are receiving a connection problem message, you need to start an API.
-		The Lets Do It API provides all the functions you need to use APP.
-		There are 3 steps to run the API
-			1) Clone its repository (https://github.com/coop-code/lets-do-it-api) 
-			2) Run 'npm install' to install all dependencies
-			3) Run 'npm start' and you are good to go
-		
-		The API runs locally on PORT 4001, so the complete address is http://localhost:4001
+		If you are receiving a connection problem message, you need to start a API.
+		The Let's Do It API provides all the functions you need to use this APP and 
+		runs locally on PORT 4001, so the complete address is http://localhost:4001
 		*/
+    	
 		var apiHealthCheckUri = 'http://localhost:4001/ping';
         var apiUrl = 'http://localhost:4001/tasks';
 
@@ -23,11 +19,16 @@
         function ping() {
         	var promise =  $http.get(apiHealthCheckUri);
         	return promise
-        		.then(function (response) {/*API is online*/})
-        		.catch (function (error) {console.log('taskService error (ping): ', error); throw error;});
+        		.then(function (response) {
+        			/*API is online*/
+        		})
+        		.catch (function (error) {
+        			console.log('taskService error (ping): ', error); 
+        			throw error;
+        		});
         }
 
-        //Set the value of finished tasks
+        //Set the value of finished tasks on task.value.js
         function setFinishedTasks() {
         	var promise =  $http.get(apiUrl, {
                 params: {'finished': true}
@@ -36,10 +37,10 @@
         		.then(function (response) {
         			var tasks = response.data;
                     tasks.forEach(function (task) {
-                    	CalculateDeadlineInDays(task);
-                    	CustomizeTask(task);
+                    	CalculateDeadlineInDays(task); //Convert deadline time to days
+                    	CustomizeTask(task); //Customize received tasks for exhibition
                     });
-                    tasksValue.finished = tasks;
+                    tasksValue.finished = tasks; //Set finished tasks
         		})
         		.catch (function (error) {
         			console.log('taskService error (setFinishedtasksValue): ', error);
@@ -47,7 +48,7 @@
         		});
         }
 
-      //Set the value of unfinished tasks
+      //Set the value of unfinished tasks on task.value.js
         function setUnfinishedTasks() {
         	var promise =  $http.get(apiUrl, {
                 params: {'finished': false}
@@ -56,10 +57,10 @@
         		.then(function (response) {
         			var tasks = response.data;
                     tasks.forEach(function (task) {
-                    	CalculateDeadlineInDays(task);
-                    	CustomizeTask(task);
+                    	CalculateDeadlineInDays(task); //Convert deadline time to days
+                    	CustomizeTask(task); //Customize received tasks for exhibition
                     });
-                    tasksValue.unfinished = tasks;
+                    tasksValue.unfinished = tasks; //Set unfinished tasks
         		})
         		.catch (function (error) {
         			console.log('taskService error (setUnfinishedtasksValue): ', error);
@@ -73,8 +74,8 @@
         	return promise
         		.then(function (response) {
         			var taskRetrieved = response.data;
-                    CalculateDeadlineInDays(taskRetrieved);
-                    CustomizeTask(taskRetrieved);
+                    CalculateDeadlineInDays(taskRetrieved); //Convert deadline time to days
+                    CustomizeTask(taskRetrieved); //Customize received tasks for exhibition
                     return taskRetrieved;
         		})
         		.catch (function (error) {
@@ -87,11 +88,11 @@
         function createTask(task) {
         	var promise =  $http.post(apiUrl, task);
         	return promise
-        		.then(function (response) {
+        		.then(function (response) { //Successful create
         			var newTask= response.data;
-                    CalculateDeadlineInDays(newTask);
-                    CustomizeTask(newTask);
-                    tasksValue.unfinished.push(newTask);
+                    CalculateDeadlineInDays(newTask); //Convert deadline time to days
+                    CustomizeTask(newTask); //Customize received tasks for exhibition
+                    tasksValue.unfinished.push(newTask); //Insert new task in unfinished array, so unfinished-tasks.view.html is updated immediately
         		})
         		.catch (function (error) {
         			console.log('taskService error (getTask): ', error);
@@ -103,14 +104,14 @@
         function deleteTask(task) {
         	var promise =  $http.delete(apiUrl + '/' + task.id);
         	return promise
-        		.then(function () {
-        			var finishedIndex =getObjectPositionInArrayById(task, tasksValue.finished); 		//Check if deleted task is a finished task
-        			var unfinishedIndex = getObjectPositionInArrayById(task, tasksValue.unfinished);	//Check if deleted task is an unfinished task
-        			if(finishedIndex > -1) {
-        				tasksValue.finished.splice(finishedIndex, 1); 
+        		.then(function () { //Successful delete
+        			var finishedIndex =getObjectPositionInArrayById(task, tasksValue.finished); //Check if deleted task is a finished task
+        			var unfinishedIndex = getObjectPositionInArrayById(task, tasksValue.unfinished); //Check if deleted task is an unfinished task
+        			if(finishedIndex > -1) { //If it is a finished task
+        				tasksValue.finished.splice(finishedIndex, 1); //Remove it from finished array, so finished-tasks.view.html is updated immediately
         			}
-        			if(unfinishedIndex > -1) {
-        				tasksValue.unfinished.splice(unfinishedIndex, 1); 
+        			if(unfinishedIndex > -1) { //If it is an unfinished task
+        				tasksValue.unfinished.splice(unfinishedIndex, 1); //Remove it from unfinished array, so unfinished-tasks.view.html is updated immediately
         			}
         		})
         		.catch (function (error) {
@@ -121,16 +122,16 @@
    
         //Finish a task
         function finishTask(task) {
-        	var updatedTask = createUpdatedTaskModel(task);
+        	var updatedTask = createUpdatedTaskModel(task); //Create task model to be inserted or updated in the database (without all the customized gizmos)
         	updatedTask.done = true;
             var promise = $http.put(apiUrl + '/' + updatedTask.id, updatedTask);
         	return promise
-        		.then(function (response) {
-        			var unfinishedIndex = getObjectPositionInArrayById(task, tasksValue.unfinished);
-        			if(unfinishedIndex > -1) {
-        				tasksValue.unfinished.splice(unfinishedIndex, 1);
-        				task.done=true;
-        				tasksValue.finished.push(task);
+        		.then(function (response) { //Successful finish
+        			var unfinishedIndex = getObjectPositionInArrayById(task, tasksValue.unfinished); //Get the position of the task that was finished
+        			if(unfinishedIndex > -1) { //If it exists (just in case)
+        				tasksValue.unfinished.splice(unfinishedIndex, 1); //Remove it from unfinished array, so unfinished-tasks.view.html is updated immediately
+        				task.done=true; //Mark the task as finished
+        				tasksValue.finished.push(task); //And insert it in the finished array, so finished-tasks.view.html is updated immediately
         			}
         		})
         		.catch (function (error) {
@@ -139,18 +140,18 @@
         		});
         }
         
-      //Finish a task
+        //Reopen a task
         function reopenTask(task) {
-        	var updatedTask = createUpdatedTaskModel(task);
+        	var updatedTask = createUpdatedTaskModel(task); //Create task model to be inserted or updated in the database (without all the customized gizmos)
         	updatedTask.done = false;
             var promise = $http.put(apiUrl + '/' + updatedTask.id, updatedTask);
         	return promise
-        		.then(function (response) {
-        			var finishedIndex = getObjectPositionInArrayById(task, tasksValue.finished);
-        			if(finishedIndex > -1) {
-        				tasksValue.finished.splice(finishedIndex, 1);
-        				task.done=false;
-        				tasksValue.unfinished.push(task);
+        		.then(function (response) { //Successful reopen
+        			var finishedIndex = getObjectPositionInArrayById(task, tasksValue.finished); //Get the position of the task that was reopened
+        			if(finishedIndex > -1) { //If it exists (just in case)
+        				tasksValue.finished.splice(finishedIndex, 1); //Remove it from finished array, so unfinished-tasks.view.html is updated immediately
+        				task.done=false; //Mark the task as unfinished
+        				tasksValue.unfinished.push(task); //And insert it in the unfinished array, so unfinished-tasks.view.html is updated immediately
         			}
         		})
         		.catch (function (error) {
@@ -161,16 +162,15 @@
         
         //Toggle the priority of a task
         function changeTaskPriority(task) {
-        	var updatedTask = createUpdatedTaskModel(task);
+        	var updatedTask = createUpdatedTaskModel(task); //Create task model to be inserted or updated in the database (without all the customized gizmos)
         	updatedTask.priority = !updatedTask.priority;
             var promise = $http.put(apiUrl + '/' + updatedTask.id, updatedTask);
         	return promise
-        		.then(function (response) {
+        		.then(function (response) { //Successful priority toggle
         			var unfinishedIndex = getObjectPositionInArrayById(task, tasksValue.unfinished);
-        			if(unfinishedIndex > -1) {
-        				task.priority = !task.priority;
-                        CustomizeTask(task);
-        				tasksValue.unfinished.splice(unfinishedIndex, 1, task);
+        			if(unfinishedIndex > -1) { //If it exists (just in case)
+        				task.priority = !task.priority; //Change the task's priority
+                        CustomizeTask(task); //Recustomize the task based on the new priority
         			}
         		})
         		.catch (function (error) {
@@ -181,15 +181,15 @@
         
         //Save an edited task
         function saveEditedTask(oldTask, newTask) {
-	    	var updatedTask = createUpdatedTaskModel(newTask);
+	    	var updatedTask = createUpdatedTaskModel(newTask); //Create task model to be inserted or updated in the database (without all the customized gizmos)
 	        var promise = $http.put(apiUrl + '/' + updatedTask.id, updatedTask);
 	    	return promise
 	    		.then(function (response) {
-	    			var unfinishedIndex = getObjectPositionInArrayById(oldTask, tasksValue.unfinished);
-	    			if(unfinishedIndex > -1) {
-	    				CalculateDeadlineInDays(newTask)
-	    				CustomizeTask(newTask); 
-	    				tasksValue.unfinished.splice(unfinishedIndex, 1, newTask);
+	    			var unfinishedIndex = getObjectPositionInArrayById(oldTask, tasksValue.unfinished); //Get the position of the edited task (only unfinished tasks can be edited)
+	    			if(unfinishedIndex > -1) { //If it exists (just in case)
+	    				CalculateDeadlineInDays(newTask) //Recalculate the deadline in days (it may have changed)
+	    				CustomizeTask(newTask); //Recustomize the task based on the new properties
+	    				tasksValue.unfinished.splice(unfinishedIndex, 1, newTask); //Remove old task and insert new task in its place, so unfinished-tasks.view.html is updated immediately
 	    			}
 	    		})
 	    		.catch (function (error) {
@@ -227,24 +227,26 @@
             }
         }
 
-        //Add the 'showOptions' parameter to be used to open and close card options and set the priority icon according to priority value
+        //Customize the base model of a task, retrieved from database, for its proper exhibition
         function CustomizeTask(task) {
-            task.priorityIcon = (task.priority) ? 'star' : 'star_border';
+            task.priorityIcon = (task.priority) ? 'star' : 'star_border'; //Set the priority option icon
+            
+            //Classes to be applied to the chips that indicate the deadline of each task.
             task.chipClasses = {
             		red: task.deadlineInDays <= 1,
             		orange: task.deadlineInDays >= 2 && task.deadlineInDays <= 4,
             		yellow: task.deadlineInDays >= 5 && task.deadlineInDays <= 7,
             		green: task.deadlineInDays >=8 || task.deadlineInDays == undefined || task.deadlineInDays == null
             };
+            
+            //Classes to be applied to unfinished tasks
             task.unfinishedCardClasses = {
             		taskCard: true,
-            		red: task.deadlineInDays <= 1,
-                	orange: task.deadlineInDays >= 2 && task.deadlineInDays <= 4,
-                	yellow: task.deadlineInDays >= 5 && task.deadlineInDays <= 7,
-                	green: task.deadlineInDays >=8 || task.deadlineInDays == undefined || task.deadlineInDays == null,
                 	showCardOptions: false,
             		priorityTask: task.priority
             };
+            
+          //Classes to be applied to finished tasks
             task.finishedCardClasses = {
             		taskCard: true,
             		showCardOptions: false,

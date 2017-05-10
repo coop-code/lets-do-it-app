@@ -1,9 +1,10 @@
+//Controller for confirmation-dialog.view.html, receiving title and question from callers
 (function () {
     'use strict';
-    angular
-        .module('letsDoIt')
-        .controller('ConfirmationDialogController', ['dialogService', 'title', 'question', ConfirmationDialogController]);
+    angular.module('letsDoIt').controller('ConfirmationDialogController', ConfirmationDialogController);
 
+    ConfirmationDialogController.$inject = ['dialogService', 'title', 'question'];
+    
     function ConfirmationDialogController(dialogService, title, question) {
         var vm = this;
         

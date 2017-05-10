@@ -1,11 +1,11 @@
 //DarkTheme configuration
 (function () {
 	'use strict';
-	angular
-		.module('letsDoIt')
-		.config(['$mdThemingProvider', ThemeConfig]);
+	angular.module('letsDoIt').config(themeConfig);
 	
-	function ThemeConfig($mdThemingProvider) {
+	themeConfig.$inject = ['$mdThemingProvider']
+	
+	function themeConfig($mdThemingProvider) {
 		
 		$mdThemingProvider.theme('darkTheme') //Setting grey colors and applying dark theme
 	       	.primaryPalette('grey',{'default': '900'})

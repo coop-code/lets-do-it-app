@@ -1,8 +1,7 @@
+//Controller for home.view.html
 (function () {
     'use strict';
-    angular
-        .module('letsDoIt')
-        .controller('HomeController', HomeController);
+    angular.module('letsDoIt').controller('HomeController', HomeController);
 
     function HomeController() {
         var vm = this;

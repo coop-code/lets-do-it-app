@@ -1,14 +1,14 @@
+//Controller for unfinished-tasks.view.html
 (function () {
     'use strict';
-    angular
-        .module('letsDoIt')
-        .controller('UnfinishedTasksController', ['taskService', 'toastrService', 'dialogService', 'stateService', 'tasksValue', UnfinishedTasksController]);
+    angular.module('letsDoIt').controller('UnfinishedTasksController', UnfinishedTasksController);
+    
+    UnfinishedTasksController.$inject = ['taskService', 'toastrService', 'dialogService', 'stateService', 'tasksValue'];
 
     function UnfinishedTasksController(taskService, toastrService, dialogService, stateService, tasksValue) {
 
         var vm = this;
         vm.tasks = tasksValue;
-
 
         vm.deleteTask = deleteTask;
         vm.finishTask = finishTask;
@@ -20,11 +20,8 @@
             .then(function () {
                 /*API is online and doing well!*/
                 taskService.setUnfinishedTasks()
-                    .then(function () {
-                        /*Unfinished tasks set successfully*/
-
-                        //If there's no unfinished tasks, the default message is displayed
-                        vm.tasks.loadingUnfinished = false;
+                    .then(function () { //Loaded unfinished tasks successfully
+                        vm.tasks.loadingUnfinished = false; 
                     })
                     .catch(function (error) {
                         toastrService.error('Error', 'There was a problem while fetching unfinished tasks. Please contact the administrator.');
@@ -35,8 +32,9 @@
             	stateService.goToConnectionProblem();
             });
         
+        //Function to delete a task
         function deleteTask(task, event) {
-        	dialogService.openDeleteConfirmationDialog(event)
+        	dialogService.openDeleteConfirmationDialog(event) //Ask for delete confirmation
                 .then(function (answer) {
                     //Answer can be yes or no. If yes, then proceed with the delete operation, otherwise, do nothing.
                     if (answer === 'yes') {
@@ -56,30 +54,33 @@
                 });
         }
 
+        //Function to finish a task
         function finishTask(task) {
-        	dialogService.openFinishConfirmationDialog(event)
-        	.then(function (answer) {
-        		//Answer can be yes or no. If yes, then proceed with the delete operation, otherwise, do nothing.
-                if (answer === 'yes') {
-		            toastrService.processing('Finishing', 'Please wait while the task is marked as finished...');
-		            taskService.finishTask(task)
-		                .then(function () {
-		                    toastrService.success('Task successfully marked as finished.');
-		                })
-		                .catch(function (error) {
-		                    toastrService.error('Error', 'There was a problem when trying to mark the task as finished. Please refresh the page before trying again.');
-		                    console.log('TaskListController error (finishTask): ', error);
-		                });
-                }
-        	})
-            .catch( function (error) {
-            	//Confirmation cancelled
-            });
+        	dialogService.openFinishConfirmationDialog(event) //Ask for finish confirmation
+	        	.then(function (answer) {
+	        		//Answer can be yes or no. If yes, then proceed with the finish operation, otherwise, do nothing.
+	                if (answer === 'yes') {
+			            toastrService.processing('Finishing', 'Please wait while the task is marked as finished...');
+			            taskService.finishTask(task)
+			                .then(function () {
+			                    toastrService.success('Task successfully marked as finished.');
+			                })
+			                .catch(function (error) {
+			                    toastrService.error('Error', 'There was a problem when trying to mark the task as finished. Please refresh the page before trying again.');
+			                    console.log('TaskListController error (finishTask): ', error);
+			                });
+	                }
+	        	})
+	            .catch( function (error) {
+	            	//Confirmation cancelled
+	            });
         }
 
+        //Function to change priority of a task
         function changeTaskPriority(task) {
-            if (task.priority == false) toastrService.processing('Prioritizing', 'Please wait while the task is marked as priority...');
-            else toastrService.processing('Unprioritizing', 'Please wait while the task is marked as not priority...');
+            task.priority == false
+            ? 	toastrService.processing('Prioritizing', 'Please wait while the task is marked as priority...')
+            :	toastrService.processing('Unprioritizing', 'Please wait while the task is marked as not priority...');
             taskService.changeTaskPriority(task)
                 .then(function () {
                     toastrService.success('Task priority successfully changed.');
@@ -90,6 +91,7 @@
                 });
         }
         
+      //Function to open task edition dialog
         function openTaskEditionDialog(task, event) {
             dialogService.openTaskEditionDialog(task, event);
         };
