@@ -6,6 +6,6 @@
     function ConnectionProblemController() {
         var vm = this;
         vm.title = 'Connection Problem';
-        vm.apiRepository = 'https://github.com/coop-code/lets-do-it-api'
+        vm.apiRepository = 'https://github.com/coop-code/lets-do-it-api';
     }
 }());

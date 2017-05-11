@@ -14,7 +14,7 @@
         vm.openTaskVisualizationDialog = openTaskVisualizationDialog;
         vm.reopenTask = reopenTask;
 
-        //Backend Server Health Check (Lets Do It API)
+        //Backend Server Health Check (Lets Do It API as default)
         taskService.ping()
             .then(function () {
                 /*API is online and doing well!*/

@@ -38,6 +38,6 @@
             goToFinishedTasks: goToFinishedTasks,
             goToUnfinishedTasks: goToUnfinishedTasks,
             goToConnectionProblem: goToConnectionProblem
-        }
+        };
 	}
 }());

@@ -5,7 +5,7 @@
 	
 	function maxCharacters() {
         return function (text, max) {
-            if (isNaN(max)) return text; //iIf parameter is not a number, return text
+            if (isNaN(max)) return text; //If parameter is not a number, return text
             if (max <= 0) return ''; //If parameter is a negative number, return text
             if (text && text.length <= max) return text; //If text exists but its length is lower than max, return text
             if (text && text.length > max) { //If text exists and its length is bigger than specified max...

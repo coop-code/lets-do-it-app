@@ -15,6 +15,6 @@
 		//Public calls
         return {
         	toggleSidenav: toggleSidenav
-        }
+        };
 	}
 }());

@@ -29,7 +29,7 @@
                 templateUrl: 'app/tasks/view/unfinished-tasks.view.html',
                 controller: 'UnfinishedTasksController as vm'
             })
-            .state('main.connectionProblem', { //Connection problem (API is offline)
+            .state('main.connectionProblem', { //Connection problem - when the backend server (the API) is offline
                 url: '/connectionProblem',
                 templateUrl: 'app/connectionProblem/view/connection-problem.view.html',
                 controller: 'ConnectionProblemController as vm'

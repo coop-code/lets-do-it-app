@@ -7,7 +7,7 @@
 
     function TaskEditionDialogController(taskService, toastrService, dialogService, task) {
         var vm = this;
-        vm.task = angular.copy(task); //Deep copy so we don't change the card while we change the inputs in the dialog. Changes will happen only after a successful submit.
+        vm.task = angular.copy(task); //Deep copy so we don't change the card contents while we change the inputs in the dialog. Changes will happen only after a successful submit.
         vm.ConfirmationDialogIsOpen = false;
 
         //Triggered by the save button
@@ -72,7 +72,7 @@
         vm.saveIcon = 'save';
         vm.deleteName = 'Delete';
         vm.deleteIcon = 'delete';
-        vm.minDate = new Date()
+        vm.minDate = new Date();
         
         vm.submitEditedTask = submitEditedTask;
         vm.deleteTask = deleteTask;

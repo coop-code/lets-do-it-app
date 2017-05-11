@@ -17,15 +17,17 @@
 			return $mdDialog.show(angular.extend(defaults, config)); //extends the default configuration, adding 'config' to it
 		}
 		
-		function openTaskCreationDialog(event) {
+		//Properties of the Task Creation Dialog
+        function openTaskCreationDialog(event) {
             var dialogConfig = {
                 templateUrl: 'app/dialog/view/task-creation-dialog.view.html',
                 controller: 'TaskCreationDialogController',
                 controllerAs: 'vm',
-            }
+            };
             return openDialog(event, dialogConfig);
-        };
+        }
 		
+        //Properties of the Task Visualization Dialog
         function openTaskVisualizationDialog(task, $event) {
             var dialogConfig = {
                 templateUrl: 'app/dialog/view/task-visualization-dialog.view.html',
@@ -34,10 +36,11 @@
                 locals: {
                     task: task
                 }
-            }
+            };
             return openDialog($event, dialogConfig);
-        };
+        }
         
+        //Properties of the Task Edit Dialog 
         function openTaskEditionDialog(task, event) {
             var dialogConfig = {
                 templateUrl: 'app/dialog/view/task-edition-dialog.view.html',
@@ -46,10 +49,11 @@
                 locals: {
                     task: task
                 }
-            }
+            };
             return openDialog(event, dialogConfig);
-        };
+        }
         
+        //Properties of the Task Confirmation Dialog (when creating a task)
         function openCreateConfirmationDialog(event) {
             var dialogConfig = {
             	templateUrl: 'app/dialog/view/confirmation-dialog.view.html',
@@ -60,10 +64,11 @@
                     question: 'Are you sure you want to create this task?'
                 },
 				clickOutsideToClose: false
-            }
+            };
             return openDialog(event, dialogConfig);
-        };
+        }
         
+        //Properties of the Task Confirmation Dialog (when deleting a task)
 		function openDeleteConfirmationDialog(event) {
             var dialogConfig = {
             	templateUrl: 'app/dialog/view/confirmation-dialog.view.html',
@@ -74,10 +79,11 @@
                     question: 'Are you sure you want to permanently delete this task?'
                 },
 				clickOutsideToClose: false
-            }
+            };
             return openDialog(event, dialogConfig);
-        };
+        }
         
+        //Properties of the Task Confirmation Dialog (when marking a task as done or finished)
         function openFinishConfirmationDialog(event) {
             var dialogConfig = {
             		templateUrl: 'app/dialog/view/confirmation-dialog.view.html',
@@ -88,10 +94,11 @@
                         question: 'Are you sure you want to mark this task as finished?'
                     },
 				clickOutsideToClose: false
-            }
+            };
             return openDialog(event, dialogConfig);
-        };
+        }
         
+        //Properties of the Task Confirmation Dialog (when saving a task after editing)
         function openEditConfirmationDialog(event) {
             var dialogConfig = {
             	templateUrl: 'app/dialog/view/confirmation-dialog.view.html',
@@ -102,10 +109,11 @@
                     question: 'Are you sure you want to save the editions made to this task?'
                 },
 				clickOutsideToClose: false
-            }
+            };
             return openDialog(event, dialogConfig);
-        };
+        }
         
+        //Properties of the Task Confirmation Dialog (when marking a finished task as unfinished)
         function openReopenConfirmationDialog(event) {
             var dialogConfig = {
             		templateUrl: 'app/dialog/view/confirmation-dialog.view.html',
@@ -116,9 +124,9 @@
                         question: 'Are you sure you want to reopen this task and mark it as unfinished again?'
                     },
 				clickOutsideToClose: false
-            }
+            };
             return openDialog(event, dialogConfig);
-        };
+        }
 
 		function closeDialog() {
 			$mdDialog.cancel();
@@ -140,6 +148,6 @@
 			openDeleteConfirmationDialog: openDeleteConfirmationDialog,
 			closeDialog: closeDialog,
 			answerDialog: answerDialog
-		}
+		};
 	}
 }());

@@ -7,9 +7,10 @@
 
     function taskService(tasksValue, $http) {
     	/*
-		If you are receiving a connection problem message, you need to start a API.
+		If you are receiving a connection problem message, you need to start a backend server (an API).
 		The Let's Do It API provides all the functions you need to use this APP and 
 		runs locally on PORT 4001, so the complete address is http://localhost:4001
+		This APP is configured to interact with the Let's Do It API as default.
 		*/
     	
 		var apiHealthCheckUri = 'http://localhost:4001/ping';
@@ -198,9 +199,9 @@
 	    		});
         }
 
-        //Prepare a task to be inserted in DB based on provided parameter 'task', getting only the necessary fields
+        //Prepare a task to be sent to the API based on provided parameter 'task', getting only the necessary fields
         function createUpdatedTaskModel(task) {
-            var updateTaskDto = {}
+            var updateTaskDto = {};
             updateTaskDto.id = task.id;
             updateTaskDto.title = task.title;
             updateTaskDto.deadline = task.deadline;
