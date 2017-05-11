@@ -19,6 +19,10 @@ This app was developed using the **AngularJS** framework and **Angular Material*
 
 As said, it has studying purposes. In other words, it's a **demonstration** of how AngularJS and Angular Material work together. Feel free to test it the way you like.
 
+The Let's Do It App is available [here](https://lets-do-it-app-whgjjrrovm.now.sh/#!/main/home). We used the package called [Now](https://zeit.co/now) to deploy the application globally.
+
+If you want to check the code and run the Lets Do It App locally, the next section explains how to run it.
+
 ## Setup
 
 ### Let's Do It APP
