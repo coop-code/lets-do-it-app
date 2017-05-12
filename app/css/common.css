@@ -66,9 +66,8 @@ md-checkbox.md-darkTheme-theme[disabled].md-checked .md-icon {
     margin-top: -1em;
     margin-left: 7.5em;
     font-weigth: bold;
-    font-family: 'Gloria Hallelujah', cursive;
 	height: 2em;
-    line-height: 1.5em;
+    line-height: 1.75em;
    	background: rgba(48, 48, 48, 1);
     color: rgba(255, 255, 255, 1);
 }
@@ -356,7 +355,6 @@ md-card.md-darkTheme-theme {
     height: 15em;
     width: 20em;
     border-radius: 10px;
-    font-family: 'Gloria Hallelujah', cursive;
 }
 
 /*Tasks displayed in yellow*/
