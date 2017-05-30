@@ -12,14 +12,14 @@ The API, on the other way, deal with the data itself: processing and answering t
 
 To work properly, **both the APP and the API need to be running**. There's a setup section in this document that explains how to start both applications.
 
-# The Let's Do It App
+# [The Let's Do It App](https://lets-do-it-app.now.sh/#!/main/home)
 
 Let's Do It App is the frontend part of the Let's Do It project.
 This app was developed using the **AngularJS** framework and **Angular Material** for better UX.
 
 As said, it has studying purposes. In other words, it's a **demonstration** of how AngularJS and Angular Material work together. Feel free to test it the way you like.
 
-The Let's Do It App is available [here](https://lets-do-it-app-whgjjrrovm.now.sh/#!/main/home). We used the package called [Now](https://zeit.co/now) to deploy the application globally.
+The Let's Do It App is available [here](https://lets-do-it-app.now.sh/#!/main/home). We used the package called [Now](https://zeit.co/now) to deploy the application globally.
 
 If you want to check the code and run the Lets Do It App locally, the next section explains how to run it.
 
